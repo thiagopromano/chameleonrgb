@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<texture version="1" file="positions.png" type="bitmap" width="1024" height="2048" pixelformat="RGBA_8888" minfilter="linear" magfilter="linear" wrapt="clamp" wraps="clamp" premultiplyalpha="false">
+    <!-- Created with TexturePacker http://texturepacker.com -->
+    <!-- $TexturePacker:SmartUpdate:644272b560ac3ffd17d934b12716ce98$ -->
+    <textureregion id="0" src="ArcadeButton.PNG" x="2" y="2" width="100" height="50" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="100" srcheight="50"/>
+    <textureregion id="1" src="B.png" x="104" y="2" width="34" height="40" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="34" srcheight="40"/>
+    <textureregion id="2" src="Camaleao_Mask_trocaCor.png" x="140" y="2" width="257" height="361" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="257" srcheight="361"/>
+    <textureregion id="3" src="Camaleao_Sombra.png" x="399" y="2" width="257" height="361" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="257" srcheight="361"/>
+    <textureregion id="4" src="G.png" x="658" y="2" width="35" height="42" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="35" srcheight="42"/>
+    <textureregion id="5" src="Nylon_Detalhes.png" x="2" y="365" width="362" height="356" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="362" srcheight="356"/>
+    <textureregion id="6" src="Nylon_TrocaCor.png" x="366" y="365" width="332" height="318" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="332" srcheight="318"/>
+    <textureregion id="7" src="Palco.png" x="2" y="723" width="370" height="211" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="370" srcheight="211"/>
+    <textureregion id="8" src="R.png" x="374" y="723" width="34" height="40" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="34" srcheight="40"/>
+    <textureregion id="9" src="TimeAttackButton.PNG" x="410" y="723" width="100" height="50" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="100" srcheight="50"/>
+    <textureregion id="10" src="box.png" x="512" y="723" width="392" height="264" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="392" srcheight="264"/>
+    <textureregion id="11" src="folhas_frente.png" x="2" y="989" width="480" height="800" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="480" srcheight="800"/>
+    <textureregion id="12" src="fundo.jpg" x="484" y="989" width="480" height="800" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="480" srcheight="800"/>
+    <textureregion id="13" src="marcador.png" x="966" y="989" width="32" height="32" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="32" srcheight="32"/>
+    <textureregion id="14" src="tronco.png" x="2" y="1791" width="480" height="179" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="480" srcheight="179"/>
+</texture>
