@@ -43,6 +43,8 @@ public class CamaleaotestActivity extends SimpleBaseGameActivity {
 	private BitmapTextureAtlas mFontTexture;
 	public TexturePackTextureRegionLibrary mSpritesheetTexturePackTextureRegionLibrary;
 	public TextureRegion mTextureBar;
+	public BitmapTextureAtlas mChronometerFontTexture;
+	public Font mChronometerFont;
 
 	// ===========================================================
 	// Constructors
@@ -75,8 +77,17 @@ public class CamaleaotestActivity extends SimpleBaseGameActivity {
 		this.mFont = new Font(this.getFontManager(), this.mFontTexture,
 				Typeface.create("Franklin Gothic Book", Typeface.NORMAL), 32, true,
 				Color.WHITE);
+		
+		this.mChronometerFontTexture = new BitmapTextureAtlas(this.getTextureManager(),
+				512, 512, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
+		this.mChronometerFont = new Font(this.getFontManager(), this.mChronometerFontTexture,
+				Typeface.create("Franklin Gothic Book", Typeface.NORMAL), 64, true,
+				Color.WHITE);
+		
 		this.mEngine.getTextureManager().loadTexture(this.mFontTexture);
+		this.mEngine.getTextureManager().loadTexture(this.mChronometerFontTexture);
 		this.getFontManager().loadFont(this.mFont);
+		this.getFontManager().loadFont(this.mChronometerFont);
 
 		this.mBitmapTextureAtlas = new BitmapTextureAtlas(getTextureManager(),
 				512, 16);

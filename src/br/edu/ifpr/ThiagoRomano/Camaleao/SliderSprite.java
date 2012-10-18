@@ -1,5 +1,6 @@
 package br.edu.ifpr.ThiagoRomano.Camaleao;
 
+import org.andengine.entity.scene.Scene;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.text.Text;
 import org.andengine.input.touch.TouchEvent;
@@ -51,6 +52,8 @@ public class SliderSprite extends Sprite {
 	@Override
 	public boolean onAreaTouched(final TouchEvent pSceneTouchEvent,
 			final float pTouchAreaLocalX, final float pTouchAreaLocalY) {
+		if (mScene.iniciando)
+			return true;
 		this.setPosition(pSceneTouchEvent.getX() - this.getWidth() / 2,
 				this.getY());
 		if (this.mX < MIN_X)

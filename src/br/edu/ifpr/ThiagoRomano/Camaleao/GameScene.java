@@ -34,10 +34,13 @@ public class GameScene extends Scene {
 	Sprite mChampShadow;
 	Sprite mPalco;
 	Sprite mFolhasFrente;
-	Sprite mChronometer;
+	
+	Chronometer mChronometer;
+	
 	Random rand;
+	public boolean iniciando = true;
 	public int colors;
-	Text mTextRemainingTime;
+	//Text mTextRemainingTime;
 	Sprite mBackground;
 	Sprite mPlaca;
 	Sprite mPlacaSaindo;
@@ -48,7 +51,7 @@ public class GameScene extends Scene {
 	int mActualColor = 0;
 	public int theColorLocation = ShaderProgramConstants.LOCATION_INVALID;
 	// public boolean mOverlayed = true;
-	float remainingTime = STARTING_TIME;
+	float remainingTime = 5;
 	int score = 0;
 
 	private Text mTextScore;
@@ -83,8 +86,8 @@ public class GameScene extends Scene {
 	}
 
 	private void createAssets() {
-		mTextRemainingTime = new Text(10, 10, activity.mFont, "", 10,
-				activity.getVertexBufferObjectManager());
+		/*mTextRemainingTime = new Text(10, 10, activity.mFont, "", 10,
+				activity.getVertexBufferObjectManager());*/
 		mTextScore = new Text(300, 10, activity.mFont, "jna", 4,
 				activity.getVertexBufferObjectManager());
 
@@ -171,6 +174,10 @@ public class GameScene extends Scene {
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.MARCADOR_ID),
 				activity.getVertexBufferObjectManager());
+		 mChronometer = new Chronometer(this, 100, 100,
+				activity.mSpritesheetTexturePackTextureRegionLibrary
+						.get(posicoes.BOX_ID),
+				activity.getVertexBufferObjectManager());
 
 		this.attachChild(mBackground);
 		this.attachChild(mPalco);
@@ -202,9 +209,10 @@ public class GameScene extends Scene {
 		this.attachChild(mSliderBlue);
 		registerTouchArea(mSliderBlue);
 
-		this.attachChild(mTextRemainingTime);
+		// this.attachChild(mTextRemainingTime);
 		this.attachChild(mTextScore);
-
+		
+		this.attachChild(mChronometer);
 		movements = new MoveModifier(2f, -mPlaca.getWidth(), mPlaca.getX(),
 				mPlaca.getY(), mPlaca.getY(), EaseElasticOut.getInstance());
 		mPlaca.registerEntityModifier(movements);
@@ -249,8 +257,8 @@ public class GameScene extends Scene {
 		int blueStepsDiference = Math.abs(Color.blue(colors)
 				/ SliderSprite.STEP - Color.blue(mPlacaColor)
 				/ SliderSprite.STEP);
-		mTextRemainingTime.setText(Integer.toString(redStepsDiference
-				+ greenStepsDiference + blueStepsDiference));
+		/*mTextRemainingTime.setText(Integer.toString(redStepsDiference
+				+ greenStepsDiference + blueStepsDiference));*/
 		if (redStepsDiference < 50
 				&& greenStepsDiference < 50
 				&& blueStepsDiference < 50
@@ -283,10 +291,12 @@ public class GameScene extends Scene {
 
 	private void updateScore() {
 		mTextScore.setText(Integer.toString(score));
-	}
+	} 
 
 	private void updateTime() {
-		mTextRemainingTime.setText(Integer.toString((int) remainingTime));
+		if (mChronometer != null) {
+			mChronometer.updateTime(remainingTime);
+		}
 	}
 
 	public int colorFloatToInt(float number) {
@@ -300,7 +310,7 @@ public class GameScene extends Scene {
 	public void setPlacaColor(int color) {
 		mPlaca.setColor(colorIntToFloat(Color.red(mPlacaColor)),
 				colorIntToFloat(Color.green(mPlacaColor)),
-				colorIntToFloat(Color.blue(mPlacaColor)));
+				colorIntToFloat(Color.blue(mPlacaColor)));   
 	}
 
 	@Override
@@ -329,6 +339,11 @@ public class GameScene extends Scene {
 		} else {
 			return false;
 		}
+	}
+
+	public void endTime() {
+		// TODO Finalizar jogo
+		
 	}
 
 }
