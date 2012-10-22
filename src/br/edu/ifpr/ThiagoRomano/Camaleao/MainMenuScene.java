@@ -45,6 +45,11 @@ public class MainMenuScene extends MenuScene implements
 		case MENU_TIMEATTACK:
 			activity.setCurrentScene(new NinjaModeScene());
 			return true;
+		case MENU_ARCADE:
+		{
+			activity.setCurrentScene(new ArcadeModeScene());
+			return true;
+		}
 		default:
 			break;
 		

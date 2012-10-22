@@ -1,7 +1,7 @@
 // Definitions for sprite sheet positions
 // Created with www.texturepacker.com
 
-// $TexturePacker:SmartUpdate:644272b560ac3ffd17d934b12716ce98$
+// $TexturePacker:SmartUpdate:fe93d4e2f57a3014aa60b16a4323fa2b$
 
 package br.edu.ifpr.ThiagoRomano.Camaleao;
 
@@ -18,8 +18,9 @@ public interface posicoes
 	public static final int R_ID = 8;
 	public static final int TIMEATTACKBUTTON_ID = 9;
 	public static final int BOX_ID = 10;
-	public static final int FOLHAS_FRENTE_ID = 11;
-	public static final int FUNDO_ID = 12;
-	public static final int MARCADOR_ID = 13;
-	public static final int TRONCO_ID = 14;
+	public static final int CHRONOMETROFUNDO_ID = 11;
+	public static final int FOLHAS_FRENTE_ID = 12;
+	public static final int FUNDO_ID = 13;
+	public static final int MARCADOR_ID = 14;
+	public static final int TRONCO_ID = 15;
 }

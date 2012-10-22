@@ -16,19 +16,21 @@ public class SliderSprite extends Sprite {
 	// Para aumentar a area do touch, tava dificil selecionar
 	private static final int OFFSET_X = 30;
 	private static final int OFFSET_Y = 30;
-	NinjaModeScene mScene;
+	GameScene mScene;
 	private int id;
 	int value = 255;
 	Text textValue;
+	CamaleaotestActivity activity;
 
-	public SliderSprite(int id, NinjaModeScene scene, float pX, float pY,
+	public SliderSprite(int id, GameScene scene, float pX, float pY,
 			ITextureRegion pTextureRegion,
 			VertexBufferObjectManager pVertexBufferObjectManager) {
 		super(pX, pY, pTextureRegion, pVertexBufferObjectManager);
+		activity = CamaleaotestActivity.getSharedInstance();
 		this.mScene = scene;
 		this.id = id;
-		textValue = new Text(-10, -30, mScene.activity.mFont, "255",
-				mScene.activity.getVertexBufferObjectManager());
+		textValue = new Text(-10, -30, activity.mFont, "255",
+				activity.getVertexBufferObjectManager());
 		// textValue.
 		/*
 		 * switch (id) { case 0: { textValue.setColor(Color.RED); break; } case

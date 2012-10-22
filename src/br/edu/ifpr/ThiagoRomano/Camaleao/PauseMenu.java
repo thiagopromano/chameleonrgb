@@ -18,9 +18,9 @@ IOnMenuItemClickListener {
 
 	CamaleaotestActivity activity;
 	private Text mText;
-	private NinjaModeScene mMainScene;
+	private GameScene mMainScene;
 
-	public PauseMenu(NinjaModeScene mMainScene) {
+	public PauseMenu(GameScene mMainScene) {
 		super(CamaleaotestActivity.getSharedInstance().mCamera);
 		this.mMainScene = mMainScene;
 		activity = CamaleaotestActivity.getSharedInstance();

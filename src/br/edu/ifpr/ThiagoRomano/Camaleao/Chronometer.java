@@ -22,9 +22,10 @@ public class Chronometer extends Sprite {
 		activity = CamaleaotestActivity.getSharedInstance();
 		this.mScene = scene;
 		time = 5f;
-		timeText = new Text(0, 0, activity.mChronometerFont,
+		timeText = new Text(0, -10, activity.mChronometerFont,
 				Integer.toString((int) (time * 100)), 7,
 				activity.getVertexBufferObjectManager());
+		timeText.setAutoWrapWidth(200f);
 		this.attachChild(timeText);
 	}
 
@@ -36,7 +37,7 @@ public class Chronometer extends Sprite {
 				mScene.iniciando = false;
 				this.registerEntityModifier(new ParallelEntityModifier(
 						new ScaleModifier(1.5f, 1f, 0.5f), new MoveModifier(
-								1.5f, this.getX(), -100, this.getY(), -50)));
+								1.5f, this.getX(), 0, this.getY(), 0)));
 			}
 			else
 			{
@@ -45,6 +46,12 @@ public class Chronometer extends Sprite {
 			}
 		}
 		this.time = time;
-		timeText.setText(Integer.toString((int) (time * 100)));
+		String temp = Integer.toString((int) (time * 100));
+		int qtdASeremAdd =  5-temp.length();
+		for (int i = 0; i < qtdASeremAdd; i++)
+		{ 
+			temp = "0" + temp;
+		}
+		timeText.setText(temp);
 	}
 }

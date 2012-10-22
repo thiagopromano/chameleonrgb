@@ -4,7 +4,6 @@ import java.util.Random;
 
 import org.andengine.engine.handler.IUpdateHandler;
 import org.andengine.entity.modifier.MoveModifier;
-import org.andengine.entity.scene.Scene;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.text.Text;
 import org.andengine.opengl.shader.constants.ShaderProgramConstants;
@@ -13,7 +12,7 @@ import org.andengine.util.modifier.ease.EaseElasticOut;
 import android.graphics.Color;
 import android.view.KeyEvent;
 
-public class NinjaModeScene extends GameScene {
+public class ArcadeModeScene extends GameScene {
 
 	public final float STARTING_TIME = 60f;
 	public final int[] CORES = { 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0,
@@ -35,10 +34,9 @@ public class NinjaModeScene extends GameScene {
 	Sprite mPalco;
 	Sprite mFolhasFrente;
 
-	Chronometer mChronometer;
-
+	
 	Random rand;
-	// Text mTextRemainingTime;
+	//Text mTextRemainingTime;
 	Sprite mBackground;
 	Sprite mPlaca;
 	Sprite mPlacaSaindo;
@@ -48,14 +46,13 @@ public class NinjaModeScene extends GameScene {
 	int mActualColor = 0;
 	public int theColorLocation = ShaderProgramConstants.LOCATION_INVALID;
 	// public boolean mOverlayed = true;
-	float remainingTime = 3.5f;
 	int score = 0;
 
 	private Text mTextScore;
 
 	private Sprite mBox;
 
-	public NinjaModeScene() {
+	public ArcadeModeScene() {
 
 		rand = new Random();
 		this.setOnAreaTouchTraversalFrontToBack();
@@ -65,13 +62,12 @@ public class NinjaModeScene extends GameScene {
 
 		createAssets();
 		createPauseMenu();
+		iniciando = false;
 		mConfirmExit = new ConfirmExitScene(this);
 		setTouchAreaBindingOnActionDownEnabled(true);
 		registerUpdateHandler(new IUpdateHandler() {
 			@Override
 			public void onUpdate(float pSecondsElapsed) {
-				remainingTime -= pSecondsElapsed;
-				updateTime();
 			}
 
 			@Override
@@ -83,15 +79,12 @@ public class NinjaModeScene extends GameScene {
 	}
 
 	private void createAssets() {
-		/*
-		 * mTextRemainingTime = new Text(10, 10, activity.mFont, "", 10,
-		 * activity.getVertexBufferObjectManager());
-		 */
+		/*mTextRemainingTime = new Text(10, 10, activity.mFont, "", 10,
+				activity.getVertexBufferObjectManager());*/
 		mTextScore = new Text(300, 10, activity.mFont, "jna", 4,
 				activity.getVertexBufferObjectManager());
 
 		updateScore();
-		updateTime();
 		mBackground = new Sprite(0, 0,
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.FUNDO_ID),
@@ -173,10 +166,6 @@ public class NinjaModeScene extends GameScene {
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.MARCADOR_ID),
 				activity.getVertexBufferObjectManager());
-		mChronometer = new Chronometer(this, 100, 100,
-				activity.mSpritesheetTexturePackTextureRegionLibrary
-						.get(posicoes.CHRONOMETROFUNDO_ID),
-				activity.getVertexBufferObjectManager());
 
 		this.attachChild(mBackground);
 		this.attachChild(mPalco);
@@ -210,8 +199,7 @@ public class NinjaModeScene extends GameScene {
 
 		// this.attachChild(mTextRemainingTime);
 		this.attachChild(mTextScore);
-
-		this.attachChild(mChronometer);
+		
 		movements = new MoveModifier(2f, -mPlaca.getWidth(), mPlaca.getX(),
 				mPlaca.getY(), mPlaca.getY(), EaseElasticOut.getInstance());
 		mPlaca.registerEntityModifier(movements);
@@ -219,13 +207,10 @@ public class NinjaModeScene extends GameScene {
 		// setTouchAreaBindingOnActionMoveEnabled(true);
 
 	}
-
 	@Override
 	public void restart() {
-		remainingTime = STARTING_TIME;
 		score = 0;
 		mActualColor = 0;
-		updateTime();
 		updateScore();
 		this.reset();
 
@@ -234,7 +219,6 @@ public class NinjaModeScene extends GameScene {
 	private void createPauseMenu() {
 		mMenuScene = new PauseMenu(this);
 	}
-
 	@Override
 	public void ChangeColors(float newColor, int index) {
 		int iNewColor = (int) (newColor * 255);
@@ -258,10 +242,8 @@ public class NinjaModeScene extends GameScene {
 		int blueStepsDiference = Math.abs(Color.blue(colors)
 				/ SliderSprite.STEP - Color.blue(mPlacaColor)
 				/ SliderSprite.STEP);
-		/*
-		 * mTextRemainingTime.setText(Integer.toString(redStepsDiference +
-		 * greenStepsDiference + blueStepsDiference));
-		 */
+		/*mTextRemainingTime.setText(Integer.toString(redStepsDiference
+				+ greenStepsDiference + blueStepsDiference));*/
 		if (redStepsDiference < 50
 				&& greenStepsDiference < 50
 				&& blueStepsDiference < 50
@@ -273,10 +255,13 @@ public class NinjaModeScene extends GameScene {
 
 	public void nextColor() {
 
-		remainingTime+=4f;
-		
-		mPlacaColor = Color.rgb(rand.nextInt(255), rand.nextInt(255),
-				rand.nextInt(255));
+		if (mActualColor * 3 + 2 < CORES.length)
+			mPlacaColor = Color.rgb(CORES[mActualColor * 3],
+					CORES[mActualColor * 3 + 1], CORES[mActualColor * 3 + 2]);
+		else {
+			mPlacaColor = Color.rgb(rand.nextInt(255), rand.nextInt(255),
+					rand.nextInt(255));
+		}
 
 		setPlacaColor(mPlacaColor);
 
@@ -291,13 +276,8 @@ public class NinjaModeScene extends GameScene {
 
 	private void updateScore() {
 		mTextScore.setText(Integer.toString(score));
-	}
+	} 
 
-	private void updateTime() {
-		if (mChronometer != null) {
-			mChronometer.updateTime(remainingTime);
-		}
-	}
 
 	public int colorFloatToInt(float number) {
 		return (int) (number * 255);
@@ -310,7 +290,7 @@ public class NinjaModeScene extends GameScene {
 	public void setPlacaColor(int color) {
 		mPlaca.setColor(colorIntToFloat(Color.red(mPlacaColor)),
 				colorIntToFloat(Color.green(mPlacaColor)),
-				colorIntToFloat(Color.blue(mPlacaColor)));
+				colorIntToFloat(Color.blue(mPlacaColor)));   
 	}
 
 	@Override
@@ -343,7 +323,7 @@ public class NinjaModeScene extends GameScene {
 
 	public void endTime() {
 		// TODO Finalizar jogo
-
+		
 	}
 
 }
