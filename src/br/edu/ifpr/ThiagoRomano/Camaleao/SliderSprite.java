@@ -16,12 +16,12 @@ public class SliderSprite extends Sprite {
 	// Para aumentar a area do touch, tava dificil selecionar
 	private static final int OFFSET_X = 30;
 	private static final int OFFSET_Y = 30;
-	GameScene mScene;
+	NinjaModeScene mScene;
 	private int id;
 	int value = 255;
 	Text textValue;
 
-	public SliderSprite(int id, GameScene scene, float pX, float pY,
+	public SliderSprite(int id, NinjaModeScene scene, float pX, float pY,
 			ITextureRegion pTextureRegion,
 			VertexBufferObjectManager pVertexBufferObjectManager) {
 		super(pX, pY, pTextureRegion, pVertexBufferObjectManager);

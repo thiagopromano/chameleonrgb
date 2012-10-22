@@ -13,7 +13,7 @@ import org.andengine.util.modifier.ease.EaseElasticOut;
 import android.graphics.Color;
 import android.view.KeyEvent;
 
-public class GameScene extends Scene {
+public class NinjaModeScene extends Scene {
 
 	public final float STARTING_TIME = 60f;
 	public final int[] CORES = { 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0,
@@ -58,7 +58,7 @@ public class GameScene extends Scene {
 
 	private Sprite mBox;
 
-	public GameScene() {
+	public NinjaModeScene() {
 
 		rand = new Random();
 		this.setOnAreaTouchTraversalFrontToBack();

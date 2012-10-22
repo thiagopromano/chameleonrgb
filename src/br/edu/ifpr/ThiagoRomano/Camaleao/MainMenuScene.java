@@ -43,7 +43,7 @@ public class MainMenuScene extends MenuScene implements
 			float arg2, float arg3) {
 		switch (arg1.getID()) {
 		case MENU_TIMEATTACK:
-			activity.setCurrentScene(new GameScene());
+			activity.setCurrentScene(new NinjaModeScene());
 			return true;
 		default:
 			break;

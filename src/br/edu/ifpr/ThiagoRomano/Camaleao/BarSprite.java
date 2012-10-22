@@ -15,7 +15,7 @@ import android.opengl.GLES20;
 
 public class BarSprite extends Sprite {
 	private int id;
-	private GameScene mScene;
+	private NinjaModeScene mScene;
 	private String fShader = null;
 	ShaderProgram mShaderProgram;
 	private String vShader = null;
@@ -70,7 +70,7 @@ public class BarSprite extends Sprite {
 			"	gl_FragColor = (cor) * texture2D(" + ShaderProgramConstants.UNIFORM_TEXTURE_0 + ", " + ShaderProgramConstants.VARYING_TEXTURECOORDINATES + ");\n" +
 			"}";
 
-	public BarSprite(int id, final GameScene scene, float pX, float pY,
+	public BarSprite(int id, final NinjaModeScene scene, float pX, float pY,
 			ITextureRegion pTextureRegion,
 			VertexBufferObjectManager pVertexBufferObjectManager) {
 		super(pX, pY, pTextureRegion, pVertexBufferObjectManager);
@@ -112,7 +112,7 @@ public class BarSprite extends Sprite {
 		             PositionTextureCoordinatesShaderProgram.sUniformModelViewPositionMatrixLocation = this.getUniformLocation(ShaderProgramConstants.UNIFORM_MODELVIEWPROJECTIONMATRIX);
 			     theColorLocation = this.getUniformLocation("theColor");
 			}  
-		        GameScene cena = mScene;
+		        NinjaModeScene cena = mScene;
 		       @Override
 		       public void bind(final GLState pGLState, final VertexBufferObjectAttributes pVertexBufferObjectAttributes) {
 		           super.bind(pGLState, pVertexBufferObjectAttributes);

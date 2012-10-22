@@ -10,12 +10,12 @@ import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 public class Chronometer extends Sprite {
 
-	GameScene mScene;
+	NinjaModeScene mScene;
 	CamaleaotestActivity activity;
 	float time;
 	Text timeText;
   
-	public Chronometer(GameScene scene, float pX, float pY,
+	public Chronometer(NinjaModeScene scene, float pX, float pY,
 			ITextureRegion pTextureRegion,
 			VertexBufferObjectManager vertexBufferObjectManager) {
 		super(pX, pY, pTextureRegion, vertexBufferObjectManager);
