@@ -231,7 +231,7 @@ public class ArcadeModeScene extends GameScene {
 		colors = (colors & mask);
 		colors |= iNewColor;
 		mChamp.setColor(Color.red(colors) / 256f, Color.green(colors) / 256f,
-				Color.blue(colors) / 256f);
+				Color.blue(colors) / 256f); 
 
 		int redStepsDiference = Math.abs(Color.red(colors) / SliderSprite.STEP
 				- Color.red(mPlacaColor) / SliderSprite.STEP);
@@ -254,7 +254,12 @@ public class ArcadeModeScene extends GameScene {
 	MoveModifier movements;
 
 	public void nextColor() {
-
+		if (rand.nextBoolean())
+		{
+			Sounds.getSharedInstace().mYay.play();
+		}else{
+			Sounds.getSharedInstace().mUhul.play();
+		}
 		if (mActualColor * 3 + 2 < CORES.length)
 			mPlacaColor = Color.rgb(CORES[mActualColor * 3],
 					CORES[mActualColor * 3 + 1], CORES[mActualColor * 3 + 2]);

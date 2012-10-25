@@ -20,6 +20,7 @@ import org.andengine.util.texturepack.exception.TexturePackParseException;
 
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.view.KeyEvent;
 
 public class CamaleaotestActivity extends SimpleBaseGameActivity {
@@ -40,6 +41,7 @@ public class CamaleaotestActivity extends SimpleBaseGameActivity {
 	public Scene mCurrentScene;
 	public static CamaleaotestActivity instance;
 	public Font mFont;
+
 	private BitmapTextureAtlas mFontTexture;
 	public TexturePackTextureRegionLibrary mSpritesheetTexturePackTextureRegionLibrary;
 	public TextureRegion mTextureBar;
@@ -62,11 +64,13 @@ public class CamaleaotestActivity extends SimpleBaseGameActivity {
 	public EngineOptions onCreateEngineOptions() {
 		instance = this;
 		this.mCamera = new Camera(0, 0, CAMERA_WIDTH, CAMERA_HEIGHT);
-		final EngineOptions mEngineOptions = new EngineOptions(true, ScreenOrientation.PORTRAIT_FIXED,
-				new RatioResolutionPolicy(CAMERA_WIDTH, CAMERA_HEIGHT),
-				this.mCamera);
+		final EngineOptions mEngineOptions = new EngineOptions(true,
+				ScreenOrientation.PORTRAIT_FIXED, new RatioResolutionPolicy(
+						CAMERA_WIDTH, CAMERA_HEIGHT), this.mCamera);
 		mEngineOptions.getRenderOptions().setDithering(true);
 		mEngineOptions.getTouchOptions().setNeedsMultiTouch(true);
+		mEngineOptions.getAudioOptions().setNeedsSound(true);
+		mEngineOptions.getAudioOptions().setNeedsMusic(true);
 		return mEngineOptions;
 	}
 
@@ -75,25 +79,27 @@ public class CamaleaotestActivity extends SimpleBaseGameActivity {
 		this.mFontTexture = new BitmapTextureAtlas(this.getTextureManager(),
 				256, 256, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
 		this.mFont = new Font(this.getFontManager(), this.mFontTexture,
-				Typeface.create("Franklin Gothic Book", Typeface.NORMAL), 32, true,
+				Typeface.create("Franklin Gothic Book", Typeface.NORMAL), 32,
+				true, Color.WHITE);
+
+		this.mChronometerFontTexture = new BitmapTextureAtlas(
+				this.getTextureManager(), 512, 512,
+				TextureOptions.BILINEAR_PREMULTIPLYALPHA);
+		this.mChronometerFont = new Font(this.getFontManager(),
+				this.mChronometerFontTexture, Typeface.create(
+						"Franklin Gothic Book", Typeface.NORMAL), 64, true,
 				Color.WHITE);
-		
-		this.mChronometerFontTexture = new BitmapTextureAtlas(this.getTextureManager(),
-				512, 512, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
-		this.mChronometerFont = new Font(this.getFontManager(), this.mChronometerFontTexture,
-				Typeface.create("Franklin Gothic Book", Typeface.NORMAL), 64, true,
-				Color.WHITE);
-		
+
 		this.mEngine.getTextureManager().loadTexture(this.mFontTexture);
-		this.mEngine.getTextureManager().loadTexture(this.mChronometerFontTexture);
+		this.mEngine.getTextureManager().loadTexture(
+				this.mChronometerFontTexture);
 		this.getFontManager().loadFont(this.mFont);
 		this.getFontManager().loadFont(this.mChronometerFont);
 
 		this.mBitmapTextureAtlas = new BitmapTextureAtlas(getTextureManager(),
 				512, 16);
-		
-		
-		//WindowManager.initialize(this);
+
+		// WindowManager.initialize(this);
 	}
 
 	@Override
@@ -114,29 +120,45 @@ public class CamaleaotestActivity extends SimpleBaseGameActivity {
 	}
 
 	public void loadAssets() {
-		try {
-			final TexturePack spritesheetTexturePack = new TexturePackLoader(this.getAssets(), this.getTextureManager()).loadFromAsset("gfx/positions.xml", "gfx/");
-			spritesheetTexturePack.loadTexture();
-			this.mSpritesheetTexturePackTextureRegionLibrary = spritesheetTexturePack.getTexturePackTextureRegionLibrary();  
-		} catch (final TexturePackParseException e) {
-			Debug.e(e);
-		}
-		mTextureBar = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.mBitmapTextureAtlas, this, "gfx/color_bar.png", 0, 0);
-		this.mEngine.getTextureManager().loadTexture(mBitmapTextureAtlas);
-	
+		AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
+
+			@Override
+			protected Void doInBackground(Void... params) {
+				try {
+					final TexturePack spritesheetTexturePack = new TexturePackLoader(
+							getAssets(), getTextureManager())
+							.loadFromAsset("gfx/positions.xml", "gfx/");
+					spritesheetTexturePack.loadTexture();
+					mSpritesheetTexturePackTextureRegionLibrary = spritesheetTexturePack
+							.getTexturePackTextureRegionLibrary();
+				} catch (final TexturePackParseException e) {
+					Debug.e(e);
+				}
+				mTextureBar = BitmapTextureAtlasTextureRegionFactory
+						.createFromAsset(mBitmapTextureAtlas, CamaleaotestActivity.getSharedInstance(),
+								"gfx/color_bar.png", 0, 0);
+				mEngine.getTextureManager().loadTexture(
+						mBitmapTextureAtlas);
+				new Sounds(CamaleaotestActivity.getSharedInstance());
+				return null;
+				
+			}
+
+		}.execute((Void[])null);
+
 	}
 
 	public void setCurrentScene(Scene scene) {
 		mCurrentScene = scene;
-		//WindowManager.getInstance().setScene(mCurrentScene, new RightPushInTransition(1));
+		// WindowManager.getInstance().setScene(mCurrentScene, new
+		// RightPushInTransition(1));
 		getEngine().setScene(mCurrentScene);
 	}
-	
+
 	@Override
 	public boolean onKeyDown(final int pKeyCode, final KeyEvent pEvent) {
-			return mCurrentScene.handleKeyDown(pKeyCode, pEvent);
+		return mCurrentScene.handleKeyDown(pKeyCode, pEvent);
 	}
-
 
 	// ===========================================================
 	// Inner and Anonymous Classes
