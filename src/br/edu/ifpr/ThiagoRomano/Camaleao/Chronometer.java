@@ -57,6 +57,5 @@ public class Chronometer extends Sprite {
 	public void restart() {
 		this.setScale(1);
 		this.setPosition(X_INICIAL, Y_INICIAL);
-		
 	}
 }
