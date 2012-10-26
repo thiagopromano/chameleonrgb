@@ -10,15 +10,17 @@ import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 public class Chronometer extends Sprite {
 
+	static final int X_INICIAL = 100;
+	static final int Y_INICIAL = 100;
+
 	NinjaModeScene mScene;
 	CamaleaotestActivity activity;
 	float time;
 	Text timeText;
-  
-	public Chronometer(NinjaModeScene scene, float pX, float pY,
-			ITextureRegion pTextureRegion,
+
+	public Chronometer(NinjaModeScene scene, ITextureRegion pTextureRegion,
 			VertexBufferObjectManager vertexBufferObjectManager) {
-		super(pX, pY, pTextureRegion, vertexBufferObjectManager);
+		super(X_INICIAL, Y_INICIAL, pTextureRegion, vertexBufferObjectManager);
 		activity = CamaleaotestActivity.getSharedInstance();
 		this.mScene = scene;
 		time = 5f;
@@ -38,20 +40,23 @@ public class Chronometer extends Sprite {
 				this.registerEntityModifier(new ParallelEntityModifier(
 						new ScaleModifier(1.5f, 1f, 0.5f), new MoveModifier(
 								1.5f, this.getX(), 0, this.getY(), 0)));
-			}
-			else
-			{
+			} else {
 				mScene.endTime();
 				time = 0;
 			}
 		}
 		this.time = time;
 		String temp = Integer.toString((int) (time * 100));
-		int qtdASeremAdd =  5-temp.length();
-		for (int i = 0; i < qtdASeremAdd; i++)
-		{ 
+		int qtdASeremAdd = 5 - temp.length();
+		for (int i = 0; i < qtdASeremAdd; i++) {
 			temp = "0" + temp;
 		}
 		timeText.setText(temp);
+	}
+
+	public void restart() {
+		this.setScale(1);
+		this.setPosition(X_INICIAL, Y_INICIAL);
+		
 	}
 }

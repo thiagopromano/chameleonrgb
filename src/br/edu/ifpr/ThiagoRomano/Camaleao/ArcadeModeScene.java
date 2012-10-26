@@ -3,6 +3,8 @@ package br.edu.ifpr.ThiagoRomano.Camaleao;
 import java.util.Random;
 
 import org.andengine.engine.handler.IUpdateHandler;
+import org.andengine.entity.IEntity;
+import org.andengine.entity.modifier.FadeOutModifier;
 import org.andengine.entity.modifier.MoveModifier;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.text.Text;
@@ -99,7 +101,7 @@ public class ArcadeModeScene extends GameScene {
 						.get(posicoes.PALCO_ID),
 				activity.getVertexBufferObjectManager());
 
-		mAdendo = new Sprite(-15, -15,
+		mAdendo = new Sprite(-16, -15,
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.NYLON_DETALHES_ID),
 				activity.getVertexBufferObjectManager());
@@ -244,39 +246,62 @@ public class ArcadeModeScene extends GameScene {
 				/ SliderSprite.STEP);
 		/*mTextRemainingTime.setText(Integer.toString(redStepsDiference
 				+ greenStepsDiference + blueStepsDiference));*/
-		if (redStepsDiference < 50
-				&& greenStepsDiference < 50
-				&& blueStepsDiference < 50
-				&& redStepsDiference + blueStepsDiference + greenStepsDiference < 80)
+		if (redStepsDiference < 25
+				&& greenStepsDiference < 25
+				&& blueStepsDiference < 25
+				&& redStepsDiference + blueStepsDiference + greenStepsDiference < 50)
 			nextColor();
 	}
 
 	MoveModifier movements;
 
 	public void nextColor() {
-		if (rand.nextBoolean())
+		/*if (rand.nextBoolean())
 		{
 			Sounds.getSharedInstace().mYay.play();
 		}else{
 			Sounds.getSharedInstace().mUhul.play();
-		}
-		if (mActualColor * 3 + 2 < CORES.length)
-			mPlacaColor = Color.rgb(CORES[mActualColor * 3],
-					CORES[mActualColor * 3 + 1], CORES[mActualColor * 3 + 2]);
-		else {
-			mPlacaColor = Color.rgb(rand.nextInt(255), rand.nextInt(255),
-					rand.nextInt(255));
-		}
+		}*/
+		if (mChamp.getEntityModifierCount()==0)
+		mChamp.registerEntityModifier(new FadeOutModifier(2f) {
 
-		setPlacaColor(mPlacaColor);
 
-		// mPlaca.setX(-mPlaca.getX());
+			@Override
+			protected void onModifierStarted(IEntity pItem) {
+				iniciando = true;
+			};
+			@Override
+			protected void onManagedUpdate(float pSecondsElapsed, IEntity pItem) {
+				super.onManagedUpdate(pSecondsElapsed, pItem);
+				mChampShadow.setAlpha(pItem.getAlpha());
+			}
+			
+			@Override
+			protected void onModifierFinished(IEntity pItem) {
+				super.onModifierFinished(pItem);
+				if (mActualColor * 3 + 2 < CORES.length)
+					mPlacaColor = Color.rgb(CORES[mActualColor * 3],
+							CORES[mActualColor * 3 + 1], CORES[mActualColor * 3 + 2]);
+				else {
+					mPlacaColor = Color.rgb(rand.nextInt(255), rand.nextInt(255),
+							rand.nextInt(255));
+				}
 
-		// animacao entrando
-		movements.reset();
-		score++;
-		updateScore();
-		mActualColor++;
+				setPlacaColor(mPlacaColor);
+
+				// mPlaca.setX(-mPlaca.getX());
+
+				// animacao entrando
+				movements.reset();
+				score++;
+				updateScore();
+				mActualColor++;
+				
+				mChamp.setAlpha(1f);
+				mChampShadow.setAlpha(1f);
+				iniciando = false;
+			}
+		});
 	}
 
 	private void updateScore() {
@@ -326,9 +351,5 @@ public class ArcadeModeScene extends GameScene {
 		}
 	}
 
-	public void endTime() {
-		// TODO Finalizar jogo
-		
-	}
 
 }

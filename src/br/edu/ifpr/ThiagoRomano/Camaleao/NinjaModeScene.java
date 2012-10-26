@@ -48,7 +48,7 @@ public class NinjaModeScene extends GameScene {
 	int mActualColor = 0;
 	public int theColorLocation = ShaderProgramConstants.LOCATION_INVALID;
 	// public boolean mOverlayed = true;
-	float remainingTime = 3.5f;
+	float remainingTime = 5f;
 	int score = 0;
 
 	private Text mTextScore;
@@ -106,14 +106,16 @@ public class NinjaModeScene extends GameScene {
 						.get(posicoes.PALCO_ID),
 				activity.getVertexBufferObjectManager());
 
-		mAdendo = new Sprite(-15, -15,
+		mAdendo = new Sprite(-16, -15,
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.NYLON_DETALHES_ID),
 				activity.getVertexBufferObjectManager());
+
 		mPlaca = new Sprite(83, 65,
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.NYLON_TROCACOR_ID),
 				activity.getVertexBufferObjectManager());
+
 		mPlaca.setColor(colorIntToFloat(Color.red(mPlacaColor)),
 				colorIntToFloat(Color.green(mPlacaColor)),
 				colorIntToFloat(Color.blue(mPlacaColor)));
@@ -173,7 +175,7 @@ public class NinjaModeScene extends GameScene {
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.MARCADOR_ID),
 				activity.getVertexBufferObjectManager());
-		mChronometer = new Chronometer(this, 100, 100,
+		mChronometer = new Chronometer(this,
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.CHRONOMETROFUNDO_ID),
 				activity.getVertexBufferObjectManager());
@@ -223,6 +225,8 @@ public class NinjaModeScene extends GameScene {
 	@Override
 	public void restart() {
 		remainingTime = STARTING_TIME;
+		iniciando = true;
+		mChronometer.restart();
 		score = 0;
 		mActualColor = 0;
 		updateTime();
@@ -273,8 +277,8 @@ public class NinjaModeScene extends GameScene {
 
 	public void nextColor() {
 
-		remainingTime+=4f;
-		
+		remainingTime += 4f;
+
 		mPlacaColor = Color.rgb(rand.nextInt(255), rand.nextInt(255),
 				rand.nextInt(255));
 
