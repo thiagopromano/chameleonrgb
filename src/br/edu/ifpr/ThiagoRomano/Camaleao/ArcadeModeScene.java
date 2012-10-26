@@ -10,6 +10,7 @@ import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.text.Text;
 import org.andengine.opengl.shader.constants.ShaderProgramConstants;
 import org.andengine.util.modifier.ease.EaseElasticOut;
+import org.andengine.util.system.CPUUsage;
 
 import android.graphics.Color;
 import android.view.KeyEvent;
@@ -36,9 +37,10 @@ public class ArcadeModeScene extends GameScene {
 	Sprite mPalco;
 	Sprite mFolhasFrente;
 
-	
+	Sprite mWisps[] = new Sprite[7];
+
 	Random rand;
-	//Text mTextRemainingTime;
+	// Text mTextRemainingTime;
 	Sprite mBackground;
 	Sprite mPlaca;
 	Sprite mPlacaSaindo;
@@ -81,8 +83,10 @@ public class ArcadeModeScene extends GameScene {
 	}
 
 	private void createAssets() {
-		/*mTextRemainingTime = new Text(10, 10, activity.mFont, "", 10,
-				activity.getVertexBufferObjectManager());*/
+		/*
+		 * mTextRemainingTime = new Text(10, 10, activity.mFont, "", 10,
+		 * activity.getVertexBufferObjectManager());
+		 */
 		mTextScore = new Text(300, 10, activity.mFont, "jna", 4,
 				activity.getVertexBufferObjectManager());
 
@@ -169,6 +173,14 @@ public class ArcadeModeScene extends GameScene {
 						.get(posicoes.MARCADOR_ID),
 				activity.getVertexBufferObjectManager());
 
+		for (int i = 0; i < mWisps.length; i++) {
+			mWisps[i] = new Sprite(-100, -100,
+					activity.mSpritesheetTexturePackTextureRegionLibrary
+							.get(posicoes.WISP_ID),
+					activity.getVertexBufferObjectManager());
+			RestartWisp(mWisps[i]);
+		}
+
 		this.attachChild(mBackground);
 		this.attachChild(mPalco);
 
@@ -198,10 +210,13 @@ public class ArcadeModeScene extends GameScene {
 
 		this.attachChild(mSliderBlue);
 		registerTouchArea(mSliderBlue);
-
 		// this.attachChild(mTextRemainingTime);
 		this.attachChild(mTextScore);
-		
+
+		for (int i = 0; i < mWisps.length; i++) {
+			this.attachChild(mWisps[i]);
+		}
+
 		movements = new MoveModifier(2f, -mPlaca.getWidth(), mPlaca.getX(),
 				mPlaca.getY(), mPlaca.getY(), EaseElasticOut.getInstance());
 		mPlaca.registerEntityModifier(movements);
@@ -209,6 +224,48 @@ public class ArcadeModeScene extends GameScene {
 		// setTouchAreaBindingOnActionMoveEnabled(true);
 
 	}
+
+	private void RestartWisp(IEntity pItem) {
+		pItem.setColor(rand.nextFloat(), rand.nextFloat(), rand.nextFloat());
+		if (rand.nextBoolean()) {
+			pItem.registerEntityModifier(new MoveModifier(rand.nextInt(10) + 5,
+					-60, 660, rand.nextInt(600), rand.nextInt(600)) {
+				@Override
+				protected void onModifierFinished(IEntity pItem) {
+					super.onModifierFinished(pItem);
+					RestartWisp(pItem);
+				}
+
+				@Override
+				protected void onSetValues(final IEntity pEntity,
+						final float pPercentageDone, final float pX,
+						final float pY) {
+					super.onSetValues(pEntity, pPercentageDone, pX, pY);
+					pEntity.setPosition(pEntity.getX() + rand.nextInt(20) - 10,
+							pEntity.getY() + rand.nextInt(10) - 5);
+				}
+			});
+		} else {
+			pItem.registerEntityModifier(new MoveModifier(rand.nextInt(10) + 5,
+					660, -60, rand.nextInt(600), rand.nextInt(600)) {
+				@Override
+				protected void onModifierFinished(IEntity pItem) {
+					super.onModifierFinished(pItem);
+					RestartWisp(pItem);
+				}
+
+				@Override
+				protected void onSetValues(final IEntity pEntity,
+						final float pPercentageDone, final float pX,
+						final float pY) {
+					super.onSetValues(pEntity, pPercentageDone, pX, pY);
+					pEntity.setPosition(pEntity.getX() + rand.nextInt(20) - 10,
+							pEntity.getY() + rand.nextInt(10) - 5);
+				}
+			});
+		}
+	}
+
 	@Override
 	public void restart() {
 		score = 0;
@@ -221,6 +278,7 @@ public class ArcadeModeScene extends GameScene {
 	private void createPauseMenu() {
 		mMenuScene = new PauseMenu(this);
 	}
+
 	@Override
 	public void ChangeColors(float newColor, int index) {
 		int iNewColor = (int) (newColor * 255);
@@ -233,7 +291,7 @@ public class ArcadeModeScene extends GameScene {
 		colors = (colors & mask);
 		colors |= iNewColor;
 		mChamp.setColor(Color.red(colors) / 256f, Color.green(colors) / 256f,
-				Color.blue(colors) / 256f); 
+				Color.blue(colors) / 256f);
 
 		int redStepsDiference = Math.abs(Color.red(colors) / SliderSprite.STEP
 				- Color.red(mPlacaColor) / SliderSprite.STEP);
@@ -244,8 +302,10 @@ public class ArcadeModeScene extends GameScene {
 		int blueStepsDiference = Math.abs(Color.blue(colors)
 				/ SliderSprite.STEP - Color.blue(mPlacaColor)
 				/ SliderSprite.STEP);
-		/*mTextRemainingTime.setText(Integer.toString(redStepsDiference
-				+ greenStepsDiference + blueStepsDiference));*/
+		/*
+		 * mTextRemainingTime.setText(Integer.toString(redStepsDiference +
+		 * greenStepsDiference + blueStepsDiference));
+		 */
 		if (redStepsDiference < 25
 				&& greenStepsDiference < 25
 				&& blueStepsDiference < 25
@@ -256,58 +316,57 @@ public class ArcadeModeScene extends GameScene {
 	MoveModifier movements;
 
 	public void nextColor() {
-		/*if (rand.nextBoolean())
-		{
-			Sounds.getSharedInstace().mYay.play();
-		}else{
-			Sounds.getSharedInstace().mUhul.play();
-		}*/
-		if (mChamp.getEntityModifierCount()==0)
-		mChamp.registerEntityModifier(new FadeOutModifier(2f) {
+		/*
+		 * if (rand.nextBoolean()) { Sounds.getSharedInstace().mYay.play();
+		 * }else{ Sounds.getSharedInstace().mUhul.play(); }
+		 */
+		if (mChamp.getEntityModifierCount() == 0)
+			mChamp.registerEntityModifier(new FadeOutModifier(2f) {
 
+				@Override
+				protected void onModifierStarted(IEntity pItem) {
+					iniciando = true;
+				};
 
-			@Override
-			protected void onModifierStarted(IEntity pItem) {
-				iniciando = true;
-			};
-			@Override
-			protected void onManagedUpdate(float pSecondsElapsed, IEntity pItem) {
-				super.onManagedUpdate(pSecondsElapsed, pItem);
-				mChampShadow.setAlpha(pItem.getAlpha());
-			}
-			
-			@Override
-			protected void onModifierFinished(IEntity pItem) {
-				super.onModifierFinished(pItem);
-				if (mActualColor * 3 + 2 < CORES.length)
-					mPlacaColor = Color.rgb(CORES[mActualColor * 3],
-							CORES[mActualColor * 3 + 1], CORES[mActualColor * 3 + 2]);
-				else {
-					mPlacaColor = Color.rgb(rand.nextInt(255), rand.nextInt(255),
-							rand.nextInt(255));
+				@Override
+				protected void onManagedUpdate(float pSecondsElapsed,
+						IEntity pItem) {
+					super.onManagedUpdate(pSecondsElapsed, pItem);
+					mChampShadow.setAlpha(pItem.getAlpha());
 				}
 
-				setPlacaColor(mPlacaColor);
+				@Override
+				protected void onModifierFinished(IEntity pItem) {
+					super.onModifierFinished(pItem);
+					if (mActualColor * 3 + 2 < CORES.length)
+						mPlacaColor = Color.rgb(CORES[mActualColor * 3],
+								CORES[mActualColor * 3 + 1],
+								CORES[mActualColor * 3 + 2]);
+					else {
+						mPlacaColor = Color.rgb(rand.nextInt(255),
+								rand.nextInt(255), rand.nextInt(255));
+					}
 
-				// mPlaca.setX(-mPlaca.getX());
+					setPlacaColor(mPlacaColor);
 
-				// animacao entrando
-				movements.reset();
-				score++;
-				updateScore();
-				mActualColor++;
-				
-				mChamp.setAlpha(1f);
-				mChampShadow.setAlpha(1f);
-				iniciando = false;
-			}
-		});
+					// mPlaca.setX(-mPlaca.getX());
+
+					// animacao entrando
+					movements.reset();
+					score++;
+					updateScore();
+					mActualColor++;
+
+					mChamp.setAlpha(1f);
+					mChampShadow.setAlpha(1f);
+					iniciando = false;
+				}
+			});
 	}
 
 	private void updateScore() {
 		mTextScore.setText(Integer.toString(score));
-	} 
-
+	}
 
 	public int colorFloatToInt(float number) {
 		return (int) (number * 255);
@@ -320,7 +379,7 @@ public class ArcadeModeScene extends GameScene {
 	public void setPlacaColor(int color) {
 		mPlaca.setColor(colorIntToFloat(Color.red(mPlacaColor)),
 				colorIntToFloat(Color.green(mPlacaColor)),
-				colorIntToFloat(Color.blue(mPlacaColor)));   
+				colorIntToFloat(Color.blue(mPlacaColor)));
 	}
 
 	@Override
@@ -350,6 +409,5 @@ public class ArcadeModeScene extends GameScene {
 			return false;
 		}
 	}
-
 
 }

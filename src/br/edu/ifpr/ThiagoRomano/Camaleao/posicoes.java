@@ -1,7 +1,7 @@
 // Definitions for sprite sheet positions
 // Created with www.texturepacker.com
 
-// $TexturePacker:SmartUpdate:9daba31f127a32f2874c058b4df77e42$
+// $TexturePacker:SmartUpdate:33bd1e374f221ea1be3adadea6e190a2$
 
 package br.edu.ifpr.ThiagoRomano.Camaleao;
 
@@ -31,4 +31,8 @@ public interface posicoes
 	public static final int TABUA_ID = 21;
 	public static final int TITLE_ID = 22;
 	public static final int TRONCO_ID = 23;
+	public static final int WISP_PURPLE_ID = 24;
+	public static final int WISP_RED_ID = 25;
+	public static final int WISP_YELLOW_ID = 26;
+	public static final int WISP_ID = 27;
 }
