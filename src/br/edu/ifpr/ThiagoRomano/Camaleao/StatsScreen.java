@@ -1,5 +1,6 @@
 package br.edu.ifpr.ThiagoRomano.Camaleao;
 
+import org.andengine.entity.modifier.MoveXModifier;
 import org.andengine.entity.scene.Scene;
 import org.andengine.entity.scene.menu.MenuScene;
 import org.andengine.entity.scene.menu.MenuScene.IOnMenuItemClickListener;
@@ -7,19 +8,21 @@ import org.andengine.entity.scene.menu.item.IMenuItem;
 import org.andengine.entity.scene.menu.item.SpriteMenuItem;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.text.Text;
+import org.andengine.util.modifier.ease.EaseElasticOut;
 
 import android.opengl.GLES20;
 
-public class PauseMenu extends MenuScene implements IOnMenuItemClickListener {
+public class StatsScreen extends MenuScene implements IOnMenuItemClickListener {
 
 	private static final int MENU_RESET = 0;
 	private static final int MENU_QUIT = 1;
+	public Text mText2 = null;
 
 	CamaleaotestActivity activity;
-	private Text mText;
+	public Text mText;
 	private GameScene mMainScene;
 
-	public PauseMenu(GameScene mMainScene) {
+	public StatsScreen(GameScene mMainScene) {
 		super(CamaleaotestActivity.getSharedInstance().mCamera);
 		this.mMainScene = mMainScene;
 		activity = CamaleaotestActivity.getSharedInstance();
@@ -47,10 +50,19 @@ public class PauseMenu extends MenuScene implements IOnMenuItemClickListener {
 		quitMenuItem.setPosition(300, 320);
 		addMenuItem(quitMenuItem);
 
+		mText = new Text(0, 230, activity.mFont, " ", 60,
+				activity.getVertexBufferObjectManager());
+		mText2 = new Text(10, 260, activity.mFont, " ", 30,
+				activity.getVertexBufferObjectManager());
+		this.attachChild(mText);
+		this.attachChild(mText2);
+		mText.setScale(0.65f);
+		mText2.setScale(0.65f);
 		this.setBackgroundEnabled(false);
-
 		setOnMenuItemClickListener(this);
 
+		this.registerEntityModifier(new MoveXModifier(3, -500, 0,
+				EaseElasticOut.getInstance()));
 	}
 
 	public void update() {
@@ -82,6 +94,15 @@ public class PauseMenu extends MenuScene implements IOnMenuItemClickListener {
 
 	@Override
 	public void reset() {
+
+	}
+
+	public void updateText(int score) {
+		mText.setText("You have correctly guessed " + Integer.toString(score)
+				+ " colors");
+		mText2.setText("And survived "
+				+ (int) (score * NinjaModeScene.TIME_CORRECT + NinjaModeScene.STARTING_TIME)
+				+ " seconds");
 
 	}
 }

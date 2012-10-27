@@ -21,6 +21,7 @@ import org.andengine.util.texturepack.exception.TexturePackParseException;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
+import android.os.Looper;
 import android.view.KeyEvent;
 
 public class CamaleaotestActivity extends SimpleBaseGameActivity {
@@ -47,6 +48,7 @@ public class CamaleaotestActivity extends SimpleBaseGameActivity {
 	public TextureRegion mTextureBar;
 	public BitmapTextureAtlas mChronometerFontTexture;
 	public Font mChronometerFont;
+	public boolean loading;
 
 	// ===========================================================
 	// Constructors
@@ -120,14 +122,16 @@ public class CamaleaotestActivity extends SimpleBaseGameActivity {
 	}
 
 	public void loadAssets() {
+		Looper.prepare();
 		AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
 
 			@Override
 			protected Void doInBackground(Void... params) {
+				loading = true;
 				try {
 					final TexturePack spritesheetTexturePack = new TexturePackLoader(
-							getAssets(), getTextureManager())
-							.loadFromAsset("gfx/positions.xml", "gfx/");
+							getAssets(), getTextureManager()).loadFromAsset(
+							"gfx/positions.xml", "gfx/");
 					spritesheetTexturePack.loadTexture();
 					mSpritesheetTexturePackTextureRegionLibrary = spritesheetTexturePack
 							.getTexturePackTextureRegionLibrary();
@@ -135,16 +139,16 @@ public class CamaleaotestActivity extends SimpleBaseGameActivity {
 					Debug.e(e);
 				}
 				mTextureBar = BitmapTextureAtlasTextureRegionFactory
-						.createFromAsset(mBitmapTextureAtlas, CamaleaotestActivity.getSharedInstance(),
+						.createFromAsset(mBitmapTextureAtlas,
+								CamaleaotestActivity.getSharedInstance(),
 								"gfx/color_bar.png", 0, 0);
-				mEngine.getTextureManager().loadTexture(
-						mBitmapTextureAtlas);
+				mEngine.getTextureManager().loadTexture(mBitmapTextureAtlas);
 				new Sounds(CamaleaotestActivity.getSharedInstance());
+				loading = false;
 				return null;
-				
 			}
 
-		}.execute((Void[])null);
+		}.execute((Void[]) null);
 
 	}
 

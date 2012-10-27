@@ -3,6 +3,7 @@ package br.edu.ifpr.ThiagoRomano.Camaleao;
 import java.util.Random;
 
 import org.andengine.engine.handler.IUpdateHandler;
+import org.andengine.entity.modifier.FadeOutModifier;
 import org.andengine.entity.modifier.MoveModifier;
 import org.andengine.entity.scene.Scene;
 import org.andengine.entity.sprite.Sprite;
@@ -15,7 +16,8 @@ import android.view.KeyEvent;
 
 public class NinjaModeScene extends GameScene {
 
-	public final float STARTING_TIME = 60f;
+	static final float STARTING_TIME = 5f;
+	static final float TIME_CORRECT = 4f;
 	public final int[] CORES = { 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0,
 			255, 255, 255, 255, 0, 100, 100, 100, };
 
@@ -277,7 +279,7 @@ public class NinjaModeScene extends GameScene {
 
 	public void nextColor() {
 
-		remainingTime += 4f;
+		remainingTime += TIME_CORRECT;
 
 		mPlacaColor = Color.rgb(rand.nextInt(255), rand.nextInt(255),
 				rand.nextInt(255));
@@ -345,9 +347,15 @@ public class NinjaModeScene extends GameScene {
 		}
 	}
 
+	StatsScreen stats;
+
 	public void endTime() {
-		// TODO Finalizar jogo
-
+		// TODO tocaFimDeJogo
+		// TODO showScore
+		// mChronometer.registerEntityModifier(new FadeOutModifier(3));
+		if (stats == null)
+			stats = new StatsScreen(this);
+		stats.updateText(score);
+		this.setChildScene(stats, false, true, true);
 	}
-
 }

@@ -241,8 +241,18 @@ public class ArcadeModeScene extends GameScene {
 						final float pPercentageDone, final float pX,
 						final float pY) {
 					super.onSetValues(pEntity, pPercentageDone, pX, pY);
-					pEntity.setPosition(pEntity.getX() + rand.nextInt(20) - 10,
-							pEntity.getY() + rand.nextInt(10) - 5);
+
+					pEntity.setPosition(
+							pEntity.getX()
+									+ (float) Math.cos(pPercentageDone * 20)
+									* 20,
+							pEntity.getY()
+									+ (float) Math.sin(pPercentageDone * 20)
+									* 20);
+
+					// pEntity.setPosition(pEntity.getX() + rand.nextInt(20) -
+					// 10,
+					// pEntity.getY() + rand.nextInt(10) - 5);
 				}
 			});
 		} else {
@@ -259,8 +269,17 @@ public class ArcadeModeScene extends GameScene {
 						final float pPercentageDone, final float pX,
 						final float pY) {
 					super.onSetValues(pEntity, pPercentageDone, pX, pY);
-					pEntity.setPosition(pEntity.getX() + rand.nextInt(20) - 10,
-							pEntity.getY() + rand.nextInt(10) - 5);
+
+					pEntity.setPosition(
+							pEntity.getX()
+									+ (float) Math.cos(pPercentageDone * 20)
+									* 20,
+							pEntity.getY()
+									+ (float) Math.sin(pPercentageDone * 20)
+									* 20);
+					// pEntity.setPosition(pEntity.getX() + rand.nextInt(20) -
+					// 10,
+					// pEntity.getY() + rand.nextInt(10) - 5);
 				}
 			});
 		}

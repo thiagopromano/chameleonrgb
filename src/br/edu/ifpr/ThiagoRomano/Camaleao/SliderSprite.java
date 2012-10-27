@@ -14,7 +14,7 @@ public class SliderSprite extends Sprite {
 	private static final int MAX_X = 372;
 
 	// Para aumentar a area do touch, tava dificil selecionar
-	private static final int OFFSET_X = 30;
+	private static final int OFFSET_X = 400;
 	private static final int OFFSET_Y = 30;
 	GameScene mScene;
 	private int id;
@@ -46,7 +46,7 @@ public class SliderSprite extends Sprite {
 	@Override
 	public boolean contains(float pX, float pY) {
 		if (pX > mX - OFFSET_X && pX < mX + mWidth + OFFSET_X
-				&& pY > mY - OFFSET_X && pY < mY + mHeight + OFFSET_Y)
+				&& pY > mY - OFFSET_Y && pY < mY + mHeight + OFFSET_Y)
 			return true;
 		return false;
 	}

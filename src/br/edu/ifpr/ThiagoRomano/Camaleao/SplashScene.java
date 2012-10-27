@@ -34,7 +34,7 @@ public class SplashScene extends Scene {
 		title2.registerEntityModifier(new MoveXModifier(1, title2.getX(),
 				activity.mCamera.getWidth() / 2));
 
-		DelayModifier dMod = new DelayModifier(2,
+		DelayModifier dMod = new DelayModifier(5,
 				new IEntityModifierListener() {
 					@Override
 					public void onModifierStarted(IModifier arg0, IEntity arg1) {
@@ -42,6 +42,8 @@ public class SplashScene extends Scene {
 					}
 
 					public void onModifierFinished(IModifier arg0, IEntity arg1) {
+						while (activity.loading) {
+						}
 						activity.setCurrentScene(new MainMenuScene());
 					}
 				});
