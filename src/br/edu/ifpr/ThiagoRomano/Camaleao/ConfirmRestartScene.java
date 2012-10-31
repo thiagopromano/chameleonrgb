@@ -1,15 +1,11 @@
 package br.edu.ifpr.ThiagoRomano.Camaleao;
 
 import org.andengine.entity.primitive.Rectangle;
-import org.andengine.entity.scene.Scene;
 import org.andengine.entity.scene.menu.MenuScene;
 import org.andengine.entity.scene.menu.MenuScene.IOnMenuItemClickListener;
 import org.andengine.entity.scene.menu.item.IMenuItem;
-import org.andengine.entity.scene.menu.item.SpriteMenuItem;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
-
-import android.opengl.GLES20;
 
 public class ConfirmRestartScene extends MenuScene implements
 		IOnMenuItemClickListener {
@@ -107,7 +103,7 @@ public class ConfirmRestartScene extends MenuScene implements
 
 		}
 
-		@Override
+		@Override 
 		public void onUnselected() {
 			// TODO Auto-generated method stub
 

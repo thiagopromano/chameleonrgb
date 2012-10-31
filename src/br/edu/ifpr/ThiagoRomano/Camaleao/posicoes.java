@@ -1,7 +1,7 @@
 // Definitions for sprite sheet positions
 // Created with www.texturepacker.com
 
-// $TexturePacker:SmartUpdate:2522fdd0a5ac513d7c4ad944abff95bf$
+// $TexturePacker:SmartUpdate:2a67e6a5cf744c434dec3d8fba1256af$
 
 package br.edu.ifpr.ThiagoRomano.Camaleao;
 
