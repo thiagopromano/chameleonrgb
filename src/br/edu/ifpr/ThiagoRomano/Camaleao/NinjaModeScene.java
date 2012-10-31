@@ -221,6 +221,10 @@ public class NinjaModeScene extends GameScene {
 		this.attachChild(mChronometer);
 		movements = new MoveModifier(2f, -mPlaca.getWidth(), mPlaca.getX(),
 				mPlaca.getY(), mPlaca.getY(), EaseElasticOut.getInstance());
+		
+		this.attachChild(mBlackBehind);
+		mBlackBehind.setVisible(false);
+		
 		mPlaca.registerEntityModifier(movements);
 		movements.setAutoUnregisterWhenFinished(false);
 		// setTouchAreaBindingOnActionMoveEnabled(true);

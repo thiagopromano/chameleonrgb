@@ -27,10 +27,10 @@ public class GameScene extends Scene {
 	public void toggleEscuro(boolean bool) {
 		if (bool)
 		{
-			this.attachChild(mBlackBehind);
+			mBlackBehind.setVisible(true);
 	
 		}else{
-			this.detachChild(mBlackBehind);
+			mBlackBehind.setVisible(false);
 		}
 	}
 }

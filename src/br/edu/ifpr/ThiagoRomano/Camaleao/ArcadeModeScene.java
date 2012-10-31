@@ -45,7 +45,7 @@ public class ArcadeModeScene extends GameScene {
 	Sprite mPlaca;
 	Sprite mPlacaSaindo;
 	Sprite mTronco;
-	
+
 	int mPlacaColor;
 	int mActualColor = 0;
 	public int theColorLocation = ShaderProgramConstants.LOCATION_INVALID;
@@ -173,8 +173,10 @@ public class ArcadeModeScene extends GameScene {
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.MARCADOR_ID),
 				activity.getVertexBufferObjectManager());
-		mBlackBehind = new Sprite(0, 0, activity.mSpritesheetTexturePackTextureRegionLibrary
-						.get(posicoes.BLACK_BEHIND_ID), activity.getVertexBufferObjectManager());
+		mBlackBehind = new Sprite(0, 0,
+				activity.mSpritesheetTexturePackTextureRegionLibrary
+						.get(posicoes.BLACK_BEHIND_ID),
+				activity.getVertexBufferObjectManager());
 
 		for (int i = 0; i < mWisps.length; i++) {
 			mWisps[i] = new Sprite(-100, -100,
@@ -215,6 +217,9 @@ public class ArcadeModeScene extends GameScene {
 		registerTouchArea(mSliderBlue);
 		// this.attachChild(mTextRemainingTime);
 		this.attachChild(mTextScore);
+
+		this.attachChild(mBlackBehind);
+		mBlackBehind.setVisible(false);
 
 		for (int i = 0; i < mWisps.length; i++) {
 			this.attachChild(mWisps[i]);
@@ -434,9 +439,9 @@ public class ArcadeModeScene extends GameScene {
 			return false;
 		}
 	}
+
 	@Override
-	public void clearChildScenes()
-	{
+	public void clearChildScenes() {
 		this.mMenuScene.back();
 		this.mConfirmExit.back();
 	}
