@@ -45,7 +45,7 @@ public class ArcadeModeScene extends GameScene {
 	Sprite mPlaca;
 	Sprite mPlacaSaindo;
 	Sprite mTronco;
-	public PauseMenu mMenuScene;
+	
 	int mPlacaColor;
 	int mActualColor = 0;
 	public int theColorLocation = ShaderProgramConstants.LOCATION_INVALID;
@@ -68,6 +68,7 @@ public class ArcadeModeScene extends GameScene {
 		createPauseMenu();
 		iniciando = false;
 		mConfirmExit = new ConfirmExitScene(this);
+		mConfirmRestart = new ConfirmRestartScene(this);
 		setTouchAreaBindingOnActionDownEnabled(true);
 		registerUpdateHandler(new IUpdateHandler() {
 			@Override
@@ -417,8 +418,7 @@ public class ArcadeModeScene extends GameScene {
 				&& pEvent.getAction() == KeyEvent.ACTION_DOWN) {
 			if (this.hasChildScene()) {
 				/* Remove the menu and reset it. */
-				this.mMenuScene.back();
-				this.mConfirmExit.back();
+				clearChildScenes();
 			} else {
 				/* Attach the confirm. */
 				this.setChildScene(this.mConfirmExit, false, true, true);
@@ -427,6 +427,12 @@ public class ArcadeModeScene extends GameScene {
 		} else {
 			return false;
 		}
+	}
+	@Override
+	public void clearChildScenes()
+	{
+		this.mMenuScene.back();
+		this.mConfirmExit.back();
 	}
 
 }

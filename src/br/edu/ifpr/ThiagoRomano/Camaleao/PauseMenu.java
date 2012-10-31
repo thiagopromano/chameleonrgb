@@ -1,22 +1,19 @@
 package br.edu.ifpr.ThiagoRomano.Camaleao;
 
-import org.andengine.entity.scene.Scene;
+import org.andengine.entity.primitive.Rectangle;
 import org.andengine.entity.scene.menu.MenuScene;
 import org.andengine.entity.scene.menu.MenuScene.IOnMenuItemClickListener;
 import org.andengine.entity.scene.menu.item.IMenuItem;
-import org.andengine.entity.scene.menu.item.SpriteMenuItem;
 import org.andengine.entity.sprite.Sprite;
-import org.andengine.entity.text.Text;
-
-import android.opengl.GLES20;
+import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 public class PauseMenu extends MenuScene implements IOnMenuItemClickListener {
 
 	private static final int MENU_RESET = 0;
 	private static final int MENU_QUIT = 1;
+	private static final int MENU_RESUME = 2;
 
 	CamaleaotestActivity activity;
-	private Text mText;
 	private GameScene mMainScene;
 
 	public PauseMenu(GameScene mMainScene) {
@@ -24,29 +21,30 @@ public class PauseMenu extends MenuScene implements IOnMenuItemClickListener {
 		this.mMainScene = mMainScene;
 		activity = CamaleaotestActivity.getSharedInstance();
 
-		final Sprite mBox = new Sprite(45, 200,
+		final Sprite mBox = new Sprite(21, 201,
 				activity.mSpritesheetTexturePackTextureRegionLibrary
-						.get(posicoes.BOX_ID),
+						.get(posicoes.TABUAPAUSA_ID),
 				activity.getVertexBufferObjectManager());
 		attachChild(mBox);
-		final SpriteMenuItem resetMenuItem = new SpriteMenuItem(MENU_RESET,
-				activity.mSpritesheetTexturePackTextureRegionLibrary
-						.get(posicoes.ARCADEBUTTON_ID),
-				activity.getVertexBufferObjectManager());
-		resetMenuItem.setBlendFunction(GLES20.GL_SRC_ALPHA,
-				GLES20.GL_ONE_MINUS_SRC_ALPHA);
-		resetMenuItem.setPosition(100, 320);
-		addMenuItem(resetMenuItem);
 
-		final SpriteMenuItem quitMenuItem = new SpriteMenuItem(MENU_QUIT,
+		final Sprite mOpcoes = new Sprite(32, 219,
 				activity.mSpritesheetTexturePackTextureRegionLibrary
-						.get(posicoes.TIMEATTACKBUTTON_ID),
+						.get(posicoes.MENU1_ID),
 				activity.getVertexBufferObjectManager());
-		quitMenuItem.setBlendFunction(GLES20.GL_SRC_ALPHA,
-				GLES20.GL_ONE_MINUS_SRC_ALPHA);
-		quitMenuItem.setPosition(300, 320);
-		addMenuItem(quitMenuItem);
+		this.attachChild(mOpcoes);
 
+		final MenuRectangleRegion mRestartRegion = new MenuRectangleRegion(MENU_RESET, 0, 60, 140, 156, activity.getVertexBufferObjectManager());
+		mRestartRegion.setPosition(mRestartRegion.getX()+mOpcoes.getX(), mRestartRegion.getY()+mOpcoes.getY());
+		this.addMenuItem(mRestartRegion);
+		
+		final MenuRectangleRegion mMenuRegion = new MenuRectangleRegion(MENU_QUIT, 140, 60, 150, 156, activity.getVertexBufferObjectManager());
+		mMenuRegion.setPosition(mMenuRegion.getX()+mOpcoes.getX(), mMenuRegion.getY()+mOpcoes.getY());
+		this.addMenuItem(mMenuRegion);
+		
+		final MenuRectangleRegion mResumeRegion = new MenuRectangleRegion(MENU_RESUME, 290, 60, 110, 156, activity.getVertexBufferObjectManager());
+		mResumeRegion.setPosition(mResumeRegion.getX()+mOpcoes.getX(), mResumeRegion.getY()+mOpcoes.getY());
+		this.addMenuItem(mResumeRegion);
+		
 		this.setBackgroundEnabled(false);
 
 		setOnMenuItemClickListener(this);
@@ -63,18 +61,19 @@ public class PauseMenu extends MenuScene implements IOnMenuItemClickListener {
 			float pMenuItemLocalX, float pMenuItemLocalY) {
 		switch (pMenuItem.getID()) {
 		case MENU_RESET:
-			/* Restart the animation. */
-			this.mMainScene.reset();
-
-			/* Remove the menu and reset it. */
-			this.mMainScene.clearChildScene();
-			this.mMainScene.restart();
+			mMainScene
+			.setChildScene(mMainScene.mConfirmRestart, false, true, true);
 			return true;
 		case MENU_QUIT:
 			/* End Activity. */
 			mMainScene
 					.setChildScene(mMainScene.mConfirmExit, false, true, true);
 			return true;
+		case MENU_RESUME:
+		{
+			mMainScene.clearChildScenes();
+			return true;
+		}
 		default:
 			return false;
 		}
@@ -83,5 +82,35 @@ public class PauseMenu extends MenuScene implements IOnMenuItemClickListener {
 	@Override
 	public void reset() {
 
+	}
+	
+	public class MenuRectangleRegion extends Rectangle implements IMenuItem
+	{
+		private int ID;
+		public MenuRectangleRegion(int ID, float pX, float pY, float pWidth,
+				float pHeight,
+				VertexBufferObjectManager vertexBufferObjectManager) {
+			super(pX, pY, pWidth, pHeight, vertexBufferObjectManager);
+			this.ID = ID;
+			this.setAlpha(0);
+		}
+
+		@Override
+		public int getID() {
+			return ID;
+		}
+
+		@Override
+		public void onSelected() {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void onUnselected() {
+			// TODO Auto-generated method stub
+			
+		}
+		
 	}
 }

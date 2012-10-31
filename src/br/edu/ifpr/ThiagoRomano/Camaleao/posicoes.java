@@ -1,7 +1,7 @@
 // Definitions for sprite sheet positions
 // Created with www.texturepacker.com
 
-// $TexturePacker:SmartUpdate:33bd1e374f221ea1be3adadea6e190a2$
+// $TexturePacker:SmartUpdate:6b04834dba63df450c3f9ef38a1afba9$
 
 package br.edu.ifpr.ThiagoRomano.Camaleao;
 
@@ -27,12 +27,15 @@ public interface posicoes
 	public static final int FOLHAS_FRENTE_ID = 17;
 	public static final int FUNDO_ID = 18;
 	public static final int MARCADOR_ID = 19;
-	public static final int NINJA_ID = 20;
-	public static final int TABUA_ID = 21;
-	public static final int TITLE_ID = 22;
-	public static final int TRONCO_ID = 23;
-	public static final int WISP_PURPLE_ID = 24;
-	public static final int WISP_RED_ID = 25;
-	public static final int WISP_YELLOW_ID = 26;
-	public static final int WISP_ID = 27;
+	public static final int MENU1_ID = 20;
+	public static final int MENU2_ID = 21;
+	public static final int NINJA_ID = 22;
+	public static final int TABUA_ID = 23;
+	public static final int TABUAPAUSA_ID = 24;
+	public static final int TITLE_ID = 25;
+	public static final int TRONCO_ID = 26;
+	public static final int WISP_PURPLE_ID = 27;
+	public static final int WISP_RED_ID = 28;
+	public static final int WISP_YELLOW_ID = 29;
+	public static final int WISP_ID = 30;
 }

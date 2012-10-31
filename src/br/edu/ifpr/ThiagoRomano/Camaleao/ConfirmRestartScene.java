@@ -11,7 +11,7 @@ import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import android.opengl.GLES20;
 
-public class ConfirmExitScene extends MenuScene implements
+public class ConfirmRestartScene extends MenuScene implements
 		IOnMenuItemClickListener {
 
 	private static final int MENU_YES = 0;
@@ -19,7 +19,7 @@ public class ConfirmExitScene extends MenuScene implements
 	private GameScene mMainScene;
 	private CamaleaotestActivity activity;
 
-	public ConfirmExitScene(GameScene mMainScene) {
+	public ConfirmRestartScene(GameScene mMainScene) {
 		super(CamaleaotestActivity.getSharedInstance().mCamera);
 		this.mMainScene = mMainScene;
 		activity = CamaleaotestActivity.getSharedInstance();
@@ -63,11 +63,16 @@ public class ConfirmExitScene extends MenuScene implements
 		case MENU_YES:
 			/* Restart the animation. */
 
-			activity.setCurrentScene(new MainMenuScene());
+			this.mMainScene.reset();
+
+			/* Remove the menu and reset it. */
+			this.mMainScene.clearChildScene();
+			this.mMainScene.restart();
 			return true;
 		case MENU_NO:
 			/* End Activity. */
-			this.mMainScene.clearChildScene();
+			mMainScene
+			.setChildScene(mMainScene.mMenuScene, false, true, true);
 			return true;
 		default:
 			return false;
