@@ -1,7 +1,7 @@
 // Definitions for sprite sheet positions
 // Created with www.texturepacker.com
 
-// $TexturePacker:SmartUpdate:6b04834dba63df450c3f9ef38a1afba9$
+// $TexturePacker:SmartUpdate:2522fdd0a5ac513d7c4ad944abff95bf$
 
 package br.edu.ifpr.ThiagoRomano.Camaleao;
 
@@ -20,22 +20,23 @@ public interface posicoes
 	public static final int TIMEATTACKBUTTON_ID = 10;
 	public static final int ABOUT_ID = 11;
 	public static final int ARCADE_ID = 12;
-	public static final int BOX_ID = 13;
-	public static final int CHAMELEON_ID = 14;
-	public static final int CHRONOMETROFUNDO_ID = 15;
-	public static final int CREDITS_ID = 16;
-	public static final int FOLHAS_FRENTE_ID = 17;
-	public static final int FUNDO_ID = 18;
-	public static final int MARCADOR_ID = 19;
-	public static final int MENU1_ID = 20;
-	public static final int MENU2_ID = 21;
-	public static final int NINJA_ID = 22;
-	public static final int TABUA_ID = 23;
-	public static final int TABUAPAUSA_ID = 24;
-	public static final int TITLE_ID = 25;
-	public static final int TRONCO_ID = 26;
-	public static final int WISP_PURPLE_ID = 27;
-	public static final int WISP_RED_ID = 28;
-	public static final int WISP_YELLOW_ID = 29;
-	public static final int WISP_ID = 30;
+	public static final int BLACK_BEHIND_ID = 13;
+	public static final int BOX_ID = 14;
+	public static final int CHAMELEON_ID = 15;
+	public static final int CHRONOMETROFUNDO_ID = 16;
+	public static final int CREDITS_ID = 17;
+	public static final int FOLHAS_FRENTE_ID = 18;
+	public static final int FUNDO_ID = 19;
+	public static final int MARCADOR_ID = 20;
+	public static final int MENU1_ID = 21;
+	public static final int MENU2_ID = 22;
+	public static final int NINJA_ID = 23;
+	public static final int TABUA_ID = 24;
+	public static final int TABUAPAUSA_ID = 25;
+	public static final int TITLE_ID = 26;
+	public static final int TRONCO_ID = 27;
+	public static final int WISP_PURPLE_ID = 28;
+	public static final int WISP_RED_ID = 29;
+	public static final int WISP_YELLOW_ID = 30;
+	public static final int WISP_ID = 31;
 }

@@ -68,6 +68,7 @@ public class ConfirmRestartScene extends MenuScene implements
 			/* Remove the menu and reset it. */
 			this.mMainScene.clearChildScene();
 			this.mMainScene.restart();
+			mMainScene.toggleEscuro(false);
 			return true;
 		case MENU_NO:
 			/* End Activity. */

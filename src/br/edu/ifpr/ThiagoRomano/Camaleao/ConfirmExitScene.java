@@ -64,10 +64,12 @@ public class ConfirmExitScene extends MenuScene implements
 			/* Restart the animation. */
 
 			activity.setCurrentScene(new MainMenuScene());
+			mMainScene.toggleEscuro(false);
 			return true;
 		case MENU_NO:
 			/* End Activity. */
 			this.mMainScene.clearChildScene();
+			mMainScene.toggleEscuro(false);
 			return true;
 		default:
 			return false;

@@ -173,6 +173,8 @@ public class ArcadeModeScene extends GameScene {
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.MARCADOR_ID),
 				activity.getVertexBufferObjectManager());
+		mBlackBehind = new Sprite(0, 0, activity.mSpritesheetTexturePackTextureRegionLibrary
+						.get(posicoes.BLACK_BEHIND_ID), activity.getVertexBufferObjectManager());
 
 		for (int i = 0; i < mWisps.length; i++) {
 			mWisps[i] = new Sprite(-100, -100,
@@ -409,9 +411,11 @@ public class ArcadeModeScene extends GameScene {
 			if (this.hasChildScene()) {
 				/* Remove the menu and reset it. */
 				this.mMenuScene.back();
+				toggleEscuro(false);
 			} else {
 				/* Attach the menu. */
 				this.setChildScene(this.mMenuScene, false, true, true);
+				toggleEscuro(true);
 			}
 			return true;
 		} else if (pKeyCode == KeyEvent.KEYCODE_BACK
@@ -419,9 +423,11 @@ public class ArcadeModeScene extends GameScene {
 			if (this.hasChildScene()) {
 				/* Remove the menu and reset it. */
 				clearChildScenes();
+				toggleEscuro(false);
 			} else {
 				/* Attach the confirm. */
 				this.setChildScene(this.mConfirmExit, false, true, true);
+				toggleEscuro(true);
 			}
 			return true;
 		} else {

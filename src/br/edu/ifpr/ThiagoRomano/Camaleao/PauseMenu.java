@@ -63,6 +63,7 @@ public class PauseMenu extends MenuScene implements IOnMenuItemClickListener {
 		case MENU_RESET:
 			mMainScene
 			.setChildScene(mMainScene.mConfirmRestart, false, true, true);
+			
 			return true;
 		case MENU_QUIT:
 			/* End Activity. */
@@ -72,6 +73,7 @@ public class PauseMenu extends MenuScene implements IOnMenuItemClickListener {
 		case MENU_RESUME:
 		{
 			mMainScene.clearChildScenes();
+			mMainScene.toggleEscuro(false);
 			return true;
 		}
 		default:

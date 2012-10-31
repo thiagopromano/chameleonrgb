@@ -182,6 +182,8 @@ public class NinjaModeScene extends GameScene {
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.CHRONOMETROFUNDO_ID),
 				activity.getVertexBufferObjectManager());
+		mBlackBehind = new Sprite(0, 0, activity.mSpritesheetTexturePackTextureRegionLibrary
+				.get(posicoes.BLACK_BEHIND_ID), activity.getVertexBufferObjectManager());
 
 		this.attachChild(mBackground);
 		this.attachChild(mPalco);
@@ -327,18 +329,23 @@ public class NinjaModeScene extends GameScene {
 			if (this.hasChildScene()) {
 				/* Remove the menu and reset it. */
 				this.mMenuScene.back();
+				toggleEscuro(false);
 			} else {
 				/* Attach the menu. */
 				this.setChildScene(this.mMenuScene, false, true, true);
+				toggleEscuro(true);
 			}
 			return true;
 		} else if (pKeyCode == KeyEvent.KEYCODE_BACK
 				&& pEvent.getAction() == KeyEvent.ACTION_DOWN) {
 			if (this.hasChildScene()) {
+				/* Remove the menu and reset it. */
 				clearChildScenes();
+				toggleEscuro(false);
 			} else {
 				/* Attach the confirm. */
 				this.setChildScene(this.mConfirmExit, false, true, true);
+				toggleEscuro(true);
 			}
 			return true;
 		} else {
