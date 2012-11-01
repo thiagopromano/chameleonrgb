@@ -28,7 +28,7 @@ public class GameScene extends Scene {
 		if (bool)
 		{
 			mBlackBehind.setVisible(true);
-	
+	 
 		}else{
 			mBlackBehind.setVisible(false);
 		}
