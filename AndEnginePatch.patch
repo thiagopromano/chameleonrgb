@@ -1,0 +1,24 @@
+diff --git a/src/org/andengine/entity/scene/Scene.java b/src/org/andengine/entity/scene/Scene.java
+index f05966e..4beede7 100644
+--- a/src/org/andengine/entity/scene/Scene.java
++++ b/src/org/andengine/entity/scene/Scene.java
+@@ -16,6 +16,7 @@
+ import org.andengine.util.color.Color;
+ 
+ import android.util.SparseArray;
++import android.view.KeyEvent;
+ 
+ /**
+  * (c) 2010 Nicolas Gramlich
+@@ -468,7 +469,10 @@
+ 			this.mParentScene = null;
+ 		}
+ 	}
+-
++	
++	public boolean handleKeyDown(int pKeyCode, KeyEvent pEvent) {
++		return false;
++	}
+ 	// ===========================================================
+ 	// Inner and Anonymous Classes
+ 	// ===========================================================

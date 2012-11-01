@@ -326,36 +326,7 @@ public class NinjaModeScene extends GameScene {
 				colorIntToFloat(Color.blue(mPlacaColor)));
 	}
 
-	@Override
-	public boolean handleKeyDown(int pKeyCode, KeyEvent pEvent) {
-		if (pKeyCode == KeyEvent.KEYCODE_MENU
-				&& pEvent.getAction() == KeyEvent.ACTION_DOWN) {
-			if (this.hasChildScene()) {
-				/* Remove the menu and reset it. */
-				this.mMenuScene.back();
-				toggleEscuro(false);
-			} else {
-				/* Attach the menu. */
-				this.setChildScene(this.mMenuScene, false, true, true);
-				toggleEscuro(true);
-			}
-			return true;
-		} else if (pKeyCode == KeyEvent.KEYCODE_BACK
-				&& pEvent.getAction() == KeyEvent.ACTION_DOWN) {
-			if (this.hasChildScene()) {
-				/* Remove the menu and reset it. */
-				clearChildScenes();
-				toggleEscuro(false);
-			} else {
-				/* Attach the confirm. */
-				this.setChildScene(this.mConfirmExit, false, true, true);
-				toggleEscuro(true);
-			}
-			return true;
-		} else {
-			return false;
-		}
-	}
+
 	@Override
 	public void clearChildScenes()
 	{
