@@ -4,6 +4,7 @@ import java.util.Random;
 
 import org.andengine.engine.handler.IUpdateHandler;
 import org.andengine.entity.IEntity;
+import org.andengine.entity.modifier.DelayModifier;
 import org.andengine.entity.modifier.FadeOutModifier;
 import org.andengine.entity.modifier.MoveModifier;
 import org.andengine.entity.sprite.Sprite;
@@ -320,75 +321,93 @@ public class ArcadeModeScene extends GameScene {
 		mChamp.setColor(Color.red(colors) / 256f, Color.green(colors) / 256f,
 				Color.blue(colors) / 256f);
 
-		int redStepsDiference = Math.abs(Color.red(colors) / SliderSprite.STEP
-				- Color.red(mPlacaColor) / SliderSprite.STEP);
-
+		int redStepsDiference = Math.abs(Color.red(colors)
+				- Color.red(mPlacaColor));
 		int greenStepsDiference = Math.abs(Color.green(colors)
-				/ SliderSprite.STEP - Color.green(mPlacaColor)
-				/ SliderSprite.STEP);
+				- Color.green(mPlacaColor));
 		int blueStepsDiference = Math.abs(Color.blue(colors)
-				/ SliderSprite.STEP - Color.blue(mPlacaColor)
-				/ SliderSprite.STEP);
+				- Color.blue(mPlacaColor));
+
 		/*
 		 * mTextRemainingTime.setText(Integer.toString(redStepsDiference +
 		 * greenStepsDiference + blueStepsDiference));
 		 */
+		// mChampShadow
+		// .setAlpha(Math
+		// .min(((redStepsDiference + greenStepsDiference + blueStepsDiference)
+		// / 765f) * 7f + 0.1f,
+		// 1f));
 		if (redStepsDiference < 25
 				&& greenStepsDiference < 25
 				&& blueStepsDiference < 25
-				&& redStepsDiference + blueStepsDiference + greenStepsDiference < 50)
-			nextColor();
+				&& redStepsDiference + blueStepsDiference + greenStepsDiference < 50) {
+			if (mChamp.getEntityModifierCount() == 0)
+			{
+					mChampShadow.registerEntityModifier(new FadeOutModifier(2f) {
+
+					@Override
+					protected void onModifierStarted(IEntity pItem) {
+						iniciando = true;
+					};
+
+					@Override
+					protected void onManagedUpdate(float pSecondsElapsed,
+							IEntity pItem) {
+						super.onManagedUpdate(pSecondsElapsed, pItem);
+
+					}
+
+					@Override
+					protected void onSetValue(IEntity pEntity,
+							float pPercentageDone, float pAlpha) {
+						// TODO Auto-generated method stub
+						super.onSetValue(pEntity, pPercentageDone, pAlpha);
+						if (pAlpha < 0.24f) {
+							
+							pEntity.setAlpha(0.24f);
+						}
+					}
+					@Override
+						protected void onModifierFinished(IEntity pItem) {
+							// TODO Auto-generated method stub
+							super.onModifierFinished(pItem);
+							nextColor();
+					}
+				});
+			}
+		}
 	}
 
 	MoveModifier movements;
 
 	public void nextColor() {
+
+		movements.reset();
+		score++;
+		updateScore();
+		mActualColor++;
+
+		// mChamp.setAlpha(1f);
+		mChampShadow.setAlpha(1f);
+		iniciando = false;
+		if (mActualColor * 3 + 2 < CORES.length)
+			mPlacaColor = Color.rgb(CORES[mActualColor * 3],
+					CORES[mActualColor * 3 + 1], CORES[mActualColor * 3 + 2]);
+		else {
+			mPlacaColor = Color.rgb(rand.nextInt(255), rand.nextInt(255),
+					rand.nextInt(255));
+		}
+
+		setPlacaColor(mPlacaColor);
 		/*
 		 * if (rand.nextBoolean()) { Sounds.getSharedInstace().mYay.play();
 		 * }else{ Sounds.getSharedInstace().mUhul.play(); }
 		 */
-		if (mChamp.getEntityModifierCount() == 0)
-			mChamp.registerEntityModifier(new FadeOutModifier(2f) {
 
-				@Override
-				protected void onModifierStarted(IEntity pItem) {
-					iniciando = true;
-				};
+		// mPlaca.setX(-mPlaca.getX());
 
-				@Override
-				protected void onManagedUpdate(float pSecondsElapsed,
-						IEntity pItem) {
-					super.onManagedUpdate(pSecondsElapsed, pItem);
-					mChampShadow.setAlpha(pItem.getAlpha());
-				}
+		// animacao entrando
 
-				@Override
-				protected void onModifierFinished(IEntity pItem) {
-					super.onModifierFinished(pItem);
-					if (mActualColor * 3 + 2 < CORES.length)
-						mPlacaColor = Color.rgb(CORES[mActualColor * 3],
-								CORES[mActualColor * 3 + 1],
-								CORES[mActualColor * 3 + 2]);
-					else {
-						mPlacaColor = Color.rgb(rand.nextInt(255),
-								rand.nextInt(255), rand.nextInt(255));
-					}
-
-					setPlacaColor(mPlacaColor);
-
-					// mPlaca.setX(-mPlaca.getX());
-
-					// animacao entrando
-					movements.reset();
-					score++;
-					updateScore();
-					mActualColor++;
-
-					mChamp.setAlpha(1f);
-					mChampShadow.setAlpha(1f);
-					iniciando = false;
-				}
-			});
 	}
 
 	private void updateScore() {

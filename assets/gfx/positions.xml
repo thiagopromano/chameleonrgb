@@ -1,37 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <texture version="1" file="positions.png" type="bitmap" width="2048" height="2048" pixelformat="RGBA_8888" minfilter="linear" magfilter="linear" wrapt="clamp" wraps="clamp" premultiplyalpha="false">
     <!-- Created with TexturePacker http://texturepacker.com -->
-    <!-- $TexturePacker:SmartUpdate:e750217f0ebdfc38abac2e434345a217$ -->
-    <textureregion id="0" src="ArcadeButton.PNG" x="536" y="1458" width="100" height="50" rotated="true" trimmed="false" srcx="0" srcy="0" srcwidth="100" srcheight="50"/>
-    <textureregion id="1" src="B.png" x="427" y="2004" width="34" height="40" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="34" srcheight="40"/>
-    <textureregion id="2" src="Camaleao_Mask_trocaCor.png" x="1767" y="365" width="257" height="361" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="257" srcheight="361"/>
-    <textureregion id="3" src="Camaleao_Sombra.png" x="1768" y="2" width="257" height="361" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="257" srcheight="361"/>
-    <textureregion id="4" src="G.png" x="354" y="2004" width="35" height="42" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="35" srcheight="42"/>
-    <textureregion id="5" src="Menu_bg.jpg" x="484" y="656" width="480" height="800" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="480" srcheight="800"/>
-    <textureregion id="6" src="Nylon_Detalhes.png" x="1361" y="763" width="362" height="356" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="362" srcheight="356"/>
-    <textureregion id="7" src="Nylon_TrocaCor.png" x="1027" y="484" width="332" height="318" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="332" srcheight="318"/>
-    <textureregion id="8" src="Palco.png" x="1361" y="550" width="370" height="211" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="370" srcheight="211"/>
-    <textureregion id="9" src="R.png" x="391" y="2004" width="34" height="40" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="34" srcheight="40"/>
-    <textureregion id="10" src="TimeAttackButton.PNG" x="484" y="1458" width="100" height="50" rotated="true" trimmed="false" srcx="0" srcy="0" srcwidth="100" srcheight="50"/>
-    <textureregion id="11" src="about.png" x="484" y="296" width="162" height="63" rotated="true" trimmed="false" srcx="0" srcy="0" srcwidth="162" srcheight="63"/>
-    <textureregion id="12" src="arcade.png" x="484" y="460" width="194" height="62" rotated="true" trimmed="false" srcx="0" srcy="0" srcwidth="194" srcheight="62"/>
-    <textureregion id="13" src="black_behind.png" x="572" y="2" width="480" height="800" rotated="true" trimmed="false" srcx="0" srcy="0" srcwidth="480" srcheight="800"/>
-    <textureregion id="14" src="box.png" x="1374" y="2" width="392" height="264" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="392" srcheight="264"/>
-    <textureregion id="15" src="chameleon.png" x="1725" y="943" width="188" height="185" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="188" srcheight="185"/>
-    <textureregion id="16" src="chronometroFundo.png" x="815" y="1968" width="180" height="48" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="180" srcheight="48"/>
-    <textureregion id="17" src="credits.png" x="588" y="1458" width="196" height="61" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="196" srcheight="61"/>
-    <textureregion id="18" src="folhas_frente.png" x="2" y="804" width="480" height="800" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="480" srcheight="800"/>
-    <textureregion id="19" src="fundo.jpg" x="2" y="2" width="480" height="800" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="480" srcheight="800"/>
-    <textureregion id="20" src="marcador.png" x="463" y="2004" width="32" height="32" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="32" srcheight="32"/>
-    <textureregion id="21" src="menu1.png" x="354" y="1606" width="396" height="216" rotated="true" trimmed="false" srcx="0" srcy="0" srcwidth="396" srcheight="216"/>
-    <textureregion id="22" src="menu2.png" x="1733" y="728" width="296" height="213" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="296" srcheight="213"/>
-    <textureregion id="23" src="ninja.png" x="484" y="2" width="292" height="70" rotated="true" trimmed="false" srcx="0" srcy="0" srcwidth="292" srcheight="70"/>
-    <textureregion id="24" src="tabua.png" x="2" y="1606" width="350" height="437" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="350" srcheight="437"/>
-    <textureregion id="25" src="tabuaPausa.png" x="753" y="1521" width="445" height="272" rotated="true" trimmed="false" srcx="0" srcy="0" srcwidth="445" srcheight="272"/>
-    <textureregion id="26" src="title.png" x="1374" y="268" width="391" height="280" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="391" srcheight="280"/>
-    <textureregion id="27" src="tronco.png" x="572" y="1560" width="480" height="179" rotated="true" trimmed="false" srcx="0" srcy="0" srcwidth="480" srcheight="179"/>
-    <textureregion id="28" src="wisp purple.png" x="753" y="1968" width="60" height="60" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="60" srcheight="60"/>
-    <textureregion id="29" src="wisp red.png" x="910" y="1458" width="60" height="60" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="60" srcheight="60"/>
-    <textureregion id="30" src="wisp yellow.png" x="848" y="1458" width="60" height="60" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="60" srcheight="60"/>
-    <textureregion id="31" src="wisp.png" x="786" y="1458" width="60" height="60" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="60" srcheight="60"/>
+    <!-- $TexturePacker:SmartUpdate:bf07f6cc15bec12d80a1d2175e233eaf$ -->
+    <textureregion id="0" src="ArcadeButton.PNG" x="999" y="536" width="100" height="50" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="100" srcheight="50"/>
+    <textureregion id="1" src="B.png" x="452" y="2004" width="34" height="40" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="34" srcheight="40"/>
+    <textureregion id="2" src="Camaleao_Mask_trocaCor.png" x="1113" y="484" width="257" height="361" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="257" srcheight="361"/>
+    <textureregion id="3" src="Camaleao_Sombra.png" x="1767" y="2" width="257" height="361" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="257" srcheight="361"/>
+    <textureregion id="4" src="DOISPontos.png" x="391" y="2004" width="23" height="42" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="23" srcheight="42"/>
+    <textureregion id="5" src="G.png" x="354" y="2004" width="35" height="42" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="35" srcheight="42"/>
+    <textureregion id="6" src="GO.png" x="1736" y="580" width="195" height="119" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="195" srcheight="119"/>
+    <textureregion id="7" src="Menu_bg.jpg" x="484" y="758" width="480" height="800" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="480" srcheight="800"/>
+    <textureregion id="8" src="Nylon_Detalhes.png" x="1372" y="497" width="362" height="356" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="362" srcheight="356"/>
+    <textureregion id="9" src="Nylon_TrocaCor.png" x="1019" y="847" width="332" height="318" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="332" srcheight="318"/>
+    <textureregion id="10" src="Palco.png" x="1374" y="284" width="370" height="211" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="370" srcheight="211"/>
+    <textureregion id="11" src="R.png" x="416" y="2004" width="34" height="40" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="34" srcheight="40"/>
+    <textureregion id="12" src="TimeAttackButton.PNG" x="999" y="484" width="100" height="50" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="100" srcheight="50"/>
+    <textureregion id="13" src="about.png" x="753" y="1954" width="162" height="63" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="162" srcheight="63"/>
+    <textureregion id="14" src="arcade.png" x="917" y="1954" width="194" height="62" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="194" srcheight="62"/>
+    <textureregion id="15" src="black_behind.png" x="572" y="2" width="480" height="800" rotated="true" trimmed="false" srcx="0" srcy="0" srcwidth="480" srcheight="800"/>
+    <textureregion id="16" src="box.png" x="753" y="1560" width="392" height="264" rotated="true" trimmed="false" srcx="0" srcy="0" srcwidth="392" srcheight="264"/>
+    <textureregion id="17" src="chameleon.png" x="1736" y="701" width="188" height="185" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="188" srcheight="185"/>
+    <textureregion id="18" src="credits.png" x="1028" y="588" width="196" height="61" rotated="true" trimmed="false" srcx="0" srcy="0" srcwidth="196" srcheight="61"/>
+    <textureregion id="19" src="folhas_frente.png" x="2" y="804" width="480" height="800" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="480" srcheight="800"/>
+    <textureregion id="20" src="fundo.jpg" x="2" y="2" width="480" height="800" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="480" srcheight="800"/>
+    <textureregion id="21" src="marcador.png" x="488" y="2004" width="32" height="32" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="32" srcheight="32"/>
+    <textureregion id="22" src="menu1.png" x="354" y="1606" width="396" height="216" rotated="true" trimmed="false" srcx="0" srcy="0" srcwidth="396" srcheight="216"/>
+    <textureregion id="23" src="menu2.png" x="1746" y="365" width="296" height="213" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="296" srcheight="213"/>
+    <textureregion id="24" src="ninja.png" x="484" y="2" width="292" height="70" rotated="true" trimmed="false" srcx="0" srcy="0" srcwidth="292" srcheight="70"/>
+    <textureregion id="25" src="numerosCronometro.png" x="484" y="296" width="460" height="66" rotated="true" trimmed="false" srcx="0" srcy="0" srcwidth="460" srcheight="66"/>
+    <textureregion id="26" src="tabua.png" x="2" y="1606" width="350" height="437" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="350" srcheight="437"/>
+    <textureregion id="27" src="tabuaPausa.png" x="552" y="484" width="445" height="272" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="445" srcheight="272"/>
+    <textureregion id="28" src="title.png" x="1374" y="2" width="391" height="280" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="391" srcheight="280"/>
+    <textureregion id="29" src="tronco.png" x="572" y="1560" width="480" height="179" rotated="true" trimmed="false" srcx="0" srcy="0" srcwidth="480" srcheight="179"/>
+    <textureregion id="30" src="wisp purple.png" x="1926" y="704" width="60" height="60" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="60" srcheight="60"/>
+    <textureregion id="31" src="wisp red.png" x="1933" y="642" width="60" height="60" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="60" srcheight="60"/>
+    <textureregion id="32" src="wisp yellow.png" x="1933" y="580" width="60" height="60" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="60" srcheight="60"/>
+    <textureregion id="33" src="wisp.png" x="966" y="758" width="60" height="60" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="60" srcheight="60"/>
 </texture>

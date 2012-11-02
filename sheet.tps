@@ -91,7 +91,7 @@
             <key>minFilter</key>
             <enum type="AndEngine::MinFilter">Linear</enum>
             <key>packageName</key>
-            <string>Texture</string>
+            <string>br.edu.ifpr.ThiagoRomano.Camaleao</string>
             <key>javaFileName</key>
             <filename>src/br/edu/ifpr/ThiagoRomano/Camaleao/posicoes.java</filename>
             <key>wrap</key>

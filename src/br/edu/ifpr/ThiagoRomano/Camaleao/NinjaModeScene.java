@@ -178,13 +178,13 @@ public class NinjaModeScene extends GameScene {
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.MARCADOR_ID),
 				activity.getVertexBufferObjectManager());
-		mChronometer = new Chronometer(this,
-				activity.mSpritesheetTexturePackTextureRegionLibrary
-						.get(posicoes.CHRONOMETROFUNDO_ID),
-				activity.getVertexBufferObjectManager());
+
 		mBlackBehind = new Sprite(0, 0, activity.mSpritesheetTexturePackTextureRegionLibrary
 				.get(posicoes.BLACK_BEHIND_ID), activity.getVertexBufferObjectManager());
 
+
+
+		
 		this.attachChild(mBackground);
 		this.attachChild(mPalco);
 
@@ -218,7 +218,7 @@ public class NinjaModeScene extends GameScene {
 		// this.attachChild(mTextRemainingTime);
 		this.attachChild(mTextScore);
 
-		this.attachChild(mChronometer);
+		//this.attachChild(mChronometer);
 		movements = new MoveModifier(2f, -mPlaca.getWidth(), mPlaca.getX(),
 				mPlaca.getY(), mPlaca.getY(), EaseElasticOut.getInstance());
 		
@@ -228,6 +228,7 @@ public class NinjaModeScene extends GameScene {
 		mPlaca.registerEntityModifier(movements);
 		movements.setAutoUnregisterWhenFinished(false);
 		// setTouchAreaBindingOnActionMoveEnabled(true);
+		this.setChildScene(new PlacaNinjaScreen(this), false, true, true);
 
 	}
 

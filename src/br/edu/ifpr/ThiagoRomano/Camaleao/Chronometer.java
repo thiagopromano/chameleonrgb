@@ -23,27 +23,14 @@ public class Chronometer extends Sprite {
 		super(X_INICIAL, Y_INICIAL, pTextureRegion, vertexBufferObjectManager);
 		activity = CamaleaotestActivity.getSharedInstance();
 		this.mScene = scene;
-		time = 5f;
-		timeText = new Text(0, -10, activity.mChronometerFont,
-				Integer.toString((int) (time * 100)), 7,
-				activity.getVertexBufferObjectManager());
-		timeText.setAutoWrapWidth(200f);
-		this.attachChild(timeText);
+		time = NinjaModeScene.STARTING_TIME;
+
 	}
 
 	void updateTime(float time) {
-		if (time <= 0) {
-			if (mScene.iniciando == true) {
-				time = mScene.STARTING_TIME;
-				mScene.remainingTime = mScene.STARTING_TIME;
-				mScene.iniciando = false;
-				this.registerEntityModifier(new ParallelEntityModifier(
-						new ScaleModifier(1.5f, 1f, 0.5f), new MoveModifier(
-								1.5f, this.getX(), 0, this.getY(), 0)));
-			} else {
-				mScene.endTime();
-				time = 0;
-			}
+		{
+			mScene.endTime();
+			time = 0;
 		}
 		this.time = time;
 		String temp = Integer.toString((int) (time * 100));
@@ -51,7 +38,7 @@ public class Chronometer extends Sprite {
 		for (int i = 0; i < qtdASeremAdd; i++) {
 			temp = "0" + temp;
 		}
-		timeText.setText(temp);
+		
 	}
 
 	public void restart() {

@@ -12,6 +12,8 @@ import org.andengine.entity.scene.menu.item.SpriteMenuItem;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.util.modifier.ease.EaseElasticOut;
 
+import android.view.KeyEvent;
+
 public class MainMenuScene extends MenuScene implements
 		IOnMenuItemClickListener {
 	CamaleaotestActivity activity;
@@ -30,6 +32,9 @@ public class MainMenuScene extends MenuScene implements
 	final int MENU_NINJA = 1;
 	final int MENU_ABOUT = 2;
 	final int MENU_CREDITS = 3;
+
+	private ConfirmExitGame mConfirmExitGame;
+	public Sprite mBlackBehind;
 
 	public MainMenuScene() {
 
@@ -90,7 +95,7 @@ public class MainMenuScene extends MenuScene implements
 				// TODO Auto-generated method stub
 				super.onModifierFinished(pItem);
 				mChameleon.registerEntityModifier(new SequenceEntityModifier(
-						new DelayModifier(0.5f), new FadeInModifier(3f)));
+						new DelayModifier(0.0f), new FadeInModifier(2f)));
 			}
 		});
 
@@ -111,6 +116,15 @@ public class MainMenuScene extends MenuScene implements
 		setBackgroundEnabled(false);
 		setOnMenuItemClickListener(this);
 
+		mConfirmExitGame = new ConfirmExitGame(this);
+
+		mBlackBehind = new Sprite(0, 0,
+				activity.mSpritesheetTexturePackTextureRegionLibrary
+						.get(posicoes.BLACK_BEHIND_ID),
+				activity.getVertexBufferObjectManager());
+		attachChild(mBlackBehind);
+		mBlackBehind.setVisible(false);
+
 	}
 
 	@Override
@@ -130,6 +144,31 @@ public class MainMenuScene extends MenuScene implements
 		}
 		return false;
 	}
-	
-	
+
+	@Override
+	public boolean handleKeyDown(int pKeyCode, KeyEvent pEvent) {
+		if ((pKeyCode == KeyEvent.KEYCODE_MENU || pKeyCode == KeyEvent.KEYCODE_BACK)
+				&& pEvent.getAction() == KeyEvent.ACTION_DOWN) {
+			if (this.hasChildScene()) {
+				/* Remove the menu and reset it. */
+				this.mConfirmExitGame.back();
+				toggleEscuro(false);
+			} else {
+				/* Attach the menu. */
+				this.setChildScene(this.mConfirmExitGame, false, true, true);
+				toggleEscuro(true);
+			}
+		}
+		return false;
+	}
+
+	public void toggleEscuro(boolean bool) {
+		if (bool) {
+			mBlackBehind.setVisible(true);
+
+		} else {
+			mBlackBehind.setVisible(false);
+		}
+	}
+
 }
