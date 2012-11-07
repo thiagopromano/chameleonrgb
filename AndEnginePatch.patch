@@ -1,4 +1,4 @@
-diff --git a/src/org/andengine/entity/scene/Scene.java b/src/org/andengine/entity/scene/Scene.java
+diff --git src/org/andengine/entity/scene/Scene.java b/src/org/andengine/entity/scene/Scene.java
 index f05966e..4beede7 100644
 --- a/src/org/andengine/entity/scene/Scene.java
 +++ b/src/org/andengine/entity/scene/Scene.java

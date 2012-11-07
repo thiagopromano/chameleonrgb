@@ -7,9 +7,13 @@ import org.andengine.entity.IEntity;
 import org.andengine.entity.modifier.DelayModifier;
 import org.andengine.entity.modifier.FadeOutModifier;
 import org.andengine.entity.modifier.MoveModifier;
+import org.andengine.entity.sprite.AnimatedSprite;
 import org.andengine.entity.sprite.Sprite;
+import org.andengine.entity.sprite.TiledSprite;
+import org.andengine.entity.sprite.batch.SpriteBatch;
 import org.andengine.entity.text.Text;
 import org.andengine.opengl.shader.constants.ShaderProgramConstants;
+import org.andengine.opengl.texture.region.TiledTextureRegion;
 import org.andengine.util.modifier.ease.EaseElasticOut;
 import org.andengine.util.system.CPUUsage;
 
@@ -38,7 +42,7 @@ public class ArcadeModeScene extends GameScene {
 	Sprite mPalco;
 	Sprite mFolhasFrente;
 
-	Sprite mWisps[] = new Sprite[7];
+	TiledSprite mWisps[] = new TiledSprite[7];
 
 	Random rand;
 	// Text mTextRemainingTime;
@@ -180,9 +184,17 @@ public class ArcadeModeScene extends GameScene {
 				activity.getVertexBufferObjectManager());
 
 		for (int i = 0; i < mWisps.length; i++) {
-			mWisps[i] = new Sprite(-100, -100,
+			mWisps[i] = new TiledSprite(-100, -100, new TiledTextureRegion(
+					activity.mSpritesheetTexturePackTextureRegionLibrary.get(
+							posicoes.POEIRA1_ID).getTexture(),
+						activity.mSpritesheetTexturePackTextureRegionLibrary
+							.get(posicoes.POEIRA1_ID),
 					activity.mSpritesheetTexturePackTextureRegionLibrary
-							.get(posicoes.WISP_ID),
+							.get(posicoes.POEIRA2_ID),
+					activity.mSpritesheetTexturePackTextureRegionLibrary
+							.get(posicoes.POEIRA3_ID),
+					activity.mSpritesheetTexturePackTextureRegionLibrary
+							.get(posicoes.POEIRA4_ID)),
 					activity.getVertexBufferObjectManager());
 			RestartWisp(mWisps[i]);
 		}
@@ -234,15 +246,15 @@ public class ArcadeModeScene extends GameScene {
 
 	}
 
-	private void RestartWisp(IEntity pItem) {
-		pItem.setColor(rand.nextFloat(), rand.nextFloat(), rand.nextFloat());
+	private void RestartWisp(TiledSprite pWisp) {
+		pWisp.setCurrentTileIndex(rand.nextInt(4));
 		if (rand.nextBoolean()) {
-			pItem.registerEntityModifier(new MoveModifier(rand.nextInt(10) + 5,
+			pWisp.registerEntityModifier(new MoveModifier(rand.nextInt(10) + 5,
 					-60, 660, rand.nextInt(600), rand.nextInt(600)) {
 				@Override
 				protected void onModifierFinished(IEntity pItem) {
 					super.onModifierFinished(pItem);
-					RestartWisp(pItem);
+					RestartWisp((TiledSprite) pItem);
 				}
 
 				@Override
@@ -265,12 +277,12 @@ public class ArcadeModeScene extends GameScene {
 				}
 			});
 		} else {
-			pItem.registerEntityModifier(new MoveModifier(rand.nextInt(10) + 5,
+			pWisp.registerEntityModifier(new MoveModifier(rand.nextInt(10) + 5,
 					660, -60, rand.nextInt(600), rand.nextInt(600)) {
 				@Override
 				protected void onModifierFinished(IEntity pItem) {
 					super.onModifierFinished(pItem);
-					RestartWisp(pItem);
+					RestartWisp((TiledSprite) pItem);
 				}
 
 				@Override
@@ -341,9 +353,8 @@ public class ArcadeModeScene extends GameScene {
 				&& greenStepsDiference < 25
 				&& blueStepsDiference < 25
 				&& redStepsDiference + blueStepsDiference + greenStepsDiference < 50) {
-			if (mChamp.getEntityModifierCount() == 0)
-			{
-					mChampShadow.registerEntityModifier(new FadeOutModifier(2f) {
+			if (mChamp.getEntityModifierCount() == 0) {
+				mChampShadow.registerEntityModifier(new FadeOutModifier(2f) {
 
 					@Override
 					protected void onModifierStarted(IEntity pItem) {
@@ -363,15 +374,16 @@ public class ArcadeModeScene extends GameScene {
 						// TODO Auto-generated method stub
 						super.onSetValue(pEntity, pPercentageDone, pAlpha);
 						if (pAlpha < 0.24f) {
-							
+
 							pEntity.setAlpha(0.24f);
 						}
 					}
+
 					@Override
-						protected void onModifierFinished(IEntity pItem) {
-							// TODO Auto-generated method stub
-							super.onModifierFinished(pItem);
-							nextColor();
+					protected void onModifierFinished(IEntity pItem) {
+						// TODO Auto-generated method stub
+						super.onModifierFinished(pItem);
+						nextColor();
 					}
 				});
 			}
@@ -427,8 +439,6 @@ public class ArcadeModeScene extends GameScene {
 				colorIntToFloat(Color.green(mPlacaColor)),
 				colorIntToFloat(Color.blue(mPlacaColor)));
 	}
-
-
 
 	@Override
 	public void clearChildScenes() {

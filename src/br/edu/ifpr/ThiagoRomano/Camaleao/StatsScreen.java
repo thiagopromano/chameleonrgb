@@ -34,21 +34,13 @@ public class StatsScreen extends MenuScene implements IOnMenuItemClickListener {
 		attachChild(mBox);
 		final SpriteMenuItem resetMenuItem = new SpriteMenuItem(MENU_RESET,
 				activity.mSpritesheetTexturePackTextureRegionLibrary
-						.get(posicoes.ARCADEBUTTON_ID),
+						.get(posicoes.GO_ID),
 				activity.getVertexBufferObjectManager());
 		resetMenuItem.setBlendFunction(GLES20.GL_SRC_ALPHA,
 				GLES20.GL_ONE_MINUS_SRC_ALPHA);
 		resetMenuItem.setPosition(100, 320);
 		addMenuItem(resetMenuItem);
 
-		final SpriteMenuItem quitMenuItem = new SpriteMenuItem(MENU_QUIT,
-				activity.mSpritesheetTexturePackTextureRegionLibrary
-						.get(posicoes.TIMEATTACKBUTTON_ID),
-				activity.getVertexBufferObjectManager());
-		quitMenuItem.setBlendFunction(GLES20.GL_SRC_ALPHA,
-				GLES20.GL_ONE_MINUS_SRC_ALPHA);
-		quitMenuItem.setPosition(300, 320);
-		addMenuItem(quitMenuItem);
 
 		mText = new Text(0, 230, activity.mFont, " ", 60,
 				activity.getVertexBufferObjectManager());
