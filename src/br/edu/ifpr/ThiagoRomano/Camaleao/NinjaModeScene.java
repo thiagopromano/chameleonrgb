@@ -175,14 +175,14 @@ public class NinjaModeScene extends GameScene {
 				activity.getVertexBufferObjectManager());
 
 		mSliderBlue = new SliderSprite(2, this, 372, 668,
-				activity.mSpritesheetTexturePackTextureRegionLibrary
+				activity.mSpritesheetTexturePackTextureRegionLibrary 
 						.get(posicoes.MARCADOR_ID),
 				activity.getVertexBufferObjectManager());
 
 		mBlackBehind = new Sprite(0, 0, activity.mSpritesheetTexturePackTextureRegionLibrary
 				.get(posicoes.BLACK_BEHIND_ID), activity.getVertexBufferObjectManager());
 
-
+		mChronometer = new Chronometer(this, activity.getVertexBufferObjectManager());
 
 		
 		this.attachChild(mBackground);
@@ -218,7 +218,7 @@ public class NinjaModeScene extends GameScene {
 		// this.attachChild(mTextRemainingTime);
 		this.attachChild(mTextScore);
 
-		//this.attachChild(mChronometer);
+		this.attachChild(mChronometer);
 		movements = new MoveModifier(2f, -mPlaca.getWidth(), mPlaca.getX(),
 				mPlaca.getY(), mPlaca.getY(), EaseElasticOut.getInstance());
 		

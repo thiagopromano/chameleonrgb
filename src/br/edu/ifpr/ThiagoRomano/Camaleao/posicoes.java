@@ -1,7 +1,7 @@
 // Definitions for sprite sheet positions
 // Created with www.texturepacker.com
 
-// $TexturePacker:SmartUpdate:376528da2c0aa535f70c599cb725ddde$
+// $TexturePacker:SmartUpdate:6d88f5998ca7c5c89a684d8ad19c01c8$
 
 package br.edu.ifpr.ThiagoRomano.Camaleao;
 
@@ -15,32 +15,41 @@ public interface posicoes
 	public static final int GO_ID = 5;
 	public static final int MENU_BG_ID = 6;
 	public static final int MUNDO01ESBOCO_ID = 7;
-	public static final int NYLON_DETALHES_ID = 8;
-	public static final int NYLON_TROCACOR_ID = 9;
-	public static final int OK_ID = 10;
-	public static final int PALCO_ID = 11;
-	public static final int R_ID = 12;
-	public static final int S_ID = 13;
-	public static final int ABOUT_ID = 14;
-	public static final int ARCADE_ID = 15;
-	public static final int BLACK_BEHIND_ID = 16;
-	public static final int BOX_ID = 17;
-	public static final int CHAMELEON_ID = 18;
-	public static final int CREDITS_ID = 19;
-	public static final int FOLHAS_FRENTE_ID = 20;
-	public static final int FUNDO_ID = 21;
-	public static final int MARCADOR_ID = 22;
-	public static final int MENU1_ID = 23;
-	public static final int MENU2_ID = 24;
-	public static final int NINJA_ID = 25;
-	public static final int NUMEROSCRONOMETRO_ID = 26;
-	public static final int POEIRA1_ID = 27;
-	public static final int POEIRA2_ID = 28;
-	public static final int POEIRA3_ID = 29;
-	public static final int POEIRA4_ID = 30;
-	public static final int TABUA_ID = 31;
-	public static final int TABUAPAUSA_ID = 32;
-	public static final int TEXTOGERAL_ID = 33;
-	public static final int TITLE_ID = 34;
-	public static final int TRONCO_ID = 35;
+	public static final int NUMERO0_ID = 8;
+	public static final int NYLON_DETALHES_ID = 9;
+	public static final int NYLON_TROCACOR_ID = 10;
+	public static final int OK_ID = 11;
+	public static final int PALCO_ID = 12;
+	public static final int R_ID = 13;
+	public static final int S_ID = 14;
+	public static final int ABOUT_ID = 15;
+	public static final int ARCADE_ID = 16;
+	public static final int BLACK_BEHIND_ID = 17;
+	public static final int BOX_ID = 18;
+	public static final int CHAMELEON_ID = 19;
+	public static final int CREDITS_ID = 20;
+	public static final int FOLHAS_FRENTE_ID = 21;
+	public static final int FUNDO_ID = 22;
+	public static final int MARCADOR_ID = 23;
+	public static final int MENU1_ID = 24;
+	public static final int MENU2_ID = 25;
+	public static final int NINJA_ID = 26;
+	public static final int NUMERO1_ID = 27;
+	public static final int NUMERO2_ID = 28;
+	public static final int NUMERO3_ID = 29;
+	public static final int NUMERO4_ID = 30;
+	public static final int NUMERO5_ID = 31;
+	public static final int NUMERO6_ID = 32;
+	public static final int NUMERO7_ID = 33;
+	public static final int NUMERO8_ID = 34;
+	public static final int NUMERO9_ID = 35;
+	public static final int POEIRA1_ID = 36;
+	public static final int POEIRA2_ID = 37;
+	public static final int POEIRA3_ID = 38;
+	public static final int POEIRA4_ID = 39;
+	public static final int TABUA_ID = 40;
+	public static final int TABUAPAUSA_ID = 41;
+	public static final int TEXTOGERAL_ID = 42;
+	public static final int TITLE_ID = 43;
+	public static final int TRONCO_ID = 44;
 }

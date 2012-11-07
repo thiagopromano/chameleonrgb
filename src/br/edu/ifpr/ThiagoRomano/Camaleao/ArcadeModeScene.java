@@ -93,6 +93,7 @@ public class ArcadeModeScene extends GameScene {
 		 * mTextRemainingTime = new Text(10, 10, activity.mFont, "", 10,
 		 * activity.getVertexBufferObjectManager());
 		 */
+		
 		mTextScore = new Text(300, 10, activity.mFont, "jna", 4,
 				activity.getVertexBufferObjectManager());
 
