@@ -1,67 +1,57 @@
 package br.edu.ifpr.ThiagoRomano.Camaleao;
 
-import org.andengine.entity.scene.menu.MenuScene;
-import org.andengine.entity.scene.menu.MenuScene.IOnMenuItemClickListener;
-import org.andengine.entity.scene.menu.item.IMenuItem;
-import org.andengine.entity.scene.menu.item.SpriteMenuItem;
 import org.andengine.entity.sprite.Sprite;
+import org.andengine.entity.sprite.batch.SpriteGroup;
 import org.andengine.entity.text.Text;
+import org.andengine.input.touch.TouchEvent;
+import org.andengine.opengl.texture.ITexture;
 
-import android.opengl.GLES20;
+public class PlacaNinjaScreen extends SpriteGroup {
 
-public class PlacaNinjaScreen extends MenuScene implements
-		IOnMenuItemClickListener {
-
-	private static final int MENU_GO = 0;
 	public Text mText2 = null;
 
 	CamaleaotestActivity activity;
 	public Text mText;
-	private GameScene mMainScene;
+	public NinjaModeScene mMainScene;
+	private Sprite mBox;
+	public Sprite goMenuItem;
 
-	public PlacaNinjaScreen(GameScene mMainScene) {
-		super(CamaleaotestActivity.getSharedInstance().mCamera);
-		this.mMainScene = mMainScene;
+	public PlacaNinjaScreen(ITexture texture, NinjaModeScene mMainCena) {
+		super(texture, 5, CamaleaotestActivity.getSharedInstance()
+				.getVertexBufferObjectManager());
+		this.mMainScene = mMainCena;
 		activity = CamaleaotestActivity.getSharedInstance();
-
-		final Sprite mBox = new Sprite(21, 177,
+		mBox = new Sprite(21, 177,
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.TABUAPAUSA_ID),
 				activity.getVertexBufferObjectManager());
+		mBox.setScale(0.85f);
 		attachChild(mBox);
-		mBox.setScale(.85f);
-		final SpriteMenuItem goMenuItem = new SpriteMenuItem(MENU_GO,
+		goMenuItem = new Sprite(150, 276,
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.GO_ID),
-				activity.getVertexBufferObjectManager());
-		goMenuItem.setBlendFunction(GLES20.GL_SRC_ALPHA,
-				GLES20.GL_ONE_MINUS_SRC_ALPHA);
-		goMenuItem.setPosition(150, 276);
-		addMenuItem(goMenuItem);
+				activity.getVertexBufferObjectManager()) {
+			@Override
+			public boolean onAreaTouched(final TouchEvent pSceneTouchEvent,
+					final float pTouchAreaLocalX, final float pTouchAreaLocalY) {
+				if (pSceneTouchEvent.isActionUp()) {
+					mMainScene.mBlackBehind.setVisible(false);
+					ficaInvisivel();
+					mMainScene.iniciando = false;
+					mMainScene.mChronometer.anima();
+				}
+				return true;
+			}
+		};
 
-		this.setBackgroundEnabled(false);
-		setOnMenuItemClickListener(this);
-
-	}
-
-	public void update() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public boolean onMenuItemClicked(MenuScene pMenuScene, IMenuItem pMenuItem,
-			float pMenuItemLocalX, float pMenuItemLocalY) {
-		switch (pMenuItem.getID()) {
-		case MENU_GO:
-			this.mMainScene.clearChildScene();
-			return true;
-		}
-		return false;
-	}
-
-	@Override
-	public void reset() {
+		attachChild(goMenuItem);
+		mMainCena.iniciando = true;
 
 	}
+
+	void ficaInvisivel() {
+		this.setVisible(false);
+		mMainScene.unregisterTouchArea(goMenuItem);
+	}
+
 }

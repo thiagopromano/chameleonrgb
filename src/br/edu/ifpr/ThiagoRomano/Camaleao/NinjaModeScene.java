@@ -45,7 +45,8 @@ public class NinjaModeScene extends GameScene {
 	Sprite mPlaca;
 	Sprite mPlacaSaindo;
 	Sprite mTronco;
-	
+	Pontuacao mPontuacao;
+
 	int mPlacaColor;
 	int mActualColor = 0;
 	public int theColorLocation = ShaderProgramConstants.LOCATION_INVALID;
@@ -56,6 +57,7 @@ public class NinjaModeScene extends GameScene {
 	private Text mTextScore;
 
 	private Sprite mBox;
+	private PlacaNinjaScreen mPlacaStart;
 
 	public NinjaModeScene() {
 
@@ -73,8 +75,10 @@ public class NinjaModeScene extends GameScene {
 		registerUpdateHandler(new IUpdateHandler() {
 			@Override
 			public void onUpdate(float pSecondsElapsed) {
-				remainingTime -= pSecondsElapsed;
-				updateTime();
+				if (!iniciando) {
+					remainingTime -= pSecondsElapsed;
+					updateTime();
+				}
 			}
 
 			@Override
@@ -93,7 +97,6 @@ public class NinjaModeScene extends GameScene {
 		mTextScore = new Text(300, 10, activity.mFont, "jna", 4,
 				activity.getVertexBufferObjectManager());
 
-		updateScore();
 		updateTime();
 		mBackground = new Sprite(0, 0,
 				activity.mSpritesheetTexturePackTextureRegionLibrary
@@ -175,16 +178,23 @@ public class NinjaModeScene extends GameScene {
 				activity.getVertexBufferObjectManager());
 
 		mSliderBlue = new SliderSprite(2, this, 372, 668,
-				activity.mSpritesheetTexturePackTextureRegionLibrary 
+				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.MARCADOR_ID),
 				activity.getVertexBufferObjectManager());
 
-		mBlackBehind = new Sprite(0, 0, activity.mSpritesheetTexturePackTextureRegionLibrary
-				.get(posicoes.BLACK_BEHIND_ID), activity.getVertexBufferObjectManager());
+		mBlackBehind = new Sprite(0, 0,
+				activity.mSpritesheetTexturePackTextureRegionLibrary
+						.get(posicoes.BLACK_BEHIND_ID),
+				activity.getVertexBufferObjectManager());
 
-		mChronometer = new Chronometer(this, activity.getVertexBufferObjectManager());
-
+		mChronometer = new Chronometer(this,
+				activity.getVertexBufferObjectManager());
 		
+		mPontuacao = new Pontuacao(this,
+				activity.getVertexBufferObjectManager());
+		
+		
+
 		this.attachChild(mBackground);
 		this.attachChild(mPalco);
 
@@ -214,35 +224,46 @@ public class NinjaModeScene extends GameScene {
 
 		this.attachChild(mSliderBlue);
 		registerTouchArea(mSliderBlue);
-
+		
+		
 		// this.attachChild(mTextRemainingTime);
-		this.attachChild(mTextScore);
-
-		this.attachChild(mChronometer);
+		this.attachChild(mPontuacao);
 		movements = new MoveModifier(2f, -mPlaca.getWidth(), mPlaca.getX(),
 				mPlaca.getY(), mPlaca.getY(), EaseElasticOut.getInstance());
-		
+
 		this.attachChild(mBlackBehind);
 		mBlackBehind.setVisible(false);
-		
+
 		mPlaca.registerEntityModifier(movements);
 		movements.setAutoUnregisterWhenFinished(false);
+
+		mPlacaStart = new PlacaNinjaScreen(
+				activity.mSpritesheetTexturePackTextureRegionLibrary.get(
+						posicoes.TABUAPAUSA_ID).getTexture(), this);
+		registerTouchArea(mPlacaStart.goMenuItem);
+		this.attachChild(mPlacaStart);
+		this.attachChild(mChronometer);
+		mChronometer.updateTime(STARTING_TIME);
 		// setTouchAreaBindingOnActionMoveEnabled(true);
-		this.setChildScene(new PlacaNinjaScreen(this), false, true, true);
+		// this.setChildScene(new PlacaNinjaScreen(this), false, true, true);
 
 	}
 
 	@Override
 	public void restart() {
 		remainingTime = STARTING_TIME;
-		iniciando = true;
-		mChronometer.restart();
+
+		
 		score = 0;
 		mActualColor = 0;
 		updateTime();
 		updateScore();
 		this.reset();
+		registerTouchArea(mPlacaStart.goMenuItem);
+		mChronometer.restart();
 
+		iniciando = true;
+		// this.setChildScene(new PlacaNinjaScreen(this),false,true,true);
 	}
 
 	private void createPauseMenu() {
@@ -304,7 +325,7 @@ public class NinjaModeScene extends GameScene {
 	}
 
 	private void updateScore() {
-		mTextScore.setText(Integer.toString(score));
+		mPontuacao.updateScore(score);
 	}
 
 	private void updateTime() {
@@ -327,13 +348,50 @@ public class NinjaModeScene extends GameScene {
 				colorIntToFloat(Color.blue(mPlacaColor)));
 	}
 
+	@Override
+	public boolean handleKeyDown(int pKeyCode, KeyEvent pEvent) {
+		if (pKeyCode == KeyEvent.KEYCODE_MENU
+				&& pEvent.getAction() == KeyEvent.ACTION_DOWN) {
+			if (this.hasChildScene()) {
+				/* Remove the menu and reset it. */
+				this.mMenuScene.back();
+				this.mConfirmExit.back();
+				this.mConfirmRestart.back();
+				if (!this.hasChildScene()) {
+					toggleEscuro(false);
+				}
+				
+			} else {
+				/* Attach the menu. */
+				if (!mPlacaStart.isVisible()) {
+					this.setChildScene(this.mMenuScene, false, true, true);
+					toggleEscuro(true);
+				}
+			}
+			return true;
+		} else if (pKeyCode == KeyEvent.KEYCODE_BACK
+				&& pEvent.getAction() == KeyEvent.ACTION_DOWN) {
+			if (this.hasChildScene()) {
+				/* Remove the menu and reset it. */
+				clearChildScenes();
+				toggleEscuro(false);
+			} else {
+				/* Attach the confirm. */
+				this.setChildScene(this.mConfirmExit, false, true, true);
+				toggleEscuro(true);
+			}
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 	@Override
-	public void clearChildScenes()
-	{
+	public void clearChildScenes() {
 		this.mMenuScene.back();
 		this.mConfirmExit.back();
 	}
+
 	StatsScreen stats;
 
 	public void endTime() {
@@ -342,6 +400,7 @@ public class NinjaModeScene extends GameScene {
 		// mChronometer.registerEntityModifier(new FadeOutModifier(3));
 		if (stats == null)
 			stats = new StatsScreen(this);
+		mBlackBehind.setVisible(true);
 		stats.updateText(score);
 		this.setChildScene(stats, false, true, true);
 	}
