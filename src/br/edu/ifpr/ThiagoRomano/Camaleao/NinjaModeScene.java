@@ -20,6 +20,8 @@ public class NinjaModeScene extends GameScene {
 	static final float TIME_CORRECT = 4f;
 	public final int[] CORES = { 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0,
 			255, 255, 255, 255, 0, 100, 100, 100, };
+	static final int X_PONTUACAO_INICIAL = 330;
+	static final int Y_PONTUACAO_INICIAL = 0;
 
 	CamaleaotestActivity activity;
 	Sprite mChamp;
@@ -189,11 +191,9 @@ public class NinjaModeScene extends GameScene {
 
 		mChronometer = new Chronometer(this,
 				activity.getVertexBufferObjectManager());
-		
-		mPontuacao = new Pontuacao(this,
-				activity.getVertexBufferObjectManager());
-		
-		
+
+		mPontuacao = new Pontuacao(X_PONTUACAO_INICIAL, Y_PONTUACAO_INICIAL, 2,
+				this, activity.getVertexBufferObjectManager());
 
 		this.attachChild(mBackground);
 		this.attachChild(mPalco);
@@ -224,8 +224,7 @@ public class NinjaModeScene extends GameScene {
 
 		this.attachChild(mSliderBlue);
 		registerTouchArea(mSliderBlue);
-		
-		
+
 		// this.attachChild(mTextRemainingTime);
 		this.attachChild(mPontuacao);
 		movements = new MoveModifier(2f, -mPlaca.getWidth(), mPlaca.getX(),
@@ -253,7 +252,6 @@ public class NinjaModeScene extends GameScene {
 	public void restart() {
 		remainingTime = STARTING_TIME;
 
-		
 		score = 0;
 		mActualColor = 0;
 		updateTime();
@@ -360,7 +358,7 @@ public class NinjaModeScene extends GameScene {
 				if (!this.hasChildScene()) {
 					toggleEscuro(false);
 				}
-				
+
 			} else {
 				/* Attach the menu. */
 				if (!mPlacaStart.isVisible()) {
@@ -374,7 +372,9 @@ public class NinjaModeScene extends GameScene {
 			if (this.hasChildScene()) {
 				/* Remove the menu and reset it. */
 				clearChildScenes();
-				toggleEscuro(false);
+				if (!this.hasChildScene()) {
+					toggleEscuro(false);
+				}
 			} else {
 				/* Attach the confirm. */
 				this.setChildScene(this.mConfirmExit, false, true, true);

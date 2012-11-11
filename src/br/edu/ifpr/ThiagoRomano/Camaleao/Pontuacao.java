@@ -8,27 +8,24 @@ import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 public class Pontuacao extends SpriteGroup {
 
-	static final int X_INICIAL = 300;
-	static final int Y_INICIAL = 0;
-
 	NinjaModeScene mScene;
 	CamaleaotestActivity activity;
 	float time;
 	Text timeText;
-	TiledSprite mNumeros[] = new TiledSprite[3];
+	TiledSprite mNumeros[];
 
-	public Pontuacao(NinjaModeScene scene,
+	public Pontuacao(int x, int y, int qtdNumeros, NinjaModeScene scene,
 			VertexBufferObjectManager mVertexBufferObjectManager) {
 		super(
-				X_INICIAL,
-				Y_INICIAL,
+				x,
+				y,
 				CamaleaotestActivity.getSharedInstance().mSpritesheetTexturePackTextureRegionLibrary
-						.get(posicoes.ABOUT_ID).getTexture(), 5,
+						.get(posicoes.ABOUT_ID).getTexture(), 3,
 				mVertexBufferObjectManager);
 		activity = CamaleaotestActivity.getSharedInstance();
 		this.mScene = scene;
 		time = NinjaModeScene.STARTING_TIME;
-
+		mNumeros = new TiledSprite[qtdNumeros];
 		TiledTextureRegion regiao = new TiledTextureRegion(
 				activity.mSpritesheetTexturePackTextureRegionLibrary.get(
 						posicoes.NUMERO0_ID).getTexture(),
@@ -52,21 +49,21 @@ public class Pontuacao extends SpriteGroup {
 						.get(posicoes.NUMERO8_ID),
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.NUMERO9_ID));
-		mNumeros[0] = new TiledSprite(0, 0, regiao, mVertexBufferObjectManager);
-		this.attachChild(mNumeros[0]);
-		mNumeros[1] = new TiledSprite(46, 0, regiao, mVertexBufferObjectManager);
-		this.attachChild(mNumeros[1]);
-		mNumeros[2] = new TiledSprite(92, 0, regiao, mVertexBufferObjectManager);
-		this.attachChild(mNumeros[2]);
-	}
-	
-	public void updateScore(int score)
-	{
 		
+		for (int i = 0; i < qtdNumeros; i++)
+		{
+			mNumeros[i] = new TiledSprite(46*i, 0, regiao, mVertexBufferObjectManager);
+			this.attachChild(mNumeros[i]);
+		}
+		this.setScale(0.75f);
+	}
+
+	public void updateScore(int score) {
+
 		for (int i = 0; i < mNumeros.length; i++) {
 			mNumeros[mNumeros.length - 1 - i]
 					.setCurrentTileIndex((int) ((score / Math.pow(10, i)) % 10));
 		}
 	}
-	
+
 }
