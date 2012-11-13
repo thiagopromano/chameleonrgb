@@ -97,7 +97,7 @@ public class ArcadeModeScene extends GameScene {
 		 */
 		
 
-		updateScore();
+
 		mBackground = new Sprite(0, 0,
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.FUNDO_ID),
@@ -222,7 +222,7 @@ public class ArcadeModeScene extends GameScene {
 
 		this.attachChild(mLetraR);
 		this.attachChild(mLetraG);
-		this.attachChild(mLetraB);
+		this.attachChild(mLetraB); 
 
 		this.attachChild(mSliderRed);
 		registerTouchArea(mSliderRed);
@@ -234,7 +234,7 @@ public class ArcadeModeScene extends GameScene {
 		registerTouchArea(mSliderBlue);
 		// this.attachChild(mTextRemainingTime);
 		this.attachChild(mPontuacao);
-
+		updateScore();
 		this.attachChild(mBlackBehind);
 		mBlackBehind.setVisible(false);
 
