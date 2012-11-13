@@ -41,7 +41,10 @@ public class ArcadeModeScene extends GameScene {
 	Sprite mChampShadow;
 	Sprite mPalco;
 	Sprite mFolhasFrente;
-
+	
+	static final int X_PONTUACAO_INICIAL = 330;
+	static final int Y_PONTUACAO_INICIAL = 0;
+	
 	TiledSprite mWisps[] = new TiledSprite[7];
 
 	Random rand;
@@ -57,9 +60,8 @@ public class ArcadeModeScene extends GameScene {
 	// public boolean mOverlayed = true;
 	int score = 0;
 
-	private Text mTextScore;
-
 	private Sprite mBox;
+	private Pontuacao mPontuacao;
 
 	public ArcadeModeScene() {
 
@@ -94,8 +96,6 @@ public class ArcadeModeScene extends GameScene {
 		 * activity.getVertexBufferObjectManager());
 		 */
 		
-		mTextScore = new Text(300, 10, activity.mFont, "jna", 4,
-				activity.getVertexBufferObjectManager());
 
 		updateScore();
 		mBackground = new Sprite(0, 0,
@@ -183,7 +183,10 @@ public class ArcadeModeScene extends GameScene {
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.BLACK_BEHIND_ID),
 				activity.getVertexBufferObjectManager());
-
+		
+		mPontuacao = new Pontuacao(X_PONTUACAO_INICIAL, Y_PONTUACAO_INICIAL, 2,
+				this, activity.getVertexBufferObjectManager());
+		
 		for (int i = 0; i < mWisps.length; i++) {
 			mWisps[i] = new TiledSprite(-100, -100, new TiledTextureRegion(
 					activity.mSpritesheetTexturePackTextureRegionLibrary.get(
@@ -230,7 +233,7 @@ public class ArcadeModeScene extends GameScene {
 		this.attachChild(mSliderBlue);
 		registerTouchArea(mSliderBlue);
 		// this.attachChild(mTextRemainingTime);
-		this.attachChild(mTextScore);
+		this.attachChild(mPontuacao);
 
 		this.attachChild(mBlackBehind);
 		mBlackBehind.setVisible(false);
@@ -424,7 +427,7 @@ public class ArcadeModeScene extends GameScene {
 	}
 
 	private void updateScore() {
-		mTextScore.setText(Integer.toString(score));
+		mPontuacao.updateScore(score);
 	}
 
 	public int colorFloatToInt(float number) {

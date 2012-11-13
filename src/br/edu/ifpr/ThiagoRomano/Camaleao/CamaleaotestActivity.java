@@ -45,10 +45,11 @@ public class CamaleaotestActivity extends SimpleBaseGameActivity {
 
 	private BitmapTextureAtlas mFontTexture;
 	public TexturePackTextureRegionLibrary mSpritesheetTexturePackTextureRegionLibrary;
+	public TexturePackTextureRegionLibrary mSpritesheetTexturePackTextureRegionLibrary2;
 	public TextureRegion mTextureBar;
-	public BitmapTextureAtlas mChronometerFontTexture;
-	public Font mChronometerFont;
 	public boolean loading;
+	public TextureRegion mSplashScreen;
+	public BitmapTextureAtlas mBitmapTextureAtlasSplash;
 
 	// ===========================================================
 	// Constructors
@@ -84,22 +85,20 @@ public class CamaleaotestActivity extends SimpleBaseGameActivity {
 				Typeface.create("Franklin Gothic Book", Typeface.NORMAL), 32,
 				true, Color.WHITE);
 
-		this.mChronometerFontTexture = new BitmapTextureAtlas(
-				this.getTextureManager(), 512, 512,
-				TextureOptions.BILINEAR_PREMULTIPLYALPHA);
-		this.mChronometerFont = new Font(this.getFontManager(),
-				this.mChronometerFontTexture, Typeface.create(
-						"Franklin Gothic Book", Typeface.NORMAL), 64, true,
-				Color.WHITE);
-
 		this.mEngine.getTextureManager().loadTexture(this.mFontTexture);
-		this.mEngine.getTextureManager().loadTexture(
-				this.mChronometerFontTexture);
 		this.getFontManager().loadFont(this.mFont);
-		this.getFontManager().loadFont(this.mChronometerFont);
 
 		this.mBitmapTextureAtlas = new BitmapTextureAtlas(getTextureManager(),
 				512, 16);
+
+		this.mBitmapTextureAtlasSplash = new BitmapTextureAtlas(
+				getTextureManager(), 512, 512);
+
+		mSplashScreen = BitmapTextureAtlasTextureRegionFactory.createFromAsset(
+				mBitmapTextureAtlasSplash,
+				CamaleaotestActivity.getSharedInstance(), "gfx/splash.png", 0,
+				0);
+		mEngine.getTextureManager().loadTexture(mBitmapTextureAtlasSplash);
 
 		// WindowManager.initialize(this);
 	}
@@ -135,6 +134,15 @@ public class CamaleaotestActivity extends SimpleBaseGameActivity {
 					spritesheetTexturePack.loadTexture();
 					mSpritesheetTexturePackTextureRegionLibrary = spritesheetTexturePack
 							.getTexturePackTextureRegionLibrary();
+
+					final TexturePack spritesheetTexturePack2 = new TexturePackLoader(
+							getAssets(), getTextureManager()).loadFromAsset(
+							"gfx/positions2.xml", "gfx/");
+					spritesheetTexturePack2.loadTexture();
+
+					mSpritesheetTexturePackTextureRegionLibrary2 = spritesheetTexturePack2
+							.getTexturePackTextureRegionLibrary();
+
 				} catch (final TexturePackParseException e) {
 					Debug.e(e);
 				}
@@ -142,6 +150,7 @@ public class CamaleaotestActivity extends SimpleBaseGameActivity {
 						.createFromAsset(mBitmapTextureAtlas,
 								CamaleaotestActivity.getSharedInstance(),
 								"gfx/color_bar.png", 0, 0);
+
 				mEngine.getTextureManager().loadTexture(mBitmapTextureAtlas);
 				new Sounds(CamaleaotestActivity.getSharedInstance());
 				loading = false;

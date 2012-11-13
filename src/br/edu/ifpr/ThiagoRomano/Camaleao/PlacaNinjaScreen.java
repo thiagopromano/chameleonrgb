@@ -27,7 +27,7 @@ public class PlacaNinjaScreen extends SpriteGroup {
 				activity.getVertexBufferObjectManager());
 		mBox.setScale(0.85f);
 		attachChild(mBox);
-		goMenuItem = new Sprite(150, 276,
+		goMenuItem = new Sprite(150, 290,
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.GO_ID),
 				activity.getVertexBufferObjectManager()) {

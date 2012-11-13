@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <texture version="1" file="positions.png" type="bitmap" width="2048" height="2048" pixelformat="RGBA_8888" minfilter="linear" magfilter="linear" wrapt="clamp" wraps="clamp" premultiplyalpha="false">
     <!-- Created with TexturePacker http://texturepacker.com -->
-    <!-- $TexturePacker:SmartUpdate:6d88f5998ca7c5c89a684d8ad19c01c8$ -->
+    <!-- $TexturePacker:SmartUpdate:9f87a22707f6dabb0085e3394ce20cb2$ -->
     <textureregion id="0" src="B.png" x="452" y="2004" width="34" height="40" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="34" srcheight="40"/>
     <textureregion id="1" src="Camaleao_Mask_trocaCor.png" x="1750" y="1285" width="257" height="361" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="257" srcheight="361"/>
     <textureregion id="2" src="Camaleao_Sombra.png" x="818" y="1285" width="257" height="361" rotated="true" trimmed="false" srcx="0" srcy="0" srcwidth="257" srcheight="361"/>

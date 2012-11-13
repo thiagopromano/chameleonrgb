@@ -1,7 +1,7 @@
 // Definitions for sprite sheet positions
 // Created with www.texturepacker.com
 
-// $TexturePacker:SmartUpdate:6d88f5998ca7c5c89a684d8ad19c01c8$
+// $TexturePacker:SmartUpdate:9f87a22707f6dabb0085e3394ce20cb2$
 
 package br.edu.ifpr.ThiagoRomano.Camaleao;
 
@@ -10,7 +10,7 @@ public interface posicoes
 	public static final int B_ID = 0;
 	public static final int CAMALEAO_MASK_TROCACOR_ID = 1;
 	public static final int CAMALEAO_SOMBRA_ID = 2;
-	public static final int DOISPONTOS_ID = 3;
+	public static final int DOISPONTOS_ID = 3; 
 	public static final int G_ID = 4;
 	public static final int GO_ID = 5;
 	public static final int MENU_BG_ID = 6;

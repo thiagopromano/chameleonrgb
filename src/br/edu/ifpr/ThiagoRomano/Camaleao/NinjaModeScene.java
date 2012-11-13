@@ -16,7 +16,7 @@ import android.view.KeyEvent;
 
 public class NinjaModeScene extends GameScene {
 
-	static final float STARTING_TIME = 5f;
+	static final float STARTING_TIME = 40f;
 	static final float TIME_CORRECT = 4f;
 	public final int[] CORES = { 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0,
 			255, 255, 255, 255, 0, 100, 100, 100, };
@@ -30,7 +30,7 @@ public class NinjaModeScene extends GameScene {
 	Sprite mGreen;
 	Sprite mLetraR;
 	Sprite mLetraG;
-	Sprite mLetraB;
+	Sprite mLetraB; 
 	Sprite mSliderBlue;
 	Sprite mSliderRed;
 	Sprite mSliderGreen;
@@ -53,10 +53,8 @@ public class NinjaModeScene extends GameScene {
 	int mActualColor = 0;
 	public int theColorLocation = ShaderProgramConstants.LOCATION_INVALID;
 	// public boolean mOverlayed = true;
-	float remainingTime = 5f;
+	float remainingTime = STARTING_TIME;
 	int score = 0;
-
-	private Text mTextScore;
 
 	private Sprite mBox;
 	private PlacaNinjaScreen mPlacaStart;
@@ -96,8 +94,6 @@ public class NinjaModeScene extends GameScene {
 		 * mTextRemainingTime = new Text(10, 10, activity.mFont, "", 10,
 		 * activity.getVertexBufferObjectManager());
 		 */
-		mTextScore = new Text(300, 10, activity.mFont, "jna", 4,
-				activity.getVertexBufferObjectManager());
 
 		updateTime();
 		mBackground = new Sprite(0, 0,

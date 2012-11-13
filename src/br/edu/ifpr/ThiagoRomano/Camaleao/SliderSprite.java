@@ -1,6 +1,5 @@
 package br.edu.ifpr.ThiagoRomano.Camaleao;
 
-import org.andengine.entity.scene.Scene;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.text.Text;
 import org.andengine.input.touch.TouchEvent;

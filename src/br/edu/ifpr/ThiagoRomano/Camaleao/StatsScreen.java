@@ -49,7 +49,7 @@ public class StatsScreen extends MenuScene implements IOnMenuItemClickListener {
 				activity.getVertexBufferObjectManager());
 		mPontuacao = new Pontuacao(186, 300, 2, mMainScene,
 				activity.getVertexBufferObjectManager());
-		mTempo = new Pontuacao(118, 360, 3, mMainScene,
+		mTempo = new Pontuacao(95, 351, 3, mMainScene,
 				activity.getVertexBufferObjectManager());
 
 		addMenuItem(resetMenuItem);

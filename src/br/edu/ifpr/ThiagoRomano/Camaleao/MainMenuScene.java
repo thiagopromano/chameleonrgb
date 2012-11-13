@@ -138,6 +138,11 @@ public class MainMenuScene extends MenuScene implements
 			activity.setCurrentScene(new ArcadeModeScene());
 			return true;
 		}
+		case MENU_ABOUT:
+		{
+			activity.setCurrentScene(new AboutScene());
+			return true;
+		}
 		default:
 			break;
 

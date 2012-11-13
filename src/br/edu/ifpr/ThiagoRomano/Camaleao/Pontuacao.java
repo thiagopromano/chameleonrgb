@@ -8,13 +8,13 @@ import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 public class Pontuacao extends SpriteGroup {
 
-	NinjaModeScene mScene;
+	GameScene mScene;
 	CamaleaotestActivity activity;
 	float time;
 	Text timeText;
 	TiledSprite mNumeros[];
 
-	public Pontuacao(int x, int y, int qtdNumeros, NinjaModeScene scene,
+	public Pontuacao(int x, int y, int qtdNumeros, GameScene scene,
 			VertexBufferObjectManager mVertexBufferObjectManager) {
 		super(
 				x,

@@ -1,60 +1,68 @@
 package br.edu.ifpr.ThiagoRomano.Camaleao;
 
+import org.andengine.engine.handler.IUpdateHandler;
 import org.andengine.entity.IEntity;
 import org.andengine.entity.modifier.DelayModifier;
-import org.andengine.entity.modifier.IEntityModifier.IEntityModifierListener;
-import org.andengine.entity.modifier.MoveXModifier;
+import org.andengine.entity.modifier.FadeInModifier;
+import org.andengine.entity.modifier.FadeOutModifier;
+import org.andengine.entity.modifier.SequenceEntityModifier;
 import org.andengine.entity.scene.Scene;
 import org.andengine.entity.scene.background.Background;
-import org.andengine.entity.text.Text;
-import org.andengine.util.modifier.IModifier;
-
-import android.view.KeyEvent;
+import org.andengine.entity.sprite.Sprite;
 
 public class SplashScene extends Scene {
 	CamaleaotestActivity activity;
+	private boolean mReady = false;
+
+	Sprite mSplash;
 
 	public SplashScene() {
-		setBackground(new Background(0.09804f, 0.6274f, 0));
+		setBackground(new Background(0.f, 0f, .0f));
 		activity = CamaleaotestActivity.getSharedInstance();
-		Text title1 = new Text(0, 0, activity.mFont, "splash",
+
+		mSplash = new Sprite(117, 177, activity.mSplashScreen,
 				activity.getVertexBufferObjectManager());
-		Text title2 = new Text(0, 0, activity.mFont, "screen",
-				activity.getVertexBufferObjectManager());
-
-		title1.setPosition(-title1.getWidth(), activity.mCamera.getHeight() / 2);
-		title2.setPosition(activity.mCamera.getWidth(),
-				activity.mCamera.getHeight() / 2);
-
-		attachChild(title1);
-		attachChild(title2);
-
-		title1.registerEntityModifier(new MoveXModifier(1, title1.getX(),
-				activity.mCamera.getWidth() / 2 - title1.getWidth()));
-		title2.registerEntityModifier(new MoveXModifier(1, title2.getX(),
-				activity.mCamera.getWidth() / 2));
-
-		DelayModifier dMod = new DelayModifier(5,
-				new IEntityModifierListener() {
+		this.attachChild(mSplash);
+		mSplash.registerEntityModifier(new SequenceEntityModifier(
+				new FadeInModifier(2) {
 					@Override
-					public void onModifierStarted(IModifier arg0, IEntity arg1) {
+					protected void onModifierFinished(IEntity pItem) {
 						activity.loadAssets();
+						super.onModifierFinished(pItem);
+
 					}
-
-					public void onModifierFinished(IModifier arg0, IEntity arg1) {
-						while (activity.loading) {
-						}
-						activity.setCurrentScene(new MainMenuScene());
+				}, new DelayModifier(1) {
+					@Override
+					protected void onModifierFinished(IEntity pItem) {
+						// TODO Auto-generated method stub
+						if (!activity.loading)
+							super.onModifierFinished(pItem);
 					}
-				});
-		registerEntityModifier(dMod);
+				}, new FadeOutModifier(2) {
 
-	}
+					@Override
+					protected void onModifierFinished(IEntity pItem) {
+						mReady = true;
+						super.onModifierFinished(pItem);
 
-	@Override
-	public boolean handleKeyDown(int pKeyCode, KeyEvent pEvent) {
-		// TODO Auto-generated method stub
-		return false;
+					}
+				}));
+
+		this.registerUpdateHandler(new IUpdateHandler() {
+
+			@Override
+			public void onUpdate(float pSecondsElapsed) {
+				if (mReady && !activity.loading)
+					activity.setCurrentScene(new MainMenuScene());
+			}
+
+			@Override
+			public void reset() {
+				// TODO Auto-generated method stub
+
+			}
+
+		});
 	}
 
 }
