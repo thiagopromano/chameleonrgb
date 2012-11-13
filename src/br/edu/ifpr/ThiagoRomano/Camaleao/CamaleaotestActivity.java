@@ -47,7 +47,7 @@ public class CamaleaotestActivity extends SimpleBaseGameActivity {
 	public TexturePackTextureRegionLibrary mSpritesheetTexturePackTextureRegionLibrary;
 	public TexturePackTextureRegionLibrary mSpritesheetTexturePackTextureRegionLibrary2;
 	public TextureRegion mTextureBar;
-	public boolean loading;
+	public boolean loading = true;
 	public TextureRegion mSplashScreen;
 	public BitmapTextureAtlas mBitmapTextureAtlasSplash;
 

@@ -31,37 +31,35 @@ public class SplashScene extends Scene {
 						super.onModifierFinished(pItem);
 
 					}
-				}, new DelayModifier(1) {
+				}, new DelayModifier(5f) {
 					@Override
 					protected void onModifierFinished(IEntity pItem) {
 						// TODO Auto-generated method stub
-						if (!activity.loading)
-							super.onModifierFinished(pItem);
-					}
-				}, new FadeOutModifier(2) {
-
-					@Override
-					protected void onModifierFinished(IEntity pItem) {
-						mReady = true;
 						super.onModifierFinished(pItem);
-
+						mReady = true;
 					}
 				}));
 
 		this.registerUpdateHandler(new IUpdateHandler() {
-
-			@Override
-			public void onUpdate(float pSecondsElapsed) {
-				if (mReady && !activity.loading)
-					activity.setCurrentScene(new MainMenuScene());
-			}
-
 			@Override
 			public void reset() {
 				// TODO Auto-generated method stub
 
 			}
 
+			@Override
+			public void onUpdate(float pSecondsElapsed) {
+				if (activity.loading || !mReady)
+					return;
+				mSplash.registerEntityModifier(new FadeOutModifier(2f) {
+					@Override
+					protected void onModifierFinished(IEntity pItem) {
+						// TODO Auto-generated method stub
+						super.onModifierFinished(pItem);
+						activity.setCurrentScene(new MainMenuScene());
+					}
+				});
+			}
 		});
 	}
 
