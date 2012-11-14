@@ -14,6 +14,7 @@ import org.andengine.entity.sprite.batch.SpriteBatch;
 import org.andengine.entity.text.Text;
 import org.andengine.opengl.shader.constants.ShaderProgramConstants;
 import org.andengine.opengl.texture.region.TiledTextureRegion;
+import org.andengine.util.color.ColorUtils;
 import org.andengine.util.modifier.ease.EaseElasticOut;
 import org.andengine.util.system.CPUUsage;
 
@@ -34,17 +35,17 @@ public class ArcadeModeScene extends GameScene {
 	Sprite mLetraR;
 	Sprite mLetraG;
 	Sprite mLetraB;
-	Sprite mSliderBlue;
-	Sprite mSliderRed;
-	Sprite mSliderGreen;
+	SliderSprite mSliderBlue;
+	SliderSprite mSliderRed;
+	SliderSprite mSliderGreen;
 	Sprite mAdendo;
 	Sprite mChampShadow;
 	Sprite mPalco;
 	Sprite mFolhasFrente;
-	
+
 	static final int X_PONTUACAO_INICIAL = 330;
 	static final int Y_PONTUACAO_INICIAL = 0;
-	
+
 	TiledSprite mWisps[] = new TiledSprite[7];
 
 	Random rand;
@@ -95,8 +96,6 @@ public class ArcadeModeScene extends GameScene {
 		 * mTextRemainingTime = new Text(10, 10, activity.mFont, "", 10,
 		 * activity.getVertexBufferObjectManager());
 		 */
-		
-
 
 		mBackground = new Sprite(0, 0,
 				activity.mSpritesheetTexturePackTextureRegionLibrary
@@ -165,17 +164,17 @@ public class ArcadeModeScene extends GameScene {
 						.get(posicoes.B_ID),
 				activity.getVertexBufferObjectManager());
 
-		mSliderRed = new SliderSprite(0, this, 372, 525,
+		mSliderRed = new SliderSprite(16, 0, this, 372, 525,
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.MARCADOR_ID),
 				activity.getVertexBufferObjectManager());
 
-		mSliderGreen = new SliderSprite(1, this, 372, 597,
+		mSliderGreen = new SliderSprite(16, 1, this, 372, 597,
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.MARCADOR_ID),
 				activity.getVertexBufferObjectManager());
 
-		mSliderBlue = new SliderSprite(2, this, 372, 668,
+		mSliderBlue = new SliderSprite(16, 2, this, 372, 668,
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.MARCADOR_ID),
 				activity.getVertexBufferObjectManager());
@@ -183,15 +182,15 @@ public class ArcadeModeScene extends GameScene {
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.BLACK_BEHIND_ID),
 				activity.getVertexBufferObjectManager());
-		
+
 		mPontuacao = new Pontuacao(X_PONTUACAO_INICIAL, Y_PONTUACAO_INICIAL, 2,
 				this, activity.getVertexBufferObjectManager());
-		
+
 		for (int i = 0; i < mWisps.length; i++) {
 			mWisps[i] = new TiledSprite(-100, -100, new TiledTextureRegion(
 					activity.mSpritesheetTexturePackTextureRegionLibrary.get(
 							posicoes.POEIRA1_ID).getTexture(),
-						activity.mSpritesheetTexturePackTextureRegionLibrary
+					activity.mSpritesheetTexturePackTextureRegionLibrary
 							.get(posicoes.POEIRA1_ID),
 					activity.mSpritesheetTexturePackTextureRegionLibrary
 							.get(posicoes.POEIRA2_ID),
@@ -222,7 +221,7 @@ public class ArcadeModeScene extends GameScene {
 
 		this.attachChild(mLetraR);
 		this.attachChild(mLetraG);
-		this.attachChild(mLetraB); 
+		this.attachChild(mLetraB);
 
 		this.attachChild(mSliderRed);
 		registerTouchArea(mSliderRed);
@@ -357,12 +356,29 @@ public class ArcadeModeScene extends GameScene {
 				&& greenStepsDiference < 25
 				&& blueStepsDiference < 25
 				&& redStepsDiference + blueStepsDiference + greenStepsDiference < 50) {
+
 			if (mChamp.getEntityModifierCount() == 0) {
+				
 				mChampShadow.registerEntityModifier(new FadeOutModifier(2f) {
 
 					@Override
 					protected void onModifierStarted(IEntity pItem) {
 						iniciando = true;
+						mSliderRed.setPosition(SliderSprite.MIN_X
+								+ colorIntToFloat(Color.red(mPlacaColor))
+								* (SliderSprite.MAX_X - SliderSprite.MIN_X),
+								mSliderRed.getY());
+						mSliderGreen.setPosition(SliderSprite.MIN_X
+								+ colorIntToFloat(Color.green(mPlacaColor))
+								* (SliderSprite.MAX_X - SliderSprite.MIN_X),
+								mSliderGreen.getY());
+						mSliderBlue.setPosition(SliderSprite.MIN_X
+								+ colorIntToFloat(Color.blue(mPlacaColor))
+								* (SliderSprite.MAX_X - SliderSprite.MIN_X),
+								mSliderBlue.getY());
+						mSliderRed.updateValue(false);
+						mSliderGreen.updateValue(false);
+						mSliderBlue.updateValue(false);
 					};
 
 					@Override
@@ -403,7 +419,6 @@ public class ArcadeModeScene extends GameScene {
 		updateScore();
 		mActualColor++;
 
-		// mChamp.setAlpha(1f);
 		mChampShadow.setAlpha(1f);
 		iniciando = false;
 		if (mActualColor * 3 + 2 < CORES.length)

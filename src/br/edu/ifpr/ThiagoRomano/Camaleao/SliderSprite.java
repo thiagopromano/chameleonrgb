@@ -8,9 +8,9 @@ import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 public class SliderSprite extends Sprite {
 
-	public static final int STEP = 1;
-	private static final int MIN_X = 100;
-	private static final int MAX_X = 372;
+	public int mStep = 1;
+	public static final int MIN_X = 100;
+	public static final int MAX_X = 372;
 
 	// Para aumentar a area do touch, tava dificil selecionar
 	private static final int OFFSET_X = 400;
@@ -21,13 +21,14 @@ public class SliderSprite extends Sprite {
 	Text textValue;
 	CamaleaotestActivity activity;
 
-	public SliderSprite(int id, GameScene scene, float pX, float pY,
+	public SliderSprite(int iStep, int id, GameScene scene, float pX, float pY,
 			ITextureRegion pTextureRegion,
 			VertexBufferObjectManager pVertexBufferObjectManager) {
 		super(pX, pY, pTextureRegion, pVertexBufferObjectManager);
 		activity = CamaleaotestActivity.getSharedInstance();
 		this.mScene = scene;
 		this.id = id;
+		this.mStep = iStep;
 		textValue = new Text(-10, -30, activity.mFont, "255",
 				activity.getVertexBufferObjectManager());
 		// textValue.
@@ -40,6 +41,12 @@ public class SliderSprite extends Sprite {
 
 		this.attachChild(textValue);
 
+	}
+
+	public SliderSprite(int id, GameScene scene, float pX, float pY,
+			ITextureRegion pTextureRegion,
+			VertexBufferObjectManager pVertexBufferObjectManager) {
+		this(1, id, scene, pX, pY, pTextureRegion, pVertexBufferObjectManager);
 	}
 
 	@Override
@@ -57,18 +64,23 @@ public class SliderSprite extends Sprite {
 			return true;
 		this.setPosition(pSceneTouchEvent.getX() - this.getWidth() / 2,
 				this.getY());
+		updateValue(true);
+		return true;
+	}
+
+	void updateValue(boolean pVerify) {
 		if (this.mX < MIN_X)
 			this.mX = MIN_X;
 		if (this.mX > MAX_X)
 			this.mX = MAX_X;
-		this.mX = Math.round((this.mX - MIN_X) / STEP) * STEP + MIN_X;
+		this.mX = Math.round((this.mX - MIN_X) / mStep) * mStep + MIN_X;
 		float fValor = (this.mX - MIN_X) / (MAX_X - MIN_X);
 		value = (int) (fValor * 255);
 		textValue.setText(Integer.toString(value));
 		textValue.setPosition(this.getWidth() / 2 - textValue.getWidth() / 2,
 				-30);
-		mScene.ChangeColors(fValor, id);
-		return true;
+		if (pVerify)
+			mScene.ChangeColors(fValor, id);
 	}
 
 }

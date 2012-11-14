@@ -3,11 +3,8 @@ package br.edu.ifpr.ThiagoRomano.Camaleao;
 import java.util.Random;
 
 import org.andengine.engine.handler.IUpdateHandler;
-import org.andengine.entity.modifier.FadeOutModifier;
 import org.andengine.entity.modifier.MoveModifier;
-import org.andengine.entity.scene.Scene;
 import org.andengine.entity.sprite.Sprite;
-import org.andengine.entity.text.Text;
 import org.andengine.opengl.shader.constants.ShaderProgramConstants;
 import org.andengine.util.modifier.ease.EaseElasticOut;
 
@@ -16,7 +13,7 @@ import android.view.KeyEvent;
 
 public class NinjaModeScene extends GameScene {
 
-	static final float STARTING_TIME = 40f;
+	static final float STARTING_TIME = 30f;
 	static final float TIME_CORRECT = 4f;
 	public final int[] CORES = { 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0,
 			255, 255, 255, 255, 0, 100, 100, 100, };
@@ -30,10 +27,10 @@ public class NinjaModeScene extends GameScene {
 	Sprite mGreen;
 	Sprite mLetraR;
 	Sprite mLetraG;
-	Sprite mLetraB; 
-	Sprite mSliderBlue;
-	Sprite mSliderRed;
-	Sprite mSliderGreen;
+	Sprite mLetraB;
+	SliderSprite mSliderBlue;
+	SliderSprite mSliderRed;
+	SliderSprite mSliderGreen;
 	Sprite mAdendo;
 	Sprite mChampShadow;
 	Sprite mPalco;
@@ -278,15 +275,15 @@ public class NinjaModeScene extends GameScene {
 		mChamp.setColor(Color.red(colors) / 256f, Color.green(colors) / 256f,
 				Color.blue(colors) / 256f);
 
-		int redStepsDiference = Math.abs(Color.red(colors) / SliderSprite.STEP
-				- Color.red(mPlacaColor) / SliderSprite.STEP);
+		int redStepsDiference = Math.abs(Color.red(colors) / mSliderRed.mStep
+				- Color.red(mPlacaColor) / mSliderRed.mStep);
 
 		int greenStepsDiference = Math.abs(Color.green(colors)
-				/ SliderSprite.STEP - Color.green(mPlacaColor)
-				/ SliderSprite.STEP);
+				/ mSliderGreen.mStep - Color.green(mPlacaColor)
+				/ mSliderGreen.mStep);
 		int blueStepsDiference = Math.abs(Color.blue(colors)
-				/ SliderSprite.STEP - Color.blue(mPlacaColor)
-				/ SliderSprite.STEP);
+				/ mSliderBlue.mStep - Color.blue(mPlacaColor)
+				/ mSliderBlue.mStep);
 		/*
 		 * mTextRemainingTime.setText(Integer.toString(redStepsDiference +
 		 * greenStepsDiference + blueStepsDiference));

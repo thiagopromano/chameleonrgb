@@ -1,0 +1,20 @@
+		x	y
+
+X - fase 1	332	87
+
+X - fase2	51	319
+
+X - fase3	286	351
+
+X - fase4	330	571
+
+X - fase5	138	593
+
+
+Caminho 1	326	152
+
+caminho 2	136	336
+
+caminho 3	122	397
+
+caminho 4	229	603
