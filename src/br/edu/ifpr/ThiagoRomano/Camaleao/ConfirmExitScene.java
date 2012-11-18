@@ -61,19 +61,20 @@ public class ConfirmExitScene extends MenuScene implements
 			float pMenuItemLocalX, float pMenuItemLocalY) {
 		switch (pMenuItem.getID()) {
 		case MENU_YES:
-			/* Restart the animation. */
-
-			activity.setCurrentScene(new MainMenuScene());
+			Quit();
 			mMainScene.toggleEscuro(false);
 			return true;
 		case MENU_NO:
-			/* End Activity. */
 			this.mMainScene.clearChildScene();
 			mMainScene.toggleEscuro(false);
 			return true;
 		default:
 			return false;
 		}
+	}
+
+	public void Quit() {
+		activity.setCurrentScene(new MainMenuScene());
 	}
 
 	@Override

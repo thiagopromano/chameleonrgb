@@ -70,7 +70,7 @@
         <key>algorithmSettings</key>
         <struct type="AlgorithmSettings">
             <key>algorithm</key>
-            <enum type="AlgorithmSettings::AlgorithmId">MaxRects</enum>
+            <enum type="AlgorithmSettings::AlgorithmId">Basic</enum>
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>maxRects</key>
@@ -136,7 +136,9 @@
             <false/>
         </struct>
         <key>fileList</key>
-        <array/>
+        <array>
+            <filename>old/32</filename>
+        </array>
         <key>ignoreFileList</key>
         <array/>
         <key>replaceList</key>

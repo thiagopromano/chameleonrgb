@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <texture version="1" file="positions2.png" type="bitmap" width="1024" height="2048" pixelformat="RGBA_8888" minfilter="linear" magfilter="linear" wrapt="clamp" wraps="clamp" premultiplyalpha="false">
     <!-- Created with TexturePacker http://texturepacker.com -->
-    <!-- $TexturePacker:SmartUpdate:111ea8dec861f5cde18b94c2ff96ede8$ -->
-    <textureregion id="0" src="about_text.png" x="77" y="2" width="365" height="657" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="365" srcheight="657"/>
-    <textureregion id="1" src="add.png" x="2" y="804" width="480" height="800" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="480" srcheight="800"/>
+    <!-- $TexturePacker:SmartUpdate:b45c92f5a79e7796433a88b2ecf21ac2$ -->
+    <textureregion id="0" src="about_text.png" x="365" y="2" width="365" height="657" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="365" srcheight="657"/>
+    <textureregion id="1" src="add.png" x="434" y="726" width="480" height="800" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="480" srcheight="800"/>
     <textureregion id="2" src="back.png" x="2" y="2" width="73" height="115" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="73" srcheight="115"/>
-    <textureregion id="3" src="nylon.png" x="444" y="2" width="430" height="800" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="430" srcheight="800"/>
+    <textureregion id="3" src="credits.png" x="77" y="2" width="286" height="722" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="286" srcheight="722"/>
+    <textureregion id="4" src="nylon.png" x="2" y="726" width="430" height="800" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="430" srcheight="800"/>
 </texture>

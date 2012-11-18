@@ -24,8 +24,7 @@ import android.view.KeyEvent;
 public class ArcadeModeScene extends GameScene {
 
 	public final float STARTING_TIME = 60f;
-	public final int[] CORES = { 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0,
-			255, 255, 255, 255, 0, 100, 100, 100, };
+	public int[] mCores;
 
 	CamaleaotestActivity activity;
 	Sprite mChamp;
@@ -60,12 +59,13 @@ public class ArcadeModeScene extends GameScene {
 	public int theColorLocation = ShaderProgramConstants.LOCATION_INVALID;
 	// public boolean mOverlayed = true;
 	int score = 0;
-
+	int mThisLevel;
 	private Sprite mBox;
 	private Pontuacao mPontuacao;
 
-	public ArcadeModeScene() {
-
+	public ArcadeModeScene(int pThisLevel, int pCores[]) {
+		mCores = pCores;
+		mThisLevel = pThisLevel;
 		rand = new Random();
 		this.setOnAreaTouchTraversalFrontToBack();
 		colors = Color.rgb(255, 255, 255);
@@ -75,7 +75,13 @@ public class ArcadeModeScene extends GameScene {
 		createAssets();
 		createPauseMenu();
 		iniciando = false;
-		mConfirmExit = new ConfirmExitScene(this);
+		mConfirmExit = new ConfirmExitScene(this){
+			@Override
+			public void Quit() {
+				// TODO Auto-generated method stub
+				activity.setCurrentScene(new ArcadeLevelSelect());
+			}
+		};
 		mConfirmRestart = new ConfirmRestartScene(this);
 		setTouchAreaBindingOnActionDownEnabled(true);
 		registerUpdateHandler(new IUpdateHandler() {
@@ -311,10 +317,11 @@ public class ArcadeModeScene extends GameScene {
 
 	@Override
 	public void restart() {
-		score = 0;
-		mActualColor = 0;
+		score = -1;
+		mActualColor = -1;
 		updateScore();
 		this.reset();
+		nextColor();
 
 	}
 
@@ -358,7 +365,7 @@ public class ArcadeModeScene extends GameScene {
 				&& redStepsDiference + blueStepsDiference + greenStepsDiference < 50) {
 
 			if (mChamp.getEntityModifierCount() == 0) {
-				
+
 				mChampShadow.registerEntityModifier(new FadeOutModifier(2f) {
 
 					@Override
@@ -421,12 +428,14 @@ public class ArcadeModeScene extends GameScene {
 
 		mChampShadow.setAlpha(1f);
 		iniciando = false;
-		if (mActualColor * 3 + 2 < CORES.length)
-			mPlacaColor = Color.rgb(CORES[mActualColor * 3],
-					CORES[mActualColor * 3 + 1], CORES[mActualColor * 3 + 2]);
+		if (mActualColor * 3 + 2 < mCores.length)
+			mPlacaColor = Color.rgb(mCores[mActualColor * 3],
+					mCores[mActualColor * 3 + 1], mCores[mActualColor * 3 + 2]);
 		else {
-			mPlacaColor = Color.rgb(rand.nextInt(255), rand.nextInt(255),
-					rand.nextInt(255));
+			if (activity.mLevel <= mThisLevel) {
+				activity.mLevel = mThisLevel + 1;
+			}
+			activity.setCurrentScene(new ArcadeLevelSelect());
 		}
 
 		setPlacaColor(mPlacaColor);

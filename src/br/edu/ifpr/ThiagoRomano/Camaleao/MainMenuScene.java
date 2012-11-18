@@ -135,12 +135,17 @@ public class MainMenuScene extends MenuScene implements
 			activity.setCurrentScene(new NinjaModeScene());
 			return true;
 		case MENU_ARCADE: {
-			activity.setCurrentScene(new ArcadeModeScene());
+			activity.setCurrentScene(new ArcadeLevelSelect());
 			return true;
 		}
 		case MENU_ABOUT:
 		{
 			activity.setCurrentScene(new AboutScene());
+			return true;
+		}
+		case MENU_CREDITS:
+		{
+			activity.setCurrentScene(new CreditsScene());
 			return true;
 		}
 		default:

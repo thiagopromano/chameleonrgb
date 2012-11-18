@@ -67,8 +67,7 @@ public class PauseMenu extends MenuScene implements IOnMenuItemClickListener {
 			return true;
 		case MENU_QUIT:
 			/* End Activity. */
-			mMainScene
-					.setChildScene(mMainScene.mConfirmExit, false, true, true);
+			Quit();
 			return true;
 		case MENU_RESUME:
 		{
@@ -80,7 +79,13 @@ public class PauseMenu extends MenuScene implements IOnMenuItemClickListener {
 			return false;
 		}
 	}
-
+	
+	public void Quit()
+	{
+		mMainScene
+		.setChildScene(mMainScene.mConfirmExit, false, true, true);
+	}
+	
 	@Override
 	public void reset() {
 

@@ -50,6 +50,8 @@ public class CamaleaotestActivity extends SimpleBaseGameActivity {
 	public boolean loading = true;
 	public TextureRegion mSplashScreen;
 	public BitmapTextureAtlas mBitmapTextureAtlasSplash;
+	
+	public int mLevel = 1;
 
 	// ===========================================================
 	// Constructors
