@@ -69,7 +69,7 @@ public class ArcadeModeScene extends GameScene {
 		rand = new Random();
 		this.setOnAreaTouchTraversalFrontToBack();
 		colors = Color.rgb(255, 255, 255);
-		mPlacaColor = 0xff00ffff;
+		mPlacaColor = Color.rgb(mCores[0], mCores[1], mCores[2]);
 		activity = CamaleaotestActivity.getSharedInstance();
 
 		createAssets();

@@ -70,7 +70,7 @@
         <key>algorithmSettings</key>
         <struct type="AlgorithmSettings">
             <key>algorithm</key>
-            <enum type="AlgorithmSettings::AlgorithmId">Basic</enum>
+            <enum type="AlgorithmSettings::AlgorithmId">MaxRects</enum>
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>maxRects</key>
@@ -91,7 +91,7 @@
             <key>minFilter</key>
             <enum type="AndEngine::MinFilter">Linear</enum>
             <key>packageName</key>
-            <string>Texture</string>
+            <string>br.edu.ifpr.ThiagoRomano.Camaleao</string>
             <key>javaFileName</key>
             <filename>src/br/edu/ifpr/ThiagoRomano/Camaleao/posicoes2.java</filename>
             <key>wrap</key>

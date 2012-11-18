@@ -286,7 +286,7 @@ public class ArcadeLevelSelect extends MenuScene implements
 							0,
 							250,
 							activity.mSpritesheetTexturePackTextureRegionLibrary
-									.get(posicoes.FASE2_ID), activity
+									.get(posicoes.FASE5_ID), activity
 									.getVertexBufferObjectManager());
 					attachChild(diferenciadorDeFases);
 				}

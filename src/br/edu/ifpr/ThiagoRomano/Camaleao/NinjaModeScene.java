@@ -163,17 +163,19 @@ public class NinjaModeScene extends GameScene {
 						.get(posicoes.B_ID),
 				activity.getVertexBufferObjectManager());
 
-		mSliderRed = new SliderSprite(16, 0, this, 372, 505,
+		mSliderRed = new SliderSprite(0, this, 372, 505,
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.MARCADOR_ID),
 				activity.getVertexBufferObjectManager());
 
-		mSliderGreen = new SliderSprite(16, 1, this, 372, 597,
+		mSliderGreen = new SliderSprite(1, this, 372, 597,
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.MARCADOR_ID),
 				activity.getVertexBufferObjectManager());
 
-		mSliderBlue = new SliderSprite(16, 2, this, 372, 688,
+		mSliderBlue = new SliderSprite(
+				
+				2, this, 372, 688,
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.MARCADOR_ID),
 				activity.getVertexBufferObjectManager());
