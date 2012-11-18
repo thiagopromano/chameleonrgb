@@ -162,143 +162,144 @@ public class ArcadeLevelSelect extends MenuScene implements
 	@Override
 	public boolean onMenuItemClicked(MenuScene pMenuScene, IMenuItem pMenuItem,
 			float pMenuItemLocalX, float pMenuItemLocalY) {
-		switch (pMenuItem.getID()) {
-		case MENU_LEVEL_1:
-			activity.setCurrentScene(new ArcadeModeScene(1, new int[] {
+		if (pMenuItem.isVisible())
+			switch (pMenuItem.getID()) {
+			case MENU_LEVEL_1:
+				activity.setCurrentScene(new ArcadeModeScene(1, new int[] {
 
-			255, 255, 0,
+				255, 255, 0,
 
-			0, 255, 0,
+				0, 255, 0,
 
-			255, 0, 0,
+				255, 0, 0,
 
-			255, 0, 255,
+				255, 0, 255,
 
-			0, 0, 255,
+				0, 0, 255,
 
-			255, 255, 255, }));
-			return true;
-		case MENU_LEVEL_2:
-			activity.setCurrentScene(new ArcadeModeScene(2, new int[] {
+				255, 255, 255, }));
+				return true;
+			case MENU_LEVEL_2:
+				activity.setCurrentScene(new ArcadeModeScene(2, new int[] {
 
-			0, 255, 255,
+				0, 255, 255,
 
-			0, 135, 255,
+				0, 135, 255,
 
-			0, 135, 60,
+				0, 135, 60,
 
-			135, 135, 60,
+				135, 135, 60,
 
-			0, 150, 150,
+				0, 150, 150,
 
-			150, 150, 150,
+				150, 150, 150,
 
-			150, 255, 255, }) {
-				@Override
-				public void DiferenciadorDeFases() {
-					// TODO Auto-generated method stub
-					super.DiferenciadorDeFases();
-					final Sprite diferenciadorDeFases = new Sprite(
-							11,
-							235,
-							activity.mSpritesheetTexturePackTextureRegionLibrary
-									.get(posicoes.FASE2_ID), activity
-									.getVertexBufferObjectManager());
-					attachChild(diferenciadorDeFases);
-				}
-			});
-			return true;
-		case MENU_LEVEL_3:
-			activity.setCurrentScene(new ArcadeModeScene(3, new int[] {
+				150, 255, 255, }) {
+					@Override
+					public void DiferenciadorDeFases() {
+						// TODO Auto-generated method stub
+						super.DiferenciadorDeFases();
+						final Sprite diferenciadorDeFases = new Sprite(
+								11,
+								235,
+								activity.mSpritesheetTexturePackTextureRegionLibrary
+										.get(posicoes.FASE2_ID), activity
+										.getVertexBufferObjectManager());
+						attachChild(diferenciadorDeFases);
+					}
+				});
+				return true;
+			case MENU_LEVEL_3:
+				activity.setCurrentScene(new ArcadeModeScene(3, new int[] {
 
-			0, 120, 120,
+				0, 120, 120,
 
-			255, 120, 120,
+				255, 120, 120,
 
-			75, 120, 120,
+				75, 120, 120,
 
-			75, 120, 0,
+				75, 120, 0,
 
-			120, 60, 0,
+				120, 60, 0,
 
-			0, 0, 0, }) {
-				@Override
-				public void DiferenciadorDeFases() {
-					// TODO Auto-generated method stub
-					super.DiferenciadorDeFases();
-					final Sprite diferenciadorDeFases = new Sprite(
-							0,
-							0,
-							activity.mSpritesheetTexturePackTextureRegionLibrary
-									.get(posicoes.FASE3_ID), activity
-									.getVertexBufferObjectManager());
-					attachChild(diferenciadorDeFases);
-				}
-			});
-			return true;
-		case MENU_LEVEL_4:
-			activity.setCurrentScene(new ArcadeModeScene(4, new int[] {
+				0, 0, 0, }) {
+					@Override
+					public void DiferenciadorDeFases() {
+						// TODO Auto-generated method stub
+						super.DiferenciadorDeFases();
+						final Sprite diferenciadorDeFases = new Sprite(
+								0,
+								0,
+								activity.mSpritesheetTexturePackTextureRegionLibrary
+										.get(posicoes.FASE3_ID), activity
+										.getVertexBufferObjectManager());
+						attachChild(diferenciadorDeFases);
+					}
+				});
+				return true;
+			case MENU_LEVEL_4:
+				activity.setCurrentScene(new ArcadeModeScene(4, new int[] {
 
-			180, 0, 0,
+				180, 0, 0,
 
-			180, 0, 75,
+				180, 0, 75,
 
-			255, 75, 0,
+				255, 75, 0,
 
-			255, 75, 255,
+				255, 75, 255,
 
-			105, 165, 0,
+				105, 165, 0,
 
-			105, 0, 0, }) {
-				@Override
-				public void DiferenciadorDeFases() {
-					// TODO Auto-generated method stub
-					super.DiferenciadorDeFases();
-					final Sprite diferenciadorDeFases = new Sprite(
-							0,
-							158,
-							activity.mSpritesheetTexturePackTextureRegionLibrary
-									.get(posicoes.FASE2_ID), activity
-									.getVertexBufferObjectManager());
-					attachChild(diferenciadorDeFases);
-				}
-			});
-			return true;
-		case MENU_LEVEL_5:
-			activity.setCurrentScene(new ArcadeModeScene(5, new int[] {
+				105, 0, 0, }) {
+					@Override
+					public void DiferenciadorDeFases() {
+						// TODO Auto-generated method stub
+						super.DiferenciadorDeFases();
+						final Sprite diferenciadorDeFases = new Sprite(
+								0,
+								158,
+								activity.mSpritesheetTexturePackTextureRegionLibrary
+										.get(posicoes.FASE2_ID), activity
+										.getVertexBufferObjectManager());
+						attachChild(diferenciadorDeFases);
+					}
+				});
+				return true;
+			case MENU_LEVEL_5:
+				activity.setCurrentScene(new ArcadeModeScene(5, new int[] {
 
-			105, 45, 0,
+				105, 45, 0,
 
-			255, 210, 150,
+				255, 210, 150,
 
-			165, 135, 90,
+				165, 135, 90,
 
-			165, 60, 60,
+				165, 60, 60,
 
-			180, 45, 0,
+				180, 45, 0,
 
-			255, 210, 165, }) {
-				@Override
-				public void DiferenciadorDeFases() {
-					// TODO Auto-generated method stub
-					super.DiferenciadorDeFases();
-					final Sprite diferenciadorDeFases = new Sprite(
-							0,
-							250,
-							activity.mSpritesheetTexturePackTextureRegionLibrary
-									.get(posicoes.FASE5_ID), activity
-									.getVertexBufferObjectManager());
-					attachChild(diferenciadorDeFases);
-				}
-			});
-			return true;
-		case MENU_BACK:
-			activity.setCurrentScene(new MainMenuScene());
-			return true;
-		default:
-			return false;
-		}
-
+				255, 210, 165, }) {
+					@Override
+					public void DiferenciadorDeFases() {
+						// TODO Auto-generated method stub
+						super.DiferenciadorDeFases();
+						final Sprite diferenciadorDeFases = new Sprite(
+								0,
+								250,
+								activity.mSpritesheetTexturePackTextureRegionLibrary
+										.get(posicoes.FASE5_ID), activity
+										.getVertexBufferObjectManager());
+						attachChild(diferenciadorDeFases);
+					}
+				});
+				return true;
+			case MENU_BACK:
+				activity.setCurrentScene(new MainMenuScene());
+				return true;
+			default:
+				return false;
+			}
+		return false;
 	}
 
 	@Override
