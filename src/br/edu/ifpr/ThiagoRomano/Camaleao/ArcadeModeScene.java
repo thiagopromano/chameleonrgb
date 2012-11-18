@@ -60,7 +60,7 @@ public class ArcadeModeScene extends GameScene {
 	// public boolean mOverlayed = true;
 	int score = 0;
 	int mThisLevel;
-	private Sprite mBox;
+
 	private Pontuacao mPontuacao;
 
 	public ArcadeModeScene(int pThisLevel, int pCores[]) {
@@ -144,10 +144,6 @@ public class ArcadeModeScene extends GameScene {
 						.get(posicoes.CAMALEAO_MASK_TROCACOR_ID),
 				activity.getVertexBufferObjectManager());
 
-		mBox = new Sprite(45, 489,
-				activity.mSpritesheetTexturePackTextureRegionLibrary
-						.get(posicoes.BOX_ID),
-				activity.getVertexBufferObjectManager());
 		mRed = new BarSprite(0, this, 112, 523, activity.mTextureBar,
 				activity.getVertexBufferObjectManager());
 
@@ -221,8 +217,7 @@ public class ArcadeModeScene extends GameScene {
 
 		this.attachChild(mChamp);
 		this.attachChild(mChampShadow);
-
-		this.attachChild(mBox);
+		
 		this.attachChild(mRed);
 		this.attachChild(mGreen);
 		this.attachChild(mBlue);

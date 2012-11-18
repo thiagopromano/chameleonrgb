@@ -53,7 +53,6 @@ public class NinjaModeScene extends GameScene {
 	float remainingTime = STARTING_TIME;
 	int score = 0;
 
-	private Sprite mBox;
 	private PlacaNinjaScreen mPlacaStart;
 
 	public NinjaModeScene() {
@@ -136,11 +135,6 @@ public class NinjaModeScene extends GameScene {
 						.get(posicoes.CAMALEAO_MASK_TROCACOR_ID),
 				activity.getVertexBufferObjectManager());
 
-		mBox = new Sprite(45, 489,
-				activity.mSpritesheetTexturePackTextureRegionLibrary
-						.get(posicoes.BOX_ID),
-				activity.getVertexBufferObjectManager());
-
 		mRed = new BarSprite(0, this, 112, 523, activity.mTextureBar,
 				activity.getVertexBufferObjectManager());
 
@@ -174,8 +168,8 @@ public class NinjaModeScene extends GameScene {
 				activity.getVertexBufferObjectManager());
 
 		mSliderBlue = new SliderSprite(
-				
-				2, this, 372, 688,
+
+		2, this, 372, 688,
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.MARCADOR_ID),
 				activity.getVertexBufferObjectManager());
@@ -203,7 +197,7 @@ public class NinjaModeScene extends GameScene {
 		this.attachChild(mChamp);
 		this.attachChild(mChampShadow);
 
-		this.attachChild(mBox);
+
 		this.attachChild(mRed);
 		this.attachChild(mGreen);
 		this.attachChild(mBlue);
