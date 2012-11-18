@@ -148,29 +148,29 @@ public class ArcadeModeScene extends GameScene {
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.BOX_ID),
 				activity.getVertexBufferObjectManager());
-		mRed = new BarSprite(0, this, 112, 543, activity.mTextureBar,
+		mRed = new BarSprite(0, this, 112, 523, activity.mTextureBar,
 				activity.getVertexBufferObjectManager());
 
 		mGreen = new BarSprite(1, this, 112, 615, activity.mTextureBar,
 				activity.getVertexBufferObjectManager());
 
-		mBlue = new BarSprite(2, this, 112, 686, activity.mTextureBar,
+		mBlue = new BarSprite(2, this, 112, 706, activity.mTextureBar,
 				activity.getVertexBufferObjectManager());
 
-		mLetraR = new Sprite(69, 524,
+		mLetraR = new Sprite(67, 492,
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.R_ID),
 				activity.getVertexBufferObjectManager());
-		mLetraG = new Sprite(67, 600,
+		mLetraG = new Sprite(64, 587,
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.G_ID),
 				activity.getVertexBufferObjectManager());
-		mLetraB = new Sprite(69, 674,
+		mLetraB = new Sprite(65, 685,
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.B_ID),
 				activity.getVertexBufferObjectManager());
 
-		mSliderRed = new SliderSprite(16, 0, this, 372, 525,
+		mSliderRed = new SliderSprite(16, 0, this, 372, 505,
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.MARCADOR_ID),
 				activity.getVertexBufferObjectManager());
@@ -180,7 +180,7 @@ public class ArcadeModeScene extends GameScene {
 						.get(posicoes.MARCADOR_ID),
 				activity.getVertexBufferObjectManager());
 
-		mSliderBlue = new SliderSprite(16, 2, this, 372, 668,
+		mSliderBlue = new SliderSprite(16, 2, this, 372, 688,
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.MARCADOR_ID),
 				activity.getVertexBufferObjectManager());
@@ -209,6 +209,8 @@ public class ArcadeModeScene extends GameScene {
 		}
 
 		this.attachChild(mBackground);
+		
+		DiferenciadorDeFases();
 		this.attachChild(mPalco);
 
 		this.attachChild(mPlaca);
@@ -253,6 +255,11 @@ public class ArcadeModeScene extends GameScene {
 		movements.setAutoUnregisterWhenFinished(false);
 		// setTouchAreaBindingOnActionMoveEnabled(true);
 
+	}
+
+	public void DiferenciadorDeFases() {
+	
+		
 	}
 
 	private void RestartWisp(TiledSprite pWisp) {

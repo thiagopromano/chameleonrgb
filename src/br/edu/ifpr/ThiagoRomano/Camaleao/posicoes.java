@@ -1,7 +1,7 @@
 // Definitions for sprite sheet positions
 // Created with www.texturepacker.com
 
-// $TexturePacker:SmartUpdate:88b6e40980442614c36656a98ed097b0$
+// $TexturePacker:SmartUpdate:5dbdfcf71538c83f511d0e4abe51dcba$
 
 package br.edu.ifpr.ThiagoRomano.Camaleao;
 
@@ -38,28 +38,32 @@ public interface posicoes
 	public static final int CAMINHO4_DISABLED_ID = 28;
 	public static final int CHAMELEON_ID = 29;
 	public static final int CREDITS_ID = 30;
-	public static final int FOLHAS_FRENTE_ID = 31;
-	public static final int FUNDO_ID = 32;
-	public static final int MARCADOR_ID = 33;
-	public static final int MENU1_ID = 34;
-	public static final int MENU2_ID = 35;
-	public static final int NINJA_ID = 36;
-	public static final int NUMERO1_ID = 37;
-	public static final int NUMERO2_ID = 38;
-	public static final int NUMERO3_ID = 39;
-	public static final int NUMERO4_ID = 40;
-	public static final int NUMERO5_ID = 41;
-	public static final int NUMERO6_ID = 42;
-	public static final int NUMERO7_ID = 43;
-	public static final int NUMERO8_ID = 44;
-	public static final int NUMERO9_ID = 45;
-	public static final int POEIRA1_ID = 46;
-	public static final int POEIRA2_ID = 47;
-	public static final int POEIRA3_ID = 48;
-	public static final int POEIRA4_ID = 49;
-	public static final int TABUA_ID = 50;
-	public static final int TABUAPAUSA_ID = 51;
-	public static final int TEXTOGERAL_ID = 52;
-	public static final int TITLE_ID = 53;
-	public static final int TRONCO_ID = 54;
+	public static final int FASE2_ID = 31;
+	public static final int FASE3_ID = 32;
+	public static final int FASE4_ID = 33;
+	public static final int FASE5_ID = 34;
+	public static final int FOLHAS_FRENTE_ID = 35;
+	public static final int FUNDO_ID = 36;
+	public static final int MARCADOR_ID = 37;
+	public static final int MENU1_ID = 38;
+	public static final int MENU2_ID = 39;
+	public static final int NINJA_ID = 40;
+	public static final int NUMERO1_ID = 41;
+	public static final int NUMERO2_ID = 42;
+	public static final int NUMERO3_ID = 43;
+	public static final int NUMERO4_ID = 44;
+	public static final int NUMERO5_ID = 45;
+	public static final int NUMERO6_ID = 46;
+	public static final int NUMERO7_ID = 47;
+	public static final int NUMERO8_ID = 48;
+	public static final int NUMERO9_ID = 49;
+	public static final int POEIRA1_ID = 50;
+	public static final int POEIRA2_ID = 51;
+	public static final int POEIRA3_ID = 52;
+	public static final int POEIRA4_ID = 53;
+	public static final int TABUA_ID = 54;
+	public static final int TABUAPAUSA_ID = 55;
+	public static final int TEXTOGERAL_ID = 56;
+	public static final int TITLE_ID = 57;
+	public static final int TRONCO_ID = 58;
 }

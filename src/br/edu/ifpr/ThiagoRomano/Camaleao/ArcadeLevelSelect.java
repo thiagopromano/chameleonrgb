@@ -193,7 +193,20 @@ public class ArcadeLevelSelect extends MenuScene implements
 
 			150, 150, 150,
 
-			150, 255, 255, }));
+			150, 255, 255, }) {
+				@Override
+				public void DiferenciadorDeFases() {
+					// TODO Auto-generated method stub
+					super.DiferenciadorDeFases();
+					final Sprite diferenciadorDeFases = new Sprite(
+							11,
+							235,
+							activity.mSpritesheetTexturePackTextureRegionLibrary
+									.get(posicoes.FASE2_ID), activity
+									.getVertexBufferObjectManager());
+					attachChild(diferenciadorDeFases);
+				}
+			});
 			return true;
 		case MENU_LEVEL_3:
 			activity.setCurrentScene(new ArcadeModeScene(3, new int[] {
@@ -208,7 +221,20 @@ public class ArcadeLevelSelect extends MenuScene implements
 
 			120, 60, 0,
 
-			0, 0, 0, }));
+			0, 0, 0, }) {
+				@Override
+				public void DiferenciadorDeFases() {
+					// TODO Auto-generated method stub
+					super.DiferenciadorDeFases();
+					final Sprite diferenciadorDeFases = new Sprite(
+							0,
+							0,
+							activity.mSpritesheetTexturePackTextureRegionLibrary
+									.get(posicoes.FASE3_ID), activity
+									.getVertexBufferObjectManager());
+					attachChild(diferenciadorDeFases);
+				}
+			});
 			return true;
 		case MENU_LEVEL_4:
 			activity.setCurrentScene(new ArcadeModeScene(4, new int[] {
@@ -223,7 +249,20 @@ public class ArcadeLevelSelect extends MenuScene implements
 
 			105, 165, 0,
 
-			105, 0, 0, }));
+			105, 0, 0, }) {
+				@Override
+				public void DiferenciadorDeFases() {
+					// TODO Auto-generated method stub
+					super.DiferenciadorDeFases();
+					final Sprite diferenciadorDeFases = new Sprite(
+							0,
+							158,
+							activity.mSpritesheetTexturePackTextureRegionLibrary
+									.get(posicoes.FASE2_ID), activity
+									.getVertexBufferObjectManager());
+					attachChild(diferenciadorDeFases);
+				}
+			});
 			return true;
 		case MENU_LEVEL_5:
 			activity.setCurrentScene(new ArcadeModeScene(5, new int[] {
@@ -238,7 +277,20 @@ public class ArcadeLevelSelect extends MenuScene implements
 
 			180, 45, 0,
 
-			255, 210, 165, }));
+			255, 210, 165, }) {
+				@Override
+				public void DiferenciadorDeFases() {
+					// TODO Auto-generated method stub
+					super.DiferenciadorDeFases();
+					final Sprite diferenciadorDeFases = new Sprite(
+							0,
+							250,
+							activity.mSpritesheetTexturePackTextureRegionLibrary
+									.get(posicoes.FASE2_ID), activity
+									.getVertexBufferObjectManager());
+					attachChild(diferenciadorDeFases);
+				}
+			});
 			return true;
 		case MENU_BACK:
 			activity.setCurrentScene(new MainMenuScene());
