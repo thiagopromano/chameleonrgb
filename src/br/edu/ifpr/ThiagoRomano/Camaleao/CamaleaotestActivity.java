@@ -52,7 +52,7 @@ public class CamaleaotestActivity extends SimpleBaseGameActivity {
 	public BitmapTextureAtlas mBitmapTextureAtlasSplash;
 	
 	public int mLevel = 1;
-
+ 
 	// ===========================================================
 	// Constructors
 	// ===========================================================

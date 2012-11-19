@@ -22,6 +22,7 @@ public class SplashScene extends Scene {
 
 		mSplash = new Sprite(117, 177, activity.mSplashScreen,
 				activity.getVertexBufferObjectManager());
+		mSplash.setAlpha(0);
 		this.attachChild(mSplash);
 		mSplash.registerEntityModifier(new SequenceEntityModifier(
 				new FadeInModifier(2) {
