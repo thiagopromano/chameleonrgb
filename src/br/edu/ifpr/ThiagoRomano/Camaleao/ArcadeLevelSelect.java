@@ -325,6 +325,11 @@ public class ArcadeLevelSelect extends MenuScene implements
 										.getVertexBufferObjectManager());
 						attachChild(diferenciadorDeFases);
 					}
+					@Override
+					public void endLevel() {
+						// TODO Auto-generated method stub
+						activity.setCurrentScene(new ArcadeCongratsScene());
+					}
 				});
 				return true;
 			case MENU_BACK:

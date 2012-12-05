@@ -185,7 +185,7 @@ public class ArcadeModeScene extends GameScene {
 		mPauseButton = new Sprite(396, 14,
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.PAUSE_ID),
-				activity.getVertexBufferObjectManager()){
+				activity.getVertexBufferObjectManager()) {
 			@Override
 			public boolean onAreaTouched(final TouchEvent pSceneTouchEvent,
 					final float pTouchAreaLocalX, final float pTouchAreaLocalY) {
@@ -241,7 +241,7 @@ public class ArcadeModeScene extends GameScene {
 
 		this.attachChild(mSliderBlue);
 		registerTouchArea(mSliderBlue);
-		
+
 		this.attachChild(mPauseButton);
 		registerTouchArea(mPauseButton);
 		// this.attachChild(mTextRemainingTime);
@@ -441,10 +441,7 @@ public class ArcadeModeScene extends GameScene {
 			mPlacaColor = Color.rgb(mCores[mActualColor * 3],
 					mCores[mActualColor * 3 + 1], mCores[mActualColor * 3 + 2]);
 		else {
-			if (activity.mLevel <= mThisLevel) {
-				activity.mLevel = mThisLevel + 1;
-			}
-			activity.setCurrentScene(new ArcadeLevelSelect());
+			endLevel();
 		}
 
 		setPlacaColor(mPlacaColor);
@@ -457,6 +454,13 @@ public class ArcadeModeScene extends GameScene {
 
 		// animacao entrando
 
+	}
+
+	public void endLevel() {
+		if (activity.mLevel <= mThisLevel) {
+			activity.mLevel = mThisLevel + 1;
+		}
+		activity.setCurrentScene(new ArcadeLevelSelect());
 	}
 
 	private void updateScore() {
