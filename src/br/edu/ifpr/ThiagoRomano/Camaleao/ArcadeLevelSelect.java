@@ -167,7 +167,7 @@ public class ArcadeLevelSelect extends MenuScene implements
 		this.attachChild(mCaminho[1]);
 		this.attachChild(mCaminho[2]);
 		this.attachChild(mCaminho[3]);
-		if (activity.mLevel < mLevelCross.length) {
+		if (activity.mLevel <= mLevelCross.length) {
 			mGlowingX = new Sprite(mLevelCross[activity.mLevel-1].getX() - 38,
 					mLevelCross[activity.mLevel-1].getY() - 38,
 					activity.mSpritesheetTexturePackTextureRegionLibrary

@@ -11,6 +11,9 @@ public class ArcadeCongratsScene extends MenuScene implements IOnMenuItemClickLi
 	Sprite mBackground;
 	Sprite mEscuro;
 	Sprite mTexto;
+	Sprite mCham;
+	Sprite mChamSombra;
+	Sprite mLingua;
 
 	CamaleaotestActivity activity;
 
@@ -32,6 +35,19 @@ public class ArcadeCongratsScene extends MenuScene implements IOnMenuItemClickLi
 				activity.mSpritesheetTexturePackTextureRegionLibrary2
 						.get(posicoes2.CONGRATS_TEXTO_ID),
 				activity.getVertexBufferObjectManager());
+		
+		mCham = new Sprite(36, 223,
+				activity.mSpritesheetTexturePackTextureRegionLibrary2
+				.get(posicoes2.NINJA_BASE_ID),
+				activity.getVertexBufferObjectManager());
+		mChamSombra = new Sprite(36, 223,
+				activity.mSpritesheetTexturePackTextureRegionLibrary2
+				.get(posicoes2.NINJA_SHADOW_ID),
+				activity.getVertexBufferObjectManager());
+		mLingua = new Sprite(202, 309,
+				activity.mSpritesheetTexturePackTextureRegionLibrary2
+				.get(posicoes2.NINJA_LINGUA_ID),
+				activity.getVertexBufferObjectManager());
 
 		mBack = new SpriteMenuItem(0,
 				activity.mSpritesheetTexturePackTextureRegionLibrary2
@@ -42,7 +58,11 @@ public class ArcadeCongratsScene extends MenuScene implements IOnMenuItemClickLi
 		this.attachChild(mBackground);
 		this.attachChild(mEscuro);
 		this.attachChild(mTexto);
+		this.attachChild(mCham);
+		this.attachChild(mChamSombra);
+		this.attachChild(mLingua);
 		this.addMenuItem(mBack);
+		mBack.setScale(0.6f);
 
 		setBackgroundEnabled(false);
 		setOnMenuItemClickListener(this);

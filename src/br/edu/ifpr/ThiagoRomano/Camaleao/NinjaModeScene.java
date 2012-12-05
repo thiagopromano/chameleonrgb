@@ -33,8 +33,8 @@ public class NinjaModeScene extends GameScene {
 	SliderSprite mSliderGreen;
 	Sprite mAdendo;
 	Sprite mChampShadow;
-	Sprite mPalco;
-	Sprite mFolhasFrente;
+	Sprite mTatame;
+	Sprite mLingua;
 	Sprite mPauseButton;
 
 	Chronometer mChronometer;
@@ -44,7 +44,6 @@ public class NinjaModeScene extends GameScene {
 	Sprite mBackground;
 	Sprite mPlaca;
 	Sprite mPlacaSaindo;
-	Sprite mTronco;
 	Pontuacao mPontuacao;
 
 	int mPlacaColor;
@@ -94,17 +93,17 @@ public class NinjaModeScene extends GameScene {
 
 		updateTime();
 		mBackground = new Sprite(0, 0,
-				activity.mSpritesheetTexturePackTextureRegionLibrary
-						.get(posicoes.FUNDO_ID),
+				activity.mSpritesheetTexturePackTextureRegionLibrary2
+						.get(posicoes2.FUNDO_DOJO_ID),
 				activity.getVertexBufferObjectManager());
-		mFolhasFrente = new Sprite(0, 0,
-				activity.mSpritesheetTexturePackTextureRegionLibrary
-						.get(posicoes.FOLHAS_FRENTE_ID),
+		mLingua = new Sprite(214, 157,
+				activity.mSpritesheetTexturePackTextureRegionLibrary2
+						.get(posicoes2.NINJA_LINGUA_ID),
 				activity.getVertexBufferObjectManager());
 
-		mPalco = new Sprite(62, 365,
-				activity.mSpritesheetTexturePackTextureRegionLibrary
-						.get(posicoes.PALCO_ID),
+		mTatame = new Sprite(35, 399,
+				activity.mSpritesheetTexturePackTextureRegionLibrary2
+						.get(posicoes2.TATAME_ID),
 				activity.getVertexBufferObjectManager());
 
 		mAdendo = new Sprite(-16, -15,
@@ -112,7 +111,7 @@ public class NinjaModeScene extends GameScene {
 						.get(posicoes.NYLON_DETALHES_ID),
 				activity.getVertexBufferObjectManager());
 
-		mPlaca = new Sprite(83, 65,
+		mPlaca = new Sprite(83, 119,
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.NYLON_TROCACOR_ID),
 				activity.getVertexBufferObjectManager());
@@ -121,19 +120,15 @@ public class NinjaModeScene extends GameScene {
 				colorIntToFloat(Color.green(mPlacaColor)),
 				colorIntToFloat(Color.blue(mPlacaColor)));
 
-		mTronco = new Sprite(0, 219,
-				activity.mSpritesheetTexturePackTextureRegionLibrary
-						.get(posicoes.TRONCO_ID),
+
+		mChampShadow = new Sprite(48, 71,
+				activity.mSpritesheetTexturePackTextureRegionLibrary2
+						.get(posicoes2.NINJA_SHADOW_ID),
 				activity.getVertexBufferObjectManager());
 
-		mChampShadow = new Sprite(127, 68,
-				activity.mSpritesheetTexturePackTextureRegionLibrary
-						.get(posicoes.CAMALEAO_SOMBRA_ID),
-				activity.getVertexBufferObjectManager());
-
-		mChamp = new Sprite(127, 68,
-				activity.mSpritesheetTexturePackTextureRegionLibrary
-						.get(posicoes.CAMALEAO_MASK_TROCACOR_ID),
+		mChamp = new Sprite(48, 71,
+				activity.mSpritesheetTexturePackTextureRegionLibrary2
+						.get(posicoes2.NINJA_BASE_ID),
 				activity.getVertexBufferObjectManager());
 
 		mRed = new BarSprite(0, this, 112, 523, activity.mTextureBar,
@@ -197,13 +192,12 @@ public class NinjaModeScene extends GameScene {
 				this, activity.getVertexBufferObjectManager());
 
 		this.attachChild(mBackground);
-		this.attachChild(mPalco);
+		this.attachChild(mTatame);
 
 		this.attachChild(mPlaca);
 		mPlaca.attachChild(mAdendo);
 
-		this.attachChild(mTronco);
-		this.attachChild(mFolhasFrente);
+		this.attachChild(mLingua);
 
 		this.attachChild(mChamp);
 		this.attachChild(mChampShadow);

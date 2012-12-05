@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<texture version="1" file="positions2.png" type="bitmap" width="1024" height="2048" pixelformat="RGBA_8888" minfilter="linear" magfilter="linear" wrapt="clamp" wraps="clamp" premultiplyalpha="false">
+<texture version="1" file="positions2.png" type="bitmap" width="2048" height="2048" pixelformat="RGBA_8888" minfilter="linear" magfilter="linear" wrapt="clamp" wraps="clamp" premultiplyalpha="false">
     <!-- Created with TexturePacker http://texturepacker.com -->
-    <!-- $TexturePacker:SmartUpdate:f9f733dbe6f6adbbc0d981296da47684$ -->
-    <textureregion id="0" src="about_text.png" x="484" y="726" width="365" height="657" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="365" srcheight="657"/>
-    <textureregion id="1" src="add.png" x="2" y="804" width="480" height="800" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="480" srcheight="800"/>
-    <textureregion id="2" src="back.png" x="484" y="1385" width="73" height="115" rotated="true" trimmed="false" srcx="0" srcy="0" srcwidth="73" srcheight="115"/>
-    <textureregion id="3" src="congrats_texto.png" x="2" y="2" width="480" height="800" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="480" srcheight="800"/>
-    <textureregion id="4" src="credits.png" x="484" y="2" width="286" height="722" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="286" srcheight="722"/>
-    <textureregion id="5" src="nylon.png" x="2" y="1606" width="430" height="800" rotated="true" trimmed="false" srcx="0" srcy="0" srcwidth="430" srcheight="800"/>
+    <!-- $TexturePacker:SmartUpdate:a0d4d4cd285f6a4017d6d64518900b2b$ -->
+    <textureregion id="0" src="about_text.png" x="2" y="2" width="365" height="657" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="365" srcheight="657"/>
+    <textureregion id="1" src="add.png" x="369" y="2" width="480" height="800" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="480" srcheight="800"/>
+    <textureregion id="2" src="back.png" x="851" y="2" width="73" height="115" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="73" srcheight="115"/>
+    <textureregion id="3" src="congrats_texto.png" x="926" y="2" width="480" height="800" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="480" srcheight="800"/>
+    <textureregion id="4" src="credits.png" x="1408" y="2" width="286" height="722" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="286" srcheight="722"/>
+    <textureregion id="5" src="fundo_Dojo.jpg" x="2" y="804" width="480" height="800" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="480" srcheight="800"/>
+    <textureregion id="6" src="ninja_base.png" x="484" y="804" width="365" height="382" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="365" srcheight="382"/>
+    <textureregion id="7" src="ninja_lingua.png" x="851" y="804" width="163" height="48" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="163" srcheight="48"/>
+    <textureregion id="8" src="ninja_shadow.png" x="1016" y="804" width="365" height="382" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="365" srcheight="382"/>
+    <textureregion id="9" src="nylon.png" x="1383" y="804" width="430" height="800" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="430" srcheight="800"/>
+    <textureregion id="10" src="tatame.png" x="2" y="1606" width="429" height="129" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="429" srcheight="129"/>
 </texture>
