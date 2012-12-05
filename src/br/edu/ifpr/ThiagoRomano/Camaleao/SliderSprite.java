@@ -6,6 +6,8 @@ import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.texture.region.ITextureRegion;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
+import android.graphics.Color;
+
 public class SliderSprite extends Sprite {
 
 	public int mStep = 1;
@@ -81,6 +83,17 @@ public class SliderSprite extends Sprite {
 				-30);
 		if (pVerify)
 			mScene.ChangeColors(fValor, id);
+		else {
+			int iNewColor = value;
+			int mask = (0xff00ffff >> (8 * id));
+			iNewColor <<= 16;
+			iNewColor >>= id * 8;
+		
+			mScene.colors = (mScene.colors & mask);
+			mScene.colors |= iNewColor;
+			mScene.mChamp.setColor(Color.red(mScene.colors) / 256f,
+					Color.green(mScene.colors) / 256f, Color.blue(mScene.colors) / 256f);
+		}
 	}
 
 }

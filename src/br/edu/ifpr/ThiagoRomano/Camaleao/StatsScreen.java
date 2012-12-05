@@ -47,7 +47,7 @@ public class StatsScreen extends MenuScene implements IOnMenuItemClickListener {
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.S_ID),
 				activity.getVertexBufferObjectManager());
-		mPontuacao = new Pontuacao(186, 300, 2, mMainScene,
+		mPontuacao = new Pontuacao(186, 300, 3, mMainScene,
 				activity.getVertexBufferObjectManager());
 		mTempo = new Pontuacao(95, 351, 3, mMainScene,
 				activity.getVertexBufferObjectManager());

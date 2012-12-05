@@ -5,6 +5,7 @@ import java.util.Random;
 import org.andengine.engine.handler.IUpdateHandler;
 import org.andengine.entity.modifier.MoveModifier;
 import org.andengine.entity.sprite.Sprite;
+import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.shader.constants.ShaderProgramConstants;
 import org.andengine.util.modifier.ease.EaseElasticOut;
 
@@ -14,14 +15,13 @@ import android.view.KeyEvent;
 public class NinjaModeScene extends GameScene {
 
 	static final float STARTING_TIME = 30f;
-	static final float TIME_CORRECT = 4f;
+	static final float TIME_CORRECT = 3f;
 	public final int[] CORES = { 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0,
 			255, 255, 255, 255, 0, 100, 100, 100, };
 	static final int X_PONTUACAO_INICIAL = 330;
 	static final int Y_PONTUACAO_INICIAL = 0;
 
 	CamaleaotestActivity activity;
-	Sprite mChamp;
 	Sprite mBlue;
 	Sprite mRed;
 	Sprite mGreen;
@@ -35,6 +35,7 @@ public class NinjaModeScene extends GameScene {
 	Sprite mChampShadow;
 	Sprite mPalco;
 	Sprite mFolhasFrente;
+	Sprite mPauseButton;
 
 	Chronometer mChronometer;
 
@@ -167,9 +168,7 @@ public class NinjaModeScene extends GameScene {
 						.get(posicoes.MARCADOR_ID),
 				activity.getVertexBufferObjectManager());
 
-		mSliderBlue = new SliderSprite(
-
-		2, this, 372, 688,
+		mSliderBlue = new SliderSprite(2, this, 372, 688,
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.MARCADOR_ID),
 				activity.getVertexBufferObjectManager());
@@ -178,11 +177,23 @@ public class NinjaModeScene extends GameScene {
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.BLACK_BEHIND_ID),
 				activity.getVertexBufferObjectManager());
+		mPauseButton = new Sprite(396, 14,
+				activity.mSpritesheetTexturePackTextureRegionLibrary
+						.get(posicoes.PAUSE_ID),
+				activity.getVertexBufferObjectManager()) {
+			@Override
+			public boolean onAreaTouched(final TouchEvent pSceneTouchEvent,
+					final float pTouchAreaLocalX, final float pTouchAreaLocalY) {
+				setChildScene(mMenuScene, false, true, true);
+				toggleEscuro(true);
+				return true;
+			}
+		};
 
 		mChronometer = new Chronometer(this,
 				activity.getVertexBufferObjectManager());
 
-		mPontuacao = new Pontuacao(X_PONTUACAO_INICIAL, Y_PONTUACAO_INICIAL, 2,
+		mPontuacao = new Pontuacao(X_PONTUACAO_INICIAL, Y_PONTUACAO_INICIAL, 3,
 				this, activity.getVertexBufferObjectManager());
 
 		this.attachChild(mBackground);
@@ -196,7 +207,6 @@ public class NinjaModeScene extends GameScene {
 
 		this.attachChild(mChamp);
 		this.attachChild(mChampShadow);
-
 
 		this.attachChild(mRed);
 		this.attachChild(mGreen);
@@ -215,6 +225,10 @@ public class NinjaModeScene extends GameScene {
 		this.attachChild(mSliderBlue);
 		registerTouchArea(mSliderBlue);
 
+
+		this.attachChild(mPauseButton);
+		registerTouchArea(mPauseButton);
+		
 		// this.attachChild(mTextRemainingTime);
 		this.attachChild(mPontuacao);
 		movements = new MoveModifier(2f, -mPlaca.getWidth(), mPlaca.getX(),

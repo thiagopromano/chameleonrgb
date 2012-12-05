@@ -13,7 +13,7 @@ public class GameScene extends Scene {
 	public PauseMenu mMenuScene;
 	public Scene mConfirmRestart;
 	Sprite mBlackBehind;
-
+	Sprite mChamp;
 	public void ChangeColors(float fValor, int id) {
 
 	}

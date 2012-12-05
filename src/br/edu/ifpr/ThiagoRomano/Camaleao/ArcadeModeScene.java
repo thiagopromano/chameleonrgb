@@ -4,6 +4,7 @@ import java.util.Random;
 
 import org.andengine.engine.handler.IUpdateHandler;
 import org.andengine.entity.IEntity;
+import org.andengine.entity.modifier.AlphaModifier;
 import org.andengine.entity.modifier.DelayModifier;
 import org.andengine.entity.modifier.FadeOutModifier;
 import org.andengine.entity.modifier.MoveModifier;
@@ -12,6 +13,7 @@ import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.sprite.TiledSprite;
 import org.andengine.entity.sprite.batch.SpriteBatch;
 import org.andengine.entity.text.Text;
+import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.shader.constants.ShaderProgramConstants;
 import org.andengine.opengl.texture.region.TiledTextureRegion;
 import org.andengine.util.color.ColorUtils;
@@ -27,7 +29,6 @@ public class ArcadeModeScene extends GameScene {
 	public int[] mCores;
 
 	CamaleaotestActivity activity;
-	Sprite mChamp;
 	Sprite mBlue;
 	Sprite mRed;
 	Sprite mGreen;
@@ -41,9 +42,7 @@ public class ArcadeModeScene extends GameScene {
 	Sprite mChampShadow;
 	Sprite mPalco;
 	Sprite mFolhasFrente;
-
-	static final int X_PONTUACAO_INICIAL = 330;
-	static final int Y_PONTUACAO_INICIAL = 0;
+	Sprite mPauseButton;
 
 	TiledSprite mWisps[] = new TiledSprite[7];
 
@@ -61,8 +60,6 @@ public class ArcadeModeScene extends GameScene {
 	int score = 0;
 	int mThisLevel;
 
-	private Pontuacao mPontuacao;
-
 	public ArcadeModeScene(int pThisLevel, int pCores[]) {
 		mCores = pCores;
 		mThisLevel = pThisLevel;
@@ -75,7 +72,7 @@ public class ArcadeModeScene extends GameScene {
 		createAssets();
 		createPauseMenu();
 		iniciando = false;
-		mConfirmExit = new ConfirmExitScene(this){
+		mConfirmExit = new ConfirmExitScene(this) {
 			@Override
 			public void Quit() {
 				// TODO Auto-generated method stub
@@ -185,8 +182,18 @@ public class ArcadeModeScene extends GameScene {
 						.get(posicoes.BLACK_BEHIND_ID),
 				activity.getVertexBufferObjectManager());
 
-		mPontuacao = new Pontuacao(X_PONTUACAO_INICIAL, Y_PONTUACAO_INICIAL, 2,
-				this, activity.getVertexBufferObjectManager());
+		mPauseButton = new Sprite(396, 14,
+				activity.mSpritesheetTexturePackTextureRegionLibrary
+						.get(posicoes.PAUSE_ID),
+				activity.getVertexBufferObjectManager()){
+			@Override
+			public boolean onAreaTouched(final TouchEvent pSceneTouchEvent,
+					final float pTouchAreaLocalX, final float pTouchAreaLocalY) {
+				setChildScene(mMenuScene, false, true, true);
+				toggleEscuro(true);
+				return true;
+			}
+		};
 
 		for (int i = 0; i < mWisps.length; i++) {
 			mWisps[i] = new TiledSprite(-100, -100, new TiledTextureRegion(
@@ -205,7 +212,7 @@ public class ArcadeModeScene extends GameScene {
 		}
 
 		this.attachChild(mBackground);
-		
+
 		DiferenciadorDeFases();
 		this.attachChild(mPalco);
 
@@ -217,7 +224,7 @@ public class ArcadeModeScene extends GameScene {
 
 		this.attachChild(mChamp);
 		this.attachChild(mChampShadow);
-		
+
 		this.attachChild(mRed);
 		this.attachChild(mGreen);
 		this.attachChild(mBlue);
@@ -234,8 +241,10 @@ public class ArcadeModeScene extends GameScene {
 
 		this.attachChild(mSliderBlue);
 		registerTouchArea(mSliderBlue);
+		
+		this.attachChild(mPauseButton);
+		registerTouchArea(mPauseButton);
 		// this.attachChild(mTextRemainingTime);
-		this.attachChild(mPontuacao);
 		updateScore();
 		this.attachChild(mBlackBehind);
 		mBlackBehind.setVisible(false);
@@ -253,8 +262,7 @@ public class ArcadeModeScene extends GameScene {
 	}
 
 	public void DiferenciadorDeFases() {
-	
-		
+
 	}
 
 	private void RestartWisp(TiledSprite pWisp) {
@@ -368,7 +376,8 @@ public class ArcadeModeScene extends GameScene {
 
 			if (mChamp.getEntityModifierCount() == 0) {
 
-				mChampShadow.registerEntityModifier(new FadeOutModifier(2f) {
+				mChampShadow.registerEntityModifier(new AlphaModifier(2f, 1f,
+						0.24f) {
 
 					@Override
 					protected void onModifierStarted(IEntity pItem) {
@@ -397,16 +406,14 @@ public class ArcadeModeScene extends GameScene {
 
 					}
 
-					@Override
-					protected void onSetValue(IEntity pEntity,
-							float pPercentageDone, float pAlpha) {
-						// TODO Auto-generated method stub
-						super.onSetValue(pEntity, pPercentageDone, pAlpha);
-						if (pAlpha < 0.24f) {
-
-							pEntity.setAlpha(0.24f);
-						}
-					}
+					/*
+					 * @Override protected void onSetValue(IEntity pEntity,
+					 * float pPercentageDone, float pAlpha) { // TODO
+					 * Auto-generated method stub super.onSetValue(pEntity,
+					 * pPercentageDone, pAlpha); if (pAlpha < 0.24f) {
+					 * 
+					 * pEntity.setAlpha(0.24f); } }
+					 */
 
 					@Override
 					protected void onModifierFinished(IEntity pItem) {
@@ -453,7 +460,7 @@ public class ArcadeModeScene extends GameScene {
 	}
 
 	private void updateScore() {
-		mPontuacao.updateScore(score);
+
 	}
 
 	public int colorFloatToInt(float number) {

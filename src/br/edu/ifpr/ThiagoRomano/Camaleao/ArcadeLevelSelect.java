@@ -1,12 +1,21 @@
 package br.edu.ifpr.ThiagoRomano.Camaleao;
 
+import org.andengine.entity.IEntity;
+import org.andengine.entity.modifier.AlphaModifier;
+import org.andengine.entity.modifier.EntityModifier;
+import org.andengine.entity.modifier.FadeOutModifier;
+import org.andengine.entity.modifier.ScaleModifier;
 import org.andengine.entity.scene.menu.MenuScene;
 import org.andengine.entity.scene.menu.MenuScene.IOnMenuItemClickListener;
 import org.andengine.entity.scene.menu.item.IMenuItem;
 import org.andengine.entity.scene.menu.item.SpriteMenuItem;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.opengl.texture.region.ITextureRegion;
+import org.andengine.util.modifier.ease.EaseCubicInOut;
+import org.andengine.util.modifier.ease.EaseQuadInOut;
+import org.andengine.util.modifier.ease.EaseStrongInOut;
 
+import android.hardware.Camera.Size;
 import android.view.KeyEvent;
 
 public class ArcadeLevelSelect extends MenuScene implements
@@ -25,6 +34,8 @@ public class ArcadeLevelSelect extends MenuScene implements
 
 	Sprite mCaminho[] = new Sprite[4];
 	Sprite mUnopen[] = new Sprite[9];
+	Sprite mGlowingX;
+	boolean glowingLow = true;
 	private SpriteMenuItem mBack;
 
 	public ArcadeLevelSelect() {
@@ -135,6 +146,8 @@ public class ArcadeLevelSelect extends MenuScene implements
 				activity.getVertexBufferObjectManager());
 		mBack.setPosition(375, 678);
 
+		// mGlowingX.registerEntityModifier(new AlphaModifier(pDuration,
+		// pFromAlpha, pToAlpha))
 		this.attachChild(mUnopen[0]);
 		this.attachChild(mUnopen[1]);
 		this.attachChild(mUnopen[2]);
@@ -154,9 +167,30 @@ public class ArcadeLevelSelect extends MenuScene implements
 		this.attachChild(mCaminho[1]);
 		this.attachChild(mCaminho[2]);
 		this.attachChild(mCaminho[3]);
-
+		if (activity.mLevel < mLevelCross.length) {
+			mGlowingX = new Sprite(mLevelCross[activity.mLevel-1].getX() - 38,
+					mLevelCross[activity.mLevel-1].getY() - 38,
+					activity.mSpritesheetTexturePackTextureRegionLibrary
+							.get(posicoes.X_ATIVOGRANDE_ID),
+					activity.getVertexBufferObjectManager());
+			attachChild(mGlowingX);
+			mGlowingX.registerEntityModifier(createGlowModifier());
+		}
 		this.addMenuItem(mBack);
 		setOnMenuItemClickListener(this);
+	}
+
+	ScaleModifier createGlowModifier() {
+		return new ScaleModifier(0.7f, (glowingLow) ? 1f : 0.5f,
+				(!glowingLow) ? 1f : 0.5f, EaseQuadInOut.getInstance()) {
+			@Override
+			protected void onModifierFinished(IEntity pItem) {
+				// TODO Auto-generated method stub
+				super.onModifierFinished(pItem);
+				glowingLow = !glowingLow;
+				pItem.registerEntityModifier(createGlowModifier());
+			}
+		};
 	}
 
 	@Override
