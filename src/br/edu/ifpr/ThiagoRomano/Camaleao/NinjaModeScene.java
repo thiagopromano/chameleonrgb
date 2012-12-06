@@ -18,7 +18,7 @@ public class NinjaModeScene extends GameScene {
 	static final float TIME_CORRECT = 3f;
 	public final int[] CORES = { 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0,
 			255, 255, 255, 255, 0, 100, 100, 100, };
-	static final int X_PONTUACAO_INICIAL = 330;
+	static final int X_PONTUACAO_INICIAL = 367;
 	static final int Y_PONTUACAO_INICIAL = 0;
 
 	CamaleaotestActivity activity;
@@ -120,15 +120,14 @@ public class NinjaModeScene extends GameScene {
 				colorIntToFloat(Color.green(mPlacaColor)),
 				colorIntToFloat(Color.blue(mPlacaColor)));
 
-
 		mChampShadow = new Sprite(48, 71,
-				activity.mSpritesheetTexturePackTextureRegionLibrary2
-						.get(posicoes2.NINJA_SHADOW_ID),
+				activity.mSpritesheetTexturePackTextureRegionLibrary
+						.get(posicoes.NINJA_SHADOW_ID),
 				activity.getVertexBufferObjectManager());
 
 		mChamp = new Sprite(48, 71,
-				activity.mSpritesheetTexturePackTextureRegionLibrary2
-						.get(posicoes2.NINJA_BASE_ID),
+				activity.mSpritesheetTexturePackTextureRegionLibrary
+						.get(posicoes.NINJA_BASE_ID),
 				activity.getVertexBufferObjectManager());
 
 		mRed = new BarSprite(0, this, 112, 523, activity.mTextureBar,
@@ -172,7 +171,7 @@ public class NinjaModeScene extends GameScene {
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.BLACK_BEHIND_ID),
 				activity.getVertexBufferObjectManager());
-		mPauseButton = new Sprite(396, 14,
+		mPauseButton = new Sprite(399, 70,
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.PAUSE_ID),
 				activity.getVertexBufferObjectManager()) {
@@ -219,10 +218,9 @@ public class NinjaModeScene extends GameScene {
 		this.attachChild(mSliderBlue);
 		registerTouchArea(mSliderBlue);
 
-
 		this.attachChild(mPauseButton);
 		registerTouchArea(mPauseButton);
-		
+
 		// this.attachChild(mTextRemainingTime);
 		this.attachChild(mPontuacao);
 		movements = new MoveModifier(2f, -mPlaca.getWidth(), mPlaca.getX(),
@@ -304,7 +302,15 @@ public class NinjaModeScene extends GameScene {
 
 	public void nextColor() {
 
-		remainingTime += TIME_CORRECT;
+		if (score <= 50) {
+			remainingTime += 4;
+		} else if (score <= 100) {
+			remainingTime += 3;
+		} else if (score <= 150) {
+			remainingTime += 2;
+		} else {
+			remainingTime += 1;
+		}
 
 		mPlacaColor = Color.rgb(rand.nextInt(255), rand.nextInt(255),
 				rand.nextInt(255));

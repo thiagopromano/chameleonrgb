@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <texture version="1" file="positions2.png" type="bitmap" width="2048" height="2048" pixelformat="RGBA_8888" minfilter="linear" magfilter="linear" wrapt="clamp" wraps="clamp" premultiplyalpha="false">
     <!-- Created with TexturePacker http://texturepacker.com -->
-    <!-- $TexturePacker:SmartUpdate:a0d4d4cd285f6a4017d6d64518900b2b$ -->
-    <textureregion id="0" src="about_text.png" x="2" y="2" width="365" height="657" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="365" srcheight="657"/>
-    <textureregion id="1" src="add.png" x="369" y="2" width="480" height="800" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="480" srcheight="800"/>
-    <textureregion id="2" src="back.png" x="851" y="2" width="73" height="115" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="73" srcheight="115"/>
-    <textureregion id="3" src="congrats_texto.png" x="926" y="2" width="480" height="800" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="480" srcheight="800"/>
-    <textureregion id="4" src="credits.png" x="1408" y="2" width="286" height="722" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="286" srcheight="722"/>
-    <textureregion id="5" src="fundo_Dojo.jpg" x="2" y="804" width="480" height="800" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="480" srcheight="800"/>
-    <textureregion id="6" src="ninja_base.png" x="484" y="804" width="365" height="382" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="365" srcheight="382"/>
-    <textureregion id="7" src="ninja_lingua.png" x="851" y="804" width="163" height="48" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="163" srcheight="48"/>
-    <textureregion id="8" src="ninja_shadow.png" x="1016" y="804" width="365" height="382" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="365" srcheight="382"/>
-    <textureregion id="9" src="nylon.png" x="1383" y="804" width="430" height="800" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="430" srcheight="800"/>
-    <textureregion id="10" src="tatame.png" x="2" y="1606" width="429" height="129" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="429" srcheight="129"/>
+    <!-- $TexturePacker:SmartUpdate:ef02b4889376685e37b25cf94f56ac69$ -->
+    <textureregion id="0" src="Fundo_tela_1_2_3.png" x="804" y="1286" width="480" height="800" rotated="true" trimmed="false" srcx="0" srcy="0" srcwidth="480" srcheight="800"/>
+    <textureregion id="1" src="Fundo_tela_5_6.png" x="2" y="1286" width="480" height="800" rotated="true" trimmed="false" srcx="0" srcy="0" srcwidth="480" srcheight="800"/>
+    <textureregion id="2" src="about_text.png" x="1286" y="804" width="365" height="657" rotated="true" trimmed="false" srcx="0" srcy="0" srcwidth="365" srcheight="657"/>
+    <textureregion id="3" src="add.png" x="804" y="484" width="480" height="800" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="480" srcheight="800"/>
+    <textureregion id="4" src="back.png" x="484" y="562" width="73" height="115" rotated="true" trimmed="false" srcx="0" srcy="0" srcwidth="73" srcheight="115"/>
+    <textureregion id="5" src="congrats_texto.png" x="484" y="2" width="480" height="800" rotated="true" trimmed="false" srcx="0" srcy="0" srcwidth="480" srcheight="800"/>
+    <textureregion id="6" src="credits.png" x="1718" y="2" width="286" height="722" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="286" srcheight="722"/>
+    <textureregion id="7" src="fundo_Dojo.jpg" x="2" y="804" width="480" height="800" rotated="true" trimmed="false" srcx="0" srcy="0" srcwidth="480" srcheight="800"/>
+    <textureregion id="8" src="ninja_lingua.png" x="749" y="484" width="163" height="48" rotated="true" trimmed="false" srcx="0" srcy="0" srcwidth="163" srcheight="48"/>
+    <textureregion id="9" src="nylon.png" x="1286" y="2" width="430" height="800" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="430" srcheight="800"/>
+    <textureregion id="10" src="setinha.png" x="601" y="562" width="77" height="53" rotated="true" trimmed="false" srcx="0" srcy="0" srcwidth="77" srcheight="53"/>
+    <textureregion id="11" src="tatame.png" x="873" y="1768" width="429" height="129" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="429" srcheight="129"/>
+    <textureregion id="12" src="tela_1.png" x="2" y="1768" width="435" height="135" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="435" srcheight="135"/>
+    <textureregion id="13" src="tela_2.png" x="1606" y="1171" width="421" height="539" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="421" srcheight="539"/>
+    <textureregion id="14" src="tela_3.png" x="484" y="484" width="263" height="76" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="263" srcheight="76"/>
+    <textureregion id="15" src="tela_4.jpg" x="2" y="2" width="480" height="800" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="480" srcheight="800"/>
+    <textureregion id="16" src="tela_5.png" x="1606" y="1712" width="421" height="316" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="421" srcheight="316"/>
+    <textureregion id="17" src="tela_6.png" x="439" y="1768" width="432" height="122" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="432" srcheight="122"/>
 </texture>

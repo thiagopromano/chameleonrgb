@@ -1,7 +1,7 @@
 // Definitions for sprite sheet positions
 // Created with www.texturepacker.com
 
-// $TexturePacker:SmartUpdate:5922ccc1ec230cf0dd8831f90d2430b4$
+// $TexturePacker:SmartUpdate:7f58509a2d9c9af01bc8422d00cc53fb$
 
 package br.edu.ifpr.ThiagoRomano.Camaleao;
 
@@ -48,23 +48,25 @@ public interface posicoes
 	public static final int MENU1_ID = 38;
 	public static final int MENU2_ID = 39;
 	public static final int NINJA_ID = 40;
-	public static final int NUMERO1_ID = 41;
-	public static final int NUMERO2_ID = 42;
-	public static final int NUMERO3_ID = 43;
-	public static final int NUMERO4_ID = 44;
-	public static final int NUMERO5_ID = 45;
-	public static final int NUMERO6_ID = 46;
-	public static final int NUMERO7_ID = 47;
-	public static final int NUMERO8_ID = 48;
-	public static final int NUMERO9_ID = 49;
-	public static final int PAUSE_ID = 50;
-	public static final int POEIRA1_ID = 51;
-	public static final int POEIRA2_ID = 52;
-	public static final int POEIRA3_ID = 53;
-	public static final int POEIRA4_ID = 54;
-	public static final int TABUA_ID = 55;
-	public static final int TABUAPAUSA_ID = 56;
-	public static final int TEXTOGERAL_ID = 57;
-	public static final int TITLE_ID = 58;
-	public static final int TRONCO_ID = 59;
+	public static final int NINJA_BASE_ID = 41;
+	public static final int NINJA_SHADOW_ID = 42;
+	public static final int NUMERO1_ID = 43;
+	public static final int NUMERO2_ID = 44;
+	public static final int NUMERO3_ID = 45;
+	public static final int NUMERO4_ID = 46;
+	public static final int NUMERO5_ID = 47;
+	public static final int NUMERO6_ID = 48;
+	public static final int NUMERO7_ID = 49;
+	public static final int NUMERO8_ID = 50;
+	public static final int NUMERO9_ID = 51;
+	public static final int PAUSE_ID = 52;
+	public static final int POEIRA1_ID = 53;
+	public static final int POEIRA2_ID = 54;
+	public static final int POEIRA3_ID = 55;
+	public static final int POEIRA4_ID = 56;
+	public static final int TABUA_ID = 57;
+	public static final int TABUAPAUSA_ID = 58;
+	public static final int TEXTOGERAL_ID = 59;
+	public static final int TITLE_ID = 60;
+	public static final int TRONCO_ID = 61;
 }

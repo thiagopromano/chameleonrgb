@@ -199,7 +199,8 @@ public class ArcadeLevelSelect extends MenuScene implements
 		if (pMenuItem.isVisible())
 			switch (pMenuItem.getID()) {
 			case MENU_LEVEL_1:
-				activity.setCurrentScene(new ArcadeModeScene(1, new int[] {
+				activity.setCurrentScene(new TutorialScene(0));
+				/*activity.setCurrentScene(new ArcadeModeScene(1, new int[] {
 
 				255, 255, 0,
 
@@ -211,7 +212,7 @@ public class ArcadeLevelSelect extends MenuScene implements
 
 				0, 0, 255,
 
-				255, 255, 255, }));
+				255, 255, 255, }));*/
 				return true;
 			case MENU_LEVEL_2:
 				activity.setCurrentScene(new ArcadeModeScene(2, new int[] {
