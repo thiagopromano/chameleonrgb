@@ -27,6 +27,12 @@ public class TutorialScene extends MenuScene implements
 					activity.mSpritesheetTexturePackTextureRegionLibrary2
 							.get(posicoes2.FUNDO_TELA_1_2_3_ID),
 					activity.getVertexBufferObjectManager()));
+				
+			attachChild(new Sprite(0, 0,
+					activity.mSpritesheetTexturePackTextureRegionLibrary
+							.get(posicoes.BLACK_BEHIND_ID),
+					activity.getVertexBufferObjectManager()));
+			
 			attachChild(new Sprite(32, 346,
 					activity.mSpritesheetTexturePackTextureRegionLibrary2
 							.get(posicoes2.TELA_1_ID),
@@ -109,10 +115,17 @@ public class TutorialScene extends MenuScene implements
 					activity.mSpritesheetTexturePackTextureRegionLibrary2
 							.get(posicoes2.FUNDO_TELA_5_6_ID),
 					activity.getVertexBufferObjectManager()));
+					
+			attachChild(new Sprite(0, 0,
+				activity.mSpritesheetTexturePackTextureRegionLibrary
+						.get(posicoes.BLACK_BEHIND_ID),
+				activity.getVertexBufferObjectManager()));
+				
 			attachChild(new Sprite(31, 347,
 					activity.mSpritesheetTexturePackTextureRegionLibrary2
 							.get(posicoes2.TELA_6_ID),
 					activity.getVertexBufferObjectManager()));
+					
 			mNext = new SpriteMenuItem(1,
 					activity.mSpritesheetTexturePackTextureRegionLibrary
 							.get(posicoes.GO_ID),
