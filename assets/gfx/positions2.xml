@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <texture version="1" file="positions2.png" type="bitmap" width="2048" height="2048" pixelformat="RGBA_8888" minfilter="linear" magfilter="linear" wrapt="clamp" wraps="clamp" premultiplyalpha="false">
     <!-- Created with TexturePacker http://texturepacker.com -->
-    <!-- $TexturePacker:SmartUpdate:ef02b4889376685e37b25cf94f56ac69$ -->
+    <!-- $TexturePacker:SmartUpdate:b14ae19dc25af1d4008b61f403f84076$ -->
     <textureregion id="0" src="Fundo_tela_1_2_3.png" x="804" y="1286" width="480" height="800" rotated="true" trimmed="false" srcx="0" srcy="0" srcwidth="480" srcheight="800"/>
     <textureregion id="1" src="Fundo_tela_5_6.png" x="2" y="1286" width="480" height="800" rotated="true" trimmed="false" srcx="0" srcy="0" srcwidth="480" srcheight="800"/>
     <textureregion id="2" src="about_text.png" x="1286" y="804" width="365" height="657" rotated="true" trimmed="false" srcx="0" srcy="0" srcwidth="365" srcheight="657"/>

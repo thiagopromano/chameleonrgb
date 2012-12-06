@@ -35,7 +35,7 @@ public class CamaleaotestActivity extends SimpleBaseGameActivity {
 	// ===========================================================
 	// Fields
 	// ===========================================================
-
+ 
 	public Camera mCamera;
 	private BitmapTextureAtlas mBitmapTextureAtlas;
 
@@ -43,7 +43,7 @@ public class CamaleaotestActivity extends SimpleBaseGameActivity {
 	public static CamaleaotestActivity instance;
 	public Font mFont;
 
-	private BitmapTextureAtlas mFontTexture;
+	private BitmapTextureAtlas mFontTexture; 
 	public TexturePackTextureRegionLibrary mSpritesheetTexturePackTextureRegionLibrary;
 	public TexturePackTextureRegionLibrary mSpritesheetTexturePackTextureRegionLibrary2;
 	public TextureRegion mTextureBar;

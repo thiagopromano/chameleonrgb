@@ -17,7 +17,6 @@ public class StatsScreen extends MenuScene implements IOnMenuItemClickListener {
 	CamaleaotestActivity activity;
 	private NinjaModeScene mMainScene;
 	private Sprite mTextoGeral;
-	private Sprite mS;
 	private Pontuacao mPontuacao;
 	private Pontuacao mTempo;
 
@@ -43,10 +42,6 @@ public class StatsScreen extends MenuScene implements IOnMenuItemClickListener {
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.TEXTOGERAL_ID),
 				activity.getVertexBufferObjectManager());
-		this.mS = new Sprite(353, 309,
-				activity.mSpritesheetTexturePackTextureRegionLibrary
-						.get(posicoes.S_ID),
-				activity.getVertexBufferObjectManager());
 		mPontuacao = new Pontuacao(186, 300, 3, mMainScene,
 				activity.getVertexBufferObjectManager());
 		mTempo = new Pontuacao(95, 351, 3, mMainScene,
@@ -54,7 +49,6 @@ public class StatsScreen extends MenuScene implements IOnMenuItemClickListener {
 
 		addMenuItem(resetMenuItem);
 		this.attachChild(mTextoGeral);
-		this.attachChild(mS);
 		this.attachChild(mPontuacao);
 		this.attachChild(mTempo);
 		this.setBackgroundEnabled(false);
