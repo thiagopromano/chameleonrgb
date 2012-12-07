@@ -57,7 +57,12 @@ public class Pontuacao extends SpriteGroup {
 		}
 		this.setScale(0.75f);
 	}
-
+	@Override
+	public void reset() {
+		// TODO Auto-generated method stub
+		super.reset();
+		this.setScale(0.75f);
+	}
 	public void updateScore(int score) {
 
 		for (int i = 0; i < mNumeros.length; i++) {

@@ -253,6 +253,7 @@ public class NinjaModeScene extends GameScene {
 		updateTime();
 		updateScore();
 		this.reset();
+		
 		registerTouchArea(mPlacaStart.goMenuItem);
 		mChronometer.restart();
 
