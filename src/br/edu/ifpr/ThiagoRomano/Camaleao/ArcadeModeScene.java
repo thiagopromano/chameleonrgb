@@ -381,6 +381,7 @@ public class ArcadeModeScene extends GameScene {
 
 					@Override
 					protected void onModifierStarted(IEntity pItem) {
+						activity.getEngine().vibrate(2000);
 						iniciando = true;
 						mSliderRed.setPosition(SliderSprite.MIN_X
 								+ colorIntToFloat(Color.red(mPlacaColor))
@@ -434,7 +435,6 @@ public class ArcadeModeScene extends GameScene {
 		score++;
 		updateScore();
 		mActualColor++;
-
 		mChampShadow.setAlpha(1f);
 		iniciando = false;
 		if (mActualColor * 3 + 2 < mCores.length)

@@ -18,10 +18,12 @@ import org.andengine.util.texturepack.TexturePackLoader;
 import org.andengine.util.texturepack.TexturePackTextureRegionLibrary;
 import org.andengine.util.texturepack.exception.TexturePackParseException;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Looper;
+import android.os.Vibrator;
 import android.view.KeyEvent;
 
 public class CamaleaotestActivity extends SimpleBaseGameActivity {
@@ -52,6 +54,7 @@ public class CamaleaotestActivity extends SimpleBaseGameActivity {
 	public BitmapTextureAtlas mBitmapTextureAtlasSplash;
 	
 	public int mLevel = 1; //1
+	//public Vibrator mVibrator;
  
 	// ===========================================================
 	// Constructors
@@ -73,9 +76,12 @@ public class CamaleaotestActivity extends SimpleBaseGameActivity {
 				ScreenOrientation.PORTRAIT_FIXED, new RatioResolutionPolicy(
 						CAMERA_WIDTH, CAMERA_HEIGHT), this.mCamera);
 		mEngineOptions.getRenderOptions().setDithering(true);
-		mEngineOptions.getTouchOptions().setNeedsMultiTouch(true);
+		mEngineOptions.getTouchOptions().setNeedsMultiTouch(true); 
 		mEngineOptions.getAudioOptions().setNeedsSound(true);
 		mEngineOptions.getAudioOptions().setNeedsMusic(true);
+		
+		
+		//mVibrator = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
 		return mEngineOptions;
 	}
 
@@ -108,7 +114,7 @@ public class CamaleaotestActivity extends SimpleBaseGameActivity {
 	@Override
 	protected Scene onCreateScene() {
 		this.mEngine.registerUpdateHandler(new FPSLogger());
-
+		mEngine.enableVibrator(this);
 		mCurrentScene = new SplashScene();
 
 		return mCurrentScene;
