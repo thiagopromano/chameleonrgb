@@ -124,6 +124,8 @@ public class MainMenuScene extends MenuScene implements
 				activity.getVertexBufferObjectManager());
 		attachChild(mBlackBehind);
 		mBlackBehind.setVisible(false);
+		
+		Sounds.getSharedInstace().mMusic.play();
 
 	}
 

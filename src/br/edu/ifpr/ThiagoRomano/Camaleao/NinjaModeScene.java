@@ -303,6 +303,8 @@ public class NinjaModeScene extends GameScene {
 
 	public void nextColor() {
 		activity.getEngine().vibrate(200);
+		if (rand.nextBoolean()) { Sounds.getSharedInstace().mYay.play();
+		 }else{ Sounds.getSharedInstace().mUhul.play(); }
 		if (score <= 50) {
 			remainingTime += 4;
 		} else if (score <= 100) {

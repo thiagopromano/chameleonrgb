@@ -38,7 +38,7 @@ public class TutorialScene extends MenuScene implements
 							.get(posicoes2.TELA_1_ID),
 					activity.getVertexBufferObjectManager()));
 
-			mNext = new SpriteMenuItem(0,
+			mNext = new SpriteMenuItem(0, 
 					activity.mSpritesheetTexturePackTextureRegionLibrary2
 							.get(posicoes2.SETINHA_ID),
 					activity.getVertexBufferObjectManager());
