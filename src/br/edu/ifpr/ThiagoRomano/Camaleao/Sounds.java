@@ -11,8 +11,10 @@ import org.andengine.util.debug.Debug;
 public class Sounds {
 	public static Sounds instance;
 	CamaleaotestActivity activity;
-	public Sound mUhul;
-	public Sound mYay;
+	public Sound mArcadeAcerto;
+	public Sound mNinjaAcerto;
+	public Sound mNinjaComeco;
+	public Sound mJogoComeco;
 	public Music mMusic;
 	static public Sounds getSharedInstace()
 	{
@@ -25,10 +27,12 @@ public class Sounds {
 		try {
 			SoundFactory.setAssetBasePath("mfx/");
 			MusicFactory.setAssetBasePath("mfx/");
-			mUhul = SoundFactory.createSoundFromAsset(activity.getSoundManager(), activity, "Uhul.ogg");
-			mYay = SoundFactory.createSoundFromAsset(activity.getSoundManager(), activity, "Yay.ogg");
+			mArcadeAcerto = SoundFactory.createSoundFromAsset(activity.getSoundManager(), activity, "marimba.mp3");
+			mNinjaAcerto = SoundFactory.createSoundFromAsset(activity.getSoundManager(), activity, "grito.mp3");
+			mNinjaComeco = SoundFactory.createSoundFromAsset(activity.getSoundManager(), activity, "sino.mp3");
+			mJogoComeco = SoundFactory.createSoundFromAsset(activity.getSoundManager(), activity, "bate.mp3");
 			mMusic = MusicFactory.createMusicFromAsset(activity.getMusicManager(), activity, "musica1.mp3");
-			mMusic.setLooping(true);
+			mMusic.setLooping(false);
 		} catch (final IOException e) {
 			Debug.e(e);
 		}

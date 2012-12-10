@@ -125,6 +125,7 @@ public class MainMenuScene extends MenuScene implements
 		attachChild(mBlackBehind);
 		mBlackBehind.setVisible(false);
 		
+		Sounds.getSharedInstace().mJogoComeco.play();
 		Sounds.getSharedInstace().mMusic.play();
 
 	}

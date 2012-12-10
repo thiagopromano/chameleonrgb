@@ -381,8 +381,8 @@ public class ArcadeModeScene extends GameScene {
 
 					@Override
 					protected void onModifierStarted(IEntity pItem) {
-						if (rand.nextBoolean()) { Sounds.getSharedInstace().mYay.play();
-						 }else{ Sounds.getSharedInstace().mUhul.play(); }
+						Sounds.getSharedInstace().mArcadeAcerto.play();
+
 						activity.getEngine().vibrate(2000);
 						iniciando = true;
 						mSliderRed.setPosition(SliderSprite.MIN_X
@@ -447,7 +447,6 @@ public class ArcadeModeScene extends GameScene {
 		}
 
 		setPlacaColor(mPlacaColor);
-		 
 
 		// mPlaca.setX(-mPlaca.getX());
 
