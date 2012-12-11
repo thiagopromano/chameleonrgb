@@ -13,7 +13,10 @@ public class TutorialScene extends MenuScene implements
 		IOnMenuItemClickListener {
 
 	CamaleaotestActivity activity;
-
+	
+	final int OFFSET_X = 90;
+	final int OFFSET_Y = 50;
+	
 	IMenuItem mNext;
 	int tela;
 	boolean glowingLow;
@@ -21,6 +24,20 @@ public class TutorialScene extends MenuScene implements
 		activity = CamaleaotestActivity.getSharedInstance();
 		this.mCamera = activity.mCamera;
 		tela = number;
+		
+		mNext = new SpriteMenuItem(0,
+				activity.mSpritesheetTexturePackTextureRegionLibrary2
+						.get(posicoes2.SETINHA_ID),
+				activity.getVertexBufferObjectManager()){
+			@Override
+			public boolean contains(float pX, float pY) {
+				// TODO Auto-generated method stub
+				return (pX > mNext.getX() - OFFSET_X && pX < mNext.getX() + mNext.getWidth() + OFFSET_X &&
+						pY > mNext.getY() - OFFSET_Y && pY < mNext.getY() + mNext.getHeight() + OFFSET_Y);
+			}
+		};
+		mNext.setPosition(389, 725);
+		
 		switch (number) {
 		case 0:
 			attachChild(new Sprite(0, 0,
@@ -37,13 +54,6 @@ public class TutorialScene extends MenuScene implements
 					activity.mSpritesheetTexturePackTextureRegionLibrary2
 							.get(posicoes2.TELA_1_ID),
 					activity.getVertexBufferObjectManager()));
-
-			mNext = new SpriteMenuItem(0, 
-					activity.mSpritesheetTexturePackTextureRegionLibrary2
-							.get(posicoes2.SETINHA_ID),
-					activity.getVertexBufferObjectManager());
-			mNext.setPosition(389, 725);
-			this.addMenuItem(mNext);
 			break;
 		case 1:
 			attachChild(new Sprite(0, 0,
@@ -54,13 +64,6 @@ public class TutorialScene extends MenuScene implements
 					activity.mSpritesheetTexturePackTextureRegionLibrary2
 							.get(posicoes2.TELA_2_ID),
 					activity.getVertexBufferObjectManager()));
-
-			mNext = new SpriteMenuItem(0,
-					activity.mSpritesheetTexturePackTextureRegionLibrary2
-							.get(posicoes2.SETINHA_ID),
-					activity.getVertexBufferObjectManager());
-			mNext.setPosition(389, 725);
-			this.addMenuItem(mNext);
 			break;
 		case 2:
 			attachChild(new Sprite(0, 0,
@@ -71,13 +74,6 @@ public class TutorialScene extends MenuScene implements
 					activity.mSpritesheetTexturePackTextureRegionLibrary2
 							.get(posicoes2.TELA_3_ID),
 					activity.getVertexBufferObjectManager()));
-
-			mNext = new SpriteMenuItem(0,
-					activity.mSpritesheetTexturePackTextureRegionLibrary2
-							.get(posicoes2.SETINHA_ID),
-					activity.getVertexBufferObjectManager());
-			mNext.setPosition(389, 725);
-			this.addMenuItem(mNext);
 			break;
 		case 3:
 
@@ -85,13 +81,6 @@ public class TutorialScene extends MenuScene implements
 					activity.mSpritesheetTexturePackTextureRegionLibrary2
 							.get(posicoes2.TELA_4_ID),
 					activity.getVertexBufferObjectManager()));
-
-			mNext = new SpriteMenuItem(0,
-					activity.mSpritesheetTexturePackTextureRegionLibrary2
-							.get(posicoes2.SETINHA_ID),
-					activity.getVertexBufferObjectManager());
-			mNext.setPosition(389, 725);
-			this.addMenuItem(mNext);
 			break;
 		case 4:
 			attachChild(new Sprite(0, 0,
@@ -102,13 +91,6 @@ public class TutorialScene extends MenuScene implements
 					activity.mSpritesheetTexturePackTextureRegionLibrary2
 							.get(posicoes2.TELA_5_ID),
 					activity.getVertexBufferObjectManager()));
-
-			mNext = new SpriteMenuItem(0,
-					activity.mSpritesheetTexturePackTextureRegionLibrary2
-							.get(posicoes2.SETINHA_ID),
-					activity.getVertexBufferObjectManager());
-			mNext.setPosition(389, 725);
-			this.addMenuItem(mNext);
 			break;
 		case 5:
 			attachChild(new Sprite(0, 0,
@@ -125,17 +107,16 @@ public class TutorialScene extends MenuScene implements
 					activity.mSpritesheetTexturePackTextureRegionLibrary2
 							.get(posicoes2.TELA_6_ID),
 					activity.getVertexBufferObjectManager()));
-					
 			mNext = new SpriteMenuItem(1,
 					activity.mSpritesheetTexturePackTextureRegionLibrary
 							.get(posicoes.GO_ID),
 					activity.getVertexBufferObjectManager());
 			mNext.setPosition(164, 440);
-			this.addMenuItem(mNext);
 			break;
 		default:
 			break;
 		}
+		this.addMenuItem(mNext);
 		if (mNext != null)
 		{
 			mNext.registerEntityModifier(createGlowModifier());
