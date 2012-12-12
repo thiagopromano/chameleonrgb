@@ -3,7 +3,7 @@
 
 // $TexturePacker:SmartUpdate:ebdd888a438692fbd4e0f0fb14895b94$
 
-package br.edu.ifpr.ThiagoRomano.Camaleao;
+package br.edu.ifpr.ThiagoRomano.ChameleonRGB;
 
 public interface posicoes
 {

@@ -1,4 +1,4 @@
-package br.edu.ifpr.ThiagoRomano.Camaleao;
+package br.edu.ifpr.ThiagoRomano.ChameleonRGB;
 
 import org.andengine.engine.handler.IUpdateHandler;
 import org.andengine.entity.IEntity;

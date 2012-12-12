@@ -1,4 +1,4 @@
-package br.edu.ifpr.ThiagoRomano.Camaleao;
+package br.edu.ifpr.ThiagoRomano.ChameleonRGB;
 
 import org.andengine.entity.scene.menu.MenuScene;
 import org.andengine.entity.scene.menu.MenuScene.IOnMenuItemClickListener;

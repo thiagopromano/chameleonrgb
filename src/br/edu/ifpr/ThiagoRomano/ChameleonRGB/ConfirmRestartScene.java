@@ -1,25 +1,21 @@
-package br.edu.ifpr.ThiagoRomano.Camaleao;
+package br.edu.ifpr.ThiagoRomano.ChameleonRGB;
 
 import org.andengine.entity.primitive.Rectangle;
-import org.andengine.entity.scene.Scene;
 import org.andengine.entity.scene.menu.MenuScene;
 import org.andengine.entity.scene.menu.MenuScene.IOnMenuItemClickListener;
 import org.andengine.entity.scene.menu.item.IMenuItem;
-import org.andengine.entity.scene.menu.item.SpriteMenuItem;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
-import android.opengl.GLES20;
-
-public class ConfirmExitGame extends MenuScene implements
+public class ConfirmRestartScene extends MenuScene implements
 		IOnMenuItemClickListener {
 
 	private static final int MENU_YES = 0;
 	private static final int MENU_NO = 1;
-	private MainMenuScene mMainScene;
+	private GameScene mMainScene;
 	private CamaleaotestActivity activity;
 
-	public ConfirmExitGame(MainMenuScene mMainScene) {
+	public ConfirmRestartScene(GameScene mMainScene) {
 		super(CamaleaotestActivity.getSharedInstance().mCamera);
 		this.mMainScene = mMainScene;
 		activity = CamaleaotestActivity.getSharedInstance();
@@ -63,12 +59,17 @@ public class ConfirmExitGame extends MenuScene implements
 		case MENU_YES:
 			/* Restart the animation. */
 
-			activity.finish();
+			this.mMainScene.reset();
+
+			/* Remove the menu and reset it. */
+			this.mMainScene.clearChildScene();
+			this.mMainScene.restart();
+			mMainScene.toggleEscuro(false);
 			return true;
 		case MENU_NO:
 			/* End Activity. */
-			this.mMainScene.clearChildScene();
-			mMainScene.toggleEscuro(false);
+			mMainScene
+			.setChildScene(mMainScene.mMenuScene, false, true, true);
 			return true;
 		default:
 			return false;
@@ -102,7 +103,7 @@ public class ConfirmExitGame extends MenuScene implements
 
 		}
 
-		@Override
+		@Override 
 		public void onUnselected() {
 			// TODO Auto-generated method stub
 

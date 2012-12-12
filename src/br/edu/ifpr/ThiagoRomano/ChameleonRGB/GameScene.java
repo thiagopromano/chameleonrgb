@@ -1,4 +1,4 @@
-package br.edu.ifpr.ThiagoRomano.Camaleao;
+package br.edu.ifpr.ThiagoRomano.ChameleonRGB;
 
 import org.andengine.entity.scene.Scene;
 import org.andengine.entity.sprite.Sprite;

@@ -1,4 +1,4 @@
-package br.edu.ifpr.ThiagoRomano.Camaleao;
+package br.edu.ifpr.ThiagoRomano.ChameleonRGB;
 
 import org.andengine.entity.IEntity;
 import org.andengine.entity.modifier.DelayModifier;
@@ -126,7 +126,7 @@ public class MainMenuScene extends MenuScene implements
 		mBlackBehind.setVisible(false);
 		
 		Sounds.getSharedInstace().mJogoComeco.play();
-		Sounds.getSharedInstace().mMusic.play();
+		//Sounds.getSharedInstace().mMusic.play();
 
 	}
 

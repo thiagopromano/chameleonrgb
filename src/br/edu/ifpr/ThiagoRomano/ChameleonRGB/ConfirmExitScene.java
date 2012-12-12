@@ -1,13 +1,17 @@
-package br.edu.ifpr.ThiagoRomano.Camaleao;
+package br.edu.ifpr.ThiagoRomano.ChameleonRGB;
 
 import org.andengine.entity.primitive.Rectangle;
+import org.andengine.entity.scene.Scene;
 import org.andengine.entity.scene.menu.MenuScene;
 import org.andengine.entity.scene.menu.MenuScene.IOnMenuItemClickListener;
 import org.andengine.entity.scene.menu.item.IMenuItem;
+import org.andengine.entity.scene.menu.item.SpriteMenuItem;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
-public class ConfirmRestartScene extends MenuScene implements
+import android.opengl.GLES20;
+
+public class ConfirmExitScene extends MenuScene implements
 		IOnMenuItemClickListener {
 
 	private static final int MENU_YES = 0;
@@ -15,7 +19,7 @@ public class ConfirmRestartScene extends MenuScene implements
 	private GameScene mMainScene;
 	private CamaleaotestActivity activity;
 
-	public ConfirmRestartScene(GameScene mMainScene) {
+	public ConfirmExitScene(GameScene mMainScene) {
 		super(CamaleaotestActivity.getSharedInstance().mCamera);
 		this.mMainScene = mMainScene;
 		activity = CamaleaotestActivity.getSharedInstance();
@@ -57,23 +61,20 @@ public class ConfirmRestartScene extends MenuScene implements
 			float pMenuItemLocalX, float pMenuItemLocalY) {
 		switch (pMenuItem.getID()) {
 		case MENU_YES:
-			/* Restart the animation. */
-
-			this.mMainScene.reset();
-
-			/* Remove the menu and reset it. */
-			this.mMainScene.clearChildScene();
-			this.mMainScene.restart();
+			Quit();
 			mMainScene.toggleEscuro(false);
 			return true;
 		case MENU_NO:
-			/* End Activity. */
-			mMainScene
-			.setChildScene(mMainScene.mMenuScene, false, true, true);
+			this.mMainScene.clearChildScene();
+			mMainScene.toggleEscuro(false);
 			return true;
 		default:
 			return false;
 		}
+	}
+
+	public void Quit() {
+		activity.setCurrentScene(new MainMenuScene());
 	}
 
 	@Override
@@ -103,7 +104,7 @@ public class ConfirmRestartScene extends MenuScene implements
 
 		}
 
-		@Override 
+		@Override
 		public void onUnselected() {
 			// TODO Auto-generated method stub
 

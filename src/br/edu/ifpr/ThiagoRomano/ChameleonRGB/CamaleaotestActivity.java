@@ -1,4 +1,4 @@
-package br.edu.ifpr.ThiagoRomano.Camaleao;
+package br.edu.ifpr.ThiagoRomano.ChameleonRGB;
 
 import org.andengine.engine.camera.Camera;
 import org.andengine.engine.options.EngineOptions;
@@ -54,6 +54,8 @@ public class CamaleaotestActivity extends SimpleBaseGameActivity {
 	public BitmapTextureAtlas mBitmapTextureAtlasSplash;
 	
 	public int mLevel = 1; //1
+	public boolean mVibra = true;
+	public boolean mSom = true;
 	//public Vibrator mVibrator;
  
 	// ===========================================================
