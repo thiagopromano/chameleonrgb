@@ -39,7 +39,7 @@ public class PlacaNinjaScreen extends SpriteGroup {
 					ficaInvisivel();
 					mMainScene.iniciando = false;
 					mMainScene.mChronometer.anima();
-					Sounds.getSharedInstace().mNinjaComeco.play();
+					Sounds.getSharedInstace().playNinjaComeco();
 
 				}
 				return true;

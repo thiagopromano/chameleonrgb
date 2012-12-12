@@ -1,15 +1,9 @@
 package br.edu.ifpr.ThiagoRomano.ChameleonRGB;
 
-import org.andengine.entity.primitive.Rectangle;
-import org.andengine.entity.scene.Scene;
 import org.andengine.entity.scene.menu.MenuScene;
 import org.andengine.entity.scene.menu.MenuScene.IOnMenuItemClickListener;
 import org.andengine.entity.scene.menu.item.IMenuItem;
-import org.andengine.entity.scene.menu.item.SpriteMenuItem;
 import org.andengine.entity.sprite.Sprite;
-import org.andengine.opengl.vbo.VertexBufferObjectManager;
-
-import android.opengl.GLES20;
 
 public class ConfirmExitScene extends MenuScene implements
 		IOnMenuItemClickListener {
@@ -81,35 +75,4 @@ public class ConfirmExitScene extends MenuScene implements
 	public void reset() {
 
 	}
-
-	public class MenuRectangleRegion extends Rectangle implements IMenuItem {
-		private int ID;
-
-		public MenuRectangleRegion(int ID, float pX, float pY, float pWidth,
-				float pHeight,
-				VertexBufferObjectManager vertexBufferObjectManager) {
-			super(pX, pY, pWidth, pHeight, vertexBufferObjectManager);
-			this.ID = ID;
-			this.setAlpha(0);
-		}
-
-		@Override
-		public int getID() {
-			return ID;
-		}
-
-		@Override
-		public void onSelected() {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void onUnselected() {
-			// TODO Auto-generated method stub
-
-		}
-
-	}
-
 }

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data version="1.0">
     <struct type="Settings">
+        <key>fileFormatVersion</key>
+        <int>1</int>
         <key>variation</key>
         <string>main</string>
         <key>verbose</key>
@@ -17,8 +19,6 @@
         <false/>
         <key>dpi</key>
         <uint>72</uint>
-        <key>allowFreeSize</key>
-        <false/>
         <key>dataFormat</key>
         <string>andengine</string>
         <key>textureFileName</key>
@@ -73,6 +73,12 @@
             <enum type="AlgorithmSettings::AlgorithmId">MaxRects</enum>
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
+            <key>sizeConstraints</key>
+            <enum type="AlgorithmSettings::SizeConstraints">POT</enum>
+            <key>forceSquared</key>
+            <false/>
+            <key>forceWordAligned</key>
+            <false/>
             <key>maxRects</key>
             <struct type="AlgorithmMaxRectsSettings">
                 <key>heuristic</key>
@@ -91,9 +97,9 @@
             <key>minFilter</key>
             <enum type="AndEngine::MinFilter">Linear</enum>
             <key>packageName</key>
-            <string>br.edu.ifpr.ThiagoRomano.Camaleao</string>
+            <string>br.edu.ifpr.ThiagoRomano.ChameleonRGB</string>
             <key>javaFileName</key>
-            <filename>src/br/edu/ifpr/ThiagoRomano/Camaleao/posicoes.java</filename>
+            <filename>src/br/edu/ifpr/ThiagoRomano/ChameleonRGB/posicoes.java</filename>
             <key>wrap</key>
             <struct type="AndEngineWrap">
                 <key>s</key>
@@ -122,16 +128,14 @@
             <double>1</double>
             <key>scaleMode</key>
             <enum type="ScaleMode">Smooth</enum>
-            <key>crop</key>
-            <false/>
             <key>innerPadding</key>
             <uint>0</uint>
             <key>extrude</key>
             <uint>0</uint>
             <key>trimThreshold</key>
             <uint>1</uint>
-            <key>trim</key>
-            <false/>
+            <key>trimMode</key>
+            <enum type="SpriteSettings::TrimMode">None</enum>
             <key>heuristicMask</key>
             <false/>
         </struct>

@@ -302,8 +302,8 @@ public class NinjaModeScene extends GameScene {
 	MoveModifier movements;
 
 	public void nextColor() {
-		activity.getEngine().vibrate(200);
-		Sounds.getSharedInstace().mNinjaAcerto.play();
+		activity.vibrate(200);
+		Sounds.getSharedInstace().playNinjaAcerto();
 		if (score <= 50) {
 			remainingTime += 4;
 		} else if (score <= 100) {

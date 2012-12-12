@@ -1,7 +1,7 @@
 // Definitions for sprite sheet positions
 // Created with www.texturepacker.com
 
-// $TexturePacker:SmartUpdate:ebdd888a438692fbd4e0f0fb14895b94$
+// $TexturePacker:SmartUpdate:82633486d6a3b790abfa93d468344d47$
 
 package br.edu.ifpr.ThiagoRomano.ChameleonRGB;
 
@@ -64,9 +64,13 @@ public interface posicoes
 	public static final int POEIRA2_ID = 54;
 	public static final int POEIRA3_ID = 55;
 	public static final int POEIRA4_ID = 56;
-	public static final int TABUA_ID = 57;
-	public static final int TABUAPAUSA_ID = 58;
-	public static final int TEXTOGERAL_ID = 59;
-	public static final int TITLE_ID = 60;
-	public static final int TRONCO_ID = 61;
+	public static final int SOM_DESLIGADO_ID = 57;
+	public static final int SOM_LIGADO_ID = 58;
+	public static final int TABUA_ID = 59;
+	public static final int TABUAPAUSA_ID = 60;
+	public static final int TEXTOGERAL_ID = 61;
+	public static final int TITLE_ID = 62;
+	public static final int TRONCO_ID = 63;
+	public static final int VIBRA_DESLIGADO_ID = 64;
+	public static final int VIBRA_LIGADO_ID = 65;
 }

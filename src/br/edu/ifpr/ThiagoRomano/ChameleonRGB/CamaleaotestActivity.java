@@ -37,7 +37,7 @@ public class CamaleaotestActivity extends SimpleBaseGameActivity {
 	// ===========================================================
 	// Fields
 	// ===========================================================
- 
+
 	public Camera mCamera;
 	private BitmapTextureAtlas mBitmapTextureAtlas;
 
@@ -45,19 +45,20 @@ public class CamaleaotestActivity extends SimpleBaseGameActivity {
 	public static CamaleaotestActivity instance;
 	public Font mFont;
 
-	private BitmapTextureAtlas mFontTexture; 
+	private BitmapTextureAtlas mFontTexture;
 	public TexturePackTextureRegionLibrary mSpritesheetTexturePackTextureRegionLibrary;
 	public TexturePackTextureRegionLibrary mSpritesheetTexturePackTextureRegionLibrary2;
 	public TextureRegion mTextureBar;
 	public boolean loading = true;
 	public TextureRegion mSplashScreen;
 	public BitmapTextureAtlas mBitmapTextureAtlasSplash;
-	
-	public int mLevel = 1; //1
+
+	public int mLevel = 1; // 1
 	public boolean mVibra = true;
 	public boolean mSom = true;
-	//public Vibrator mVibrator;
- 
+
+	// public Vibrator mVibrator;
+
 	// ===========================================================
 	// Constructors
 	// ===========================================================
@@ -78,12 +79,11 @@ public class CamaleaotestActivity extends SimpleBaseGameActivity {
 				ScreenOrientation.PORTRAIT_FIXED, new RatioResolutionPolicy(
 						CAMERA_WIDTH, CAMERA_HEIGHT), this.mCamera);
 		mEngineOptions.getRenderOptions().setDithering(true);
-		mEngineOptions.getTouchOptions().setNeedsMultiTouch(true); 
+		mEngineOptions.getTouchOptions().setNeedsMultiTouch(true);
 		mEngineOptions.getAudioOptions().setNeedsSound(true);
 		mEngineOptions.getAudioOptions().setNeedsMusic(true);
-		
-		
-		//mVibrator = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
+
+		// mVibrator = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
 		return mEngineOptions;
 	}
 
@@ -181,6 +181,11 @@ public class CamaleaotestActivity extends SimpleBaseGameActivity {
 	@Override
 	public boolean onKeyDown(final int pKeyCode, final KeyEvent pEvent) {
 		return mCurrentScene.handleKeyDown(pKeyCode, pEvent);
+	}
+
+	public void vibrate(int i) {
+		if (mVibra)
+			mEngine.vibrate(i);
 	}
 
 	// ===========================================================

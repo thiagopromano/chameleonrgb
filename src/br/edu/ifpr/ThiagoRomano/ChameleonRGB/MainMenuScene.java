@@ -1,5 +1,7 @@
 package br.edu.ifpr.ThiagoRomano.ChameleonRGB;
 
+import org.andengine.audio.music.Music;
+import org.andengine.audio.music.MusicManager;
 import org.andengine.entity.IEntity;
 import org.andengine.entity.modifier.DelayModifier;
 import org.andengine.entity.modifier.FadeInModifier;
@@ -10,6 +12,8 @@ import org.andengine.entity.scene.menu.MenuScene.IOnMenuItemClickListener;
 import org.andengine.entity.scene.menu.item.IMenuItem;
 import org.andengine.entity.scene.menu.item.SpriteMenuItem;
 import org.andengine.entity.sprite.Sprite;
+import org.andengine.entity.sprite.TiledSprite;
+import org.andengine.opengl.texture.region.TiledTextureRegion;
 import org.andengine.util.modifier.ease.EaseElasticOut;
 
 import android.view.KeyEvent;
@@ -22,16 +26,22 @@ public class MainMenuScene extends MenuScene implements
 	Sprite mChameleon;
 	Sprite mTabua;
 	Sprite mTitle;
+	TiledSprite mVibrate;
+	TiledSprite mSound;
 
 	IMenuItem mNinjaModeButton;
 	IMenuItem mArcadeModeButton;
 	IMenuItem mAbout;
 	IMenuItem mCredits;
+	MenuRectangleRegion mSoundMenu;
+	MenuRectangleRegion mVibrateMenu;
 
 	final int MENU_ARCADE = 0;
 	final int MENU_NINJA = 1;
 	final int MENU_ABOUT = 2;
 	final int MENU_CREDITS = 3;
+	final int MENU_VIBRATE = 4;
+	final int MENU_SOUND = 5;
 
 	private ConfirmExitGame mConfirmExitGame;
 	public Sprite mBlackBehind;
@@ -75,6 +85,33 @@ public class MainMenuScene extends MenuScene implements
 				activity.getVertexBufferObjectManager());
 		mChameleon.setAlpha(0f);
 
+		mSound = new TiledSprite(0, 0, new TiledTextureRegion(
+				activity.mSpritesheetTexturePackTextureRegionLibrary.get(
+						posicoes.SOM_LIGADO_ID).getTexture(),
+				activity.mSpritesheetTexturePackTextureRegionLibrary
+						.get(posicoes.SOM_LIGADO_ID),
+				activity.mSpritesheetTexturePackTextureRegionLibrary
+						.get(posicoes.SOM_DESLIGADO_ID)),
+				activity.getVertexBufferObjectManager());
+		updateSound();
+		mSoundMenu = new MenuRectangleRegion(MENU_SOUND, 300, 0, 90, 100,
+				activity.getVertexBufferObjectManager());
+
+		addMenuItem(mSoundMenu);
+
+		mVibrate = new TiledSprite(0, 0, new TiledTextureRegion(
+				activity.mSpritesheetTexturePackTextureRegionLibrary.get(
+						posicoes.VIBRA_LIGADO_ID).getTexture(),
+				activity.mSpritesheetTexturePackTextureRegionLibrary
+						.get(posicoes.VIBRA_LIGADO_ID),
+				activity.mSpritesheetTexturePackTextureRegionLibrary
+						.get(posicoes.VIBRA_DESLIGADO_ID)),
+				activity.getVertexBufferObjectManager());
+		updateVibrate();
+		mVibrateMenu = new MenuRectangleRegion(MENU_VIBRATE, 390, 0, 100, 100,
+				activity.getVertexBufferObjectManager());
+		addMenuItem(mVibrateMenu);
+
 		mTabua = new Sprite(64, 350,
 				activity.mSpritesheetTexturePackTextureRegionLibrary
 						.get(posicoes.TABUA_ID),
@@ -112,6 +149,8 @@ public class MainMenuScene extends MenuScene implements
 		addMenuItem(mAbout);
 		attachChild(mTitle);
 		attachChild(mChameleon);
+		attachChild(mVibrate);
+		attachChild(mSound);
 
 		setBackgroundEnabled(false);
 		setOnMenuItemClickListener(this);
@@ -124,10 +163,39 @@ public class MainMenuScene extends MenuScene implements
 				activity.getVertexBufferObjectManager());
 		attachChild(mBlackBehind);
 		mBlackBehind.setVisible(false);
-		
-		Sounds.getSharedInstace().mJogoComeco.play();
-		//Sounds.getSharedInstace().mMusic.play();
 
+		Sounds.getSharedInstace().playJogoComeco();
+		// Sounds.getSharedInstace().mMusic.play();
+
+	}
+
+	private void updateVibrate() {
+		if (activity.mVibra) {
+			mVibrate.setCurrentTileIndex(0);
+			mVibrate.setPosition(403, 26);
+			mVibrate.setWidth(60);
+			mVibrate.setHeight(56);
+		} else {
+			mVibrate.setCurrentTileIndex(1);
+			mVibrate.setPosition(420, 29);
+			mVibrate.setWidth(32);
+			mVibrate.setHeight(46);
+		}
+	}
+
+	private void updateSound() {
+		if (activity.mSom) {
+			mSound.setCurrentTileIndex(0);
+			mSound.setPosition(333, 26);
+			mSound.setWidth(58);
+			mSound.setHeight(48);
+		} else {
+			mSound.setCurrentTileIndex(1);
+			mSound.setPosition(328, 26);
+			mSound.setWidth(50);
+			mSound.setHeight(51);
+			Sounds.getSharedInstace().stopSounds();
+		}
 	}
 
 	@Override
@@ -141,14 +209,24 @@ public class MainMenuScene extends MenuScene implements
 			activity.setCurrentScene(new ArcadeLevelSelect());
 			return true;
 		}
-		case MENU_ABOUT:
-		{
+		case MENU_ABOUT: {
 			activity.setCurrentScene(new AboutScene());
 			return true;
 		}
-		case MENU_CREDITS:
-		{
+		case MENU_CREDITS: {
 			activity.setCurrentScene(new CreditsScene());
+			return true;
+		}
+
+		case MENU_SOUND: {
+			activity.mSom = !activity.mSom;
+			updateSound();
+			return true;
+		}
+
+		case MENU_VIBRATE: {
+			activity.mVibra = !activity.mVibra;
+			updateVibrate();
 			return true;
 		}
 		default:

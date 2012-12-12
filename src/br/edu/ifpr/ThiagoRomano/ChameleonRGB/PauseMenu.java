@@ -33,18 +33,27 @@ public class PauseMenu extends MenuScene implements IOnMenuItemClickListener {
 				activity.getVertexBufferObjectManager());
 		this.attachChild(mOpcoes);
 
-		final MenuRectangleRegion mRestartRegion = new MenuRectangleRegion(MENU_RESET, 0, 60, 140, 156, activity.getVertexBufferObjectManager());
-		mRestartRegion.setPosition(mRestartRegion.getX()+mOpcoes.getX(), mRestartRegion.getY()+mOpcoes.getY());
+		final MenuRectangleRegion mRestartRegion = new MenuRectangleRegion(
+				MENU_RESET, 0, 60, 140, 156,
+				activity.getVertexBufferObjectManager());
+		mRestartRegion.setPosition(mRestartRegion.getX() + mOpcoes.getX(),
+				mRestartRegion.getY() + mOpcoes.getY());
 		this.addMenuItem(mRestartRegion);
-		
-		final MenuRectangleRegion mMenuRegion = new MenuRectangleRegion(MENU_QUIT, 140, 60, 150, 156, activity.getVertexBufferObjectManager());
-		mMenuRegion.setPosition(mMenuRegion.getX()+mOpcoes.getX(), mMenuRegion.getY()+mOpcoes.getY());
+
+		final MenuRectangleRegion mMenuRegion = new MenuRectangleRegion(
+				MENU_QUIT, 140, 60, 150, 156,
+				activity.getVertexBufferObjectManager());
+		mMenuRegion.setPosition(mMenuRegion.getX() + mOpcoes.getX(),
+				mMenuRegion.getY() + mOpcoes.getY());
 		this.addMenuItem(mMenuRegion);
-		
-		final MenuRectangleRegion mResumeRegion = new MenuRectangleRegion(MENU_RESUME, 290, 60, 110, 156, activity.getVertexBufferObjectManager());
-		mResumeRegion.setPosition(mResumeRegion.getX()+mOpcoes.getX(), mResumeRegion.getY()+mOpcoes.getY());
+
+		final MenuRectangleRegion mResumeRegion = new MenuRectangleRegion(
+				MENU_RESUME, 290, 60, 110, 156,
+				activity.getVertexBufferObjectManager());
+		mResumeRegion.setPosition(mResumeRegion.getX() + mOpcoes.getX(),
+				mResumeRegion.getY() + mOpcoes.getY());
 		this.addMenuItem(mResumeRegion);
-		
+
 		this.setBackgroundEnabled(false);
 
 		setOnMenuItemClickListener(this);
@@ -61,16 +70,15 @@ public class PauseMenu extends MenuScene implements IOnMenuItemClickListener {
 			float pMenuItemLocalX, float pMenuItemLocalY) {
 		switch (pMenuItem.getID()) {
 		case MENU_RESET:
-			mMainScene
-			.setChildScene(mMainScene.mConfirmRestart, false, true, true);
-			
+			mMainScene.setChildScene(mMainScene.mConfirmRestart, false, true,
+					true);
+
 			return true;
 		case MENU_QUIT:
 			/* End Activity. */
 			Quit();
 			return true;
-		case MENU_RESUME:
-		{
+		case MENU_RESUME: {
 			mMainScene.clearChildScenes();
 			mMainScene.toggleEscuro(false);
 			return true;
@@ -79,45 +87,13 @@ public class PauseMenu extends MenuScene implements IOnMenuItemClickListener {
 			return false;
 		}
 	}
-	
-	public void Quit()
-	{
-		mMainScene
-		.setChildScene(mMainScene.mConfirmExit, false, true, true);
+
+	public void Quit() {
+		mMainScene.setChildScene(mMainScene.mConfirmExit, false, true, true);
 	}
-	
+
 	@Override
 	public void reset() {
 
-	}
-	
-	public class MenuRectangleRegion extends Rectangle implements IMenuItem
-	{
-		private int ID;
-		public MenuRectangleRegion(int ID, float pX, float pY, float pWidth,
-				float pHeight,
-				VertexBufferObjectManager vertexBufferObjectManager) {
-			super(pX, pY, pWidth, pHeight, vertexBufferObjectManager);
-			this.ID = ID;
-			this.setAlpha(0);
-		}
-
-		@Override
-		public int getID() {
-			return ID;
-		}
-
-		@Override
-		public void onSelected() {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void onUnselected() {
-			// TODO Auto-generated method stub
-			
-		}
-		
 	}
 }

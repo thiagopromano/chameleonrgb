@@ -381,9 +381,9 @@ public class ArcadeModeScene extends GameScene {
 
 					@Override
 					protected void onModifierStarted(IEntity pItem) {
-						Sounds.getSharedInstace().mArcadeAcerto.play();
+						Sounds.getSharedInstace().playArcadeAcerto();
 
-						activity.getEngine().vibrate(2000);
+						activity.vibrate(2000);
 						iniciando = true;
 						mSliderRed.setPosition(SliderSprite.MIN_X
 								+ colorIntToFloat(Color.red(mPlacaColor))
