@@ -39,7 +39,7 @@ public class ArcadeModeScene extends GameScene {
 	SliderSprite mSliderRed;
 	SliderSprite mSliderGreen;
 	Sprite mAdendo;
-	Sprite mChampShadow;
+	Sprite mChampShadow; 
 	Sprite mPalco;
 	Sprite mFolhasFrente;
 	Sprite mPauseButton;
