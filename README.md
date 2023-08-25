@@ -17,4 +17,4 @@ To install:
 
 Requires 2.3.3 Android device or later.  
 
-Any doubts email me: thiagopromano@gmail.com
+Any doubts email me: thiagopromano (at)gmail dot com
